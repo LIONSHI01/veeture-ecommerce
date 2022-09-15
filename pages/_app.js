@@ -1,11 +1,14 @@
 import { ThemeProvider } from "styled-components";
 import "../styles/globals.css";
 import { BaseTheme, DarkTheme } from "../styles/theme";
+import Layout from "../components/Layout";
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThemeProvider theme={BaseTheme}>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </ThemeProvider>
   );
 }
