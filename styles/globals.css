@@ -27,6 +27,7 @@ a {
 
 ul {
   list-style: none;
+ padding:0 ;
 }
 
 * {
@@ -88,7 +89,8 @@ ul {
   --bs-m: 0 1rem 5rem rgba(0, 0, 0, 0.15);
 
   /* BORDER RADIUS */
-  --br-m: 5px;
+  --br: 5px;
+  --br-m: 8px;
   --br-x: 12px;
 
   /* SPACE */

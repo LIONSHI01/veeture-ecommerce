@@ -8,6 +8,7 @@ import { BsHeart, BsHandbag } from "react-icons/bs";
 
 const NavbarContainer = styled.nav`
   height: 10rem;
+  /* background-color: var(--bg); */
   background-color: var(--bg);
   color: var(--white);
   font-size: var(--fs);
