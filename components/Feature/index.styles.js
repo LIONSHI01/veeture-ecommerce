@@ -9,7 +9,7 @@ export const StyledFeature = styled.section`
     letter-spacing: -1px;
   }
   .feature-container {
-    width: var(--container);
+    max-width: var(--container);
     margin: 0 auto;
   }
 

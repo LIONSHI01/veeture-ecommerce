@@ -18,6 +18,20 @@ export default {
       },
     },
     {
+      name: "type",
+      title: "Type",
+      type: "string",
+    },
+    {
+      name: "categoryImage",
+      title: "CategoryImage",
+      type: "array",
+      of: [{ type: "image" }],
+      options: {
+        hotspot: true,
+      },
+    },
+    {
       name: "description",
       title: "Description",
       type: "text",
