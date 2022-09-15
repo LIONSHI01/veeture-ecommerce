@@ -111,10 +111,7 @@ const StyledFooter = styled.footer`
 
   .social-links {
     display: flex;
-    gap: 1.5rem;
-  }
-
-  .social {
+    gap: 2rem;
   }
 
   .icon-box {
