@@ -1,24 +1,50 @@
 import React from "react";
 import styled from "styled-components";
-import Link from "next/link";
+
+import Button from "../Button";
 
 import CategoryItem from "../Category-Item";
 
 const Wrapper = styled.section`
+  margin-bottom: 5rem;
+
+  .section-container {
+    max-width: var(--container);
+    margin: 0 auto;
+  }
+
   .list-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
     gap: 1rem;
+  }
+
+  .heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--mg-s);
+    h2 {
+      font-size: var(--fs-xl);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
   }
 `;
 
 const CategoryList = ({ categories }) => {
   return (
     <Wrapper>
-      <div className="list-container">
-        {categories.map((category) => (
-          <CategoryItem key={category._id} category={category} />
-        ))}
+      <div className="section-container">
+        <div className="heading">
+          <h2>Category</h2>
+          <Button url="/">view all products</Button>
+        </div>
+        <div className="list-container">
+          {categories.map((category) => (
+            <CategoryItem key={category._id} category={category} />
+          ))}
+        </div>
       </div>
     </Wrapper>
   );

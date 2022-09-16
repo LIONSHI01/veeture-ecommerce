@@ -8,6 +8,7 @@ import { urlFor } from "../../lib/sanity-client.utils";
 const Wrapper = styled.figure`
   width: 35rem;
   height: 40rem;
+  cursor: pointer;
 
   .image-box {
     width: 100%;
@@ -28,15 +29,16 @@ const CategoryItem = ({ category }) => {
   const ImageUrl = urlFor(categoryImage && categoryImage[0]);
 
   return (
-    <Wrapper>
-      <div className="image-box">
-        <Image src={ImageUrl} alt="category image" width={400} height={400} />
-      </div>
-
-      <figcaption>
-        <h3>{adjTitle}</h3>
-      </figcaption>
-    </Wrapper>
+    <Link href="/">
+      <Wrapper>
+        <div className="image-box">
+          <Image src={ImageUrl} alt="category image" width={400} height={400} />
+        </div>
+        <figcaption>
+          <h3>{adjTitle}</h3>
+        </figcaption>
+      </Wrapper>
+    </Link>
   );
 };
 

@@ -46,7 +46,16 @@ export default {
         layout: "tags",
       },
     },
-
+    {
+      name: "category",
+      title: "Category",
+      type: "string",
+    },
+    {
+      name: "type",
+      title: "Type",
+      type: "string",
+    },
     {
       name: "categories",
       title: "Categories",
@@ -57,6 +66,11 @@ export default {
           to: { type: "category" },
         },
       ],
+    },
+    {
+      title: "recommend",
+      name: "Recommend",
+      type: "boolean",
     },
     {
       name: "body",

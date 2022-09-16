@@ -126,11 +126,6 @@ const Navbar = () => {
               <a>women</a>
             </Link>
           </li>
-          <li>
-            <Link href="/">
-              <a>kids</a>
-            </Link>
-          </li>
         </ul>
         <ul className="links">
           <li className="searchbar">
