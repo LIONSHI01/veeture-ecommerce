@@ -24,7 +24,7 @@ const Wrapper = styled.figure`
   }
   .category {
     font-size: var(--fs);
-
+    text-transform: capitalize;
     font-weight: 500;
   }
   .price {
@@ -41,17 +41,19 @@ const ProductCard = ({ product }) => {
 
   return (
     <Link href="/">
-      <Wrapper>
-        <div className="image-container">
-          <Image src={imageUrl} width={350} height={450} alt={title} />
-        </div>
-        <figcaption>
-          <h4 className="name">{title}</h4>
+      <a>
+        <Wrapper>
+          <div className="image-container">
+            <Image src={imageUrl} width={350} height={450} alt={title} />
+          </div>
+          <figcaption>
+            <h4 className="name">{title}</h4>
 
-          <span className="category">{category}</span>
-          <span className="price">{`$ ${price}`}</span>
-        </figcaption>
-      </Wrapper>
+            <span className="category">{category}</span>
+            <span className="price">{`$ ${price}`}</span>
+          </figcaption>
+        </Wrapper>
+      </a>
     </Link>
   );
 };

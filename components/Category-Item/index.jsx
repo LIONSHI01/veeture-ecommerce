@@ -30,14 +30,21 @@ const CategoryItem = ({ category }) => {
 
   return (
     <Link href="/">
-      <Wrapper>
-        <div className="image-box">
-          <Image src={ImageUrl} alt="category image" width={400} height={400} />
-        </div>
-        <figcaption>
-          <h3>{adjTitle}</h3>
-        </figcaption>
-      </Wrapper>
+      <a>
+        <Wrapper>
+          <div className="image-box">
+            <Image
+              src={ImageUrl}
+              alt="category image"
+              width={400}
+              height={400}
+            />
+          </div>
+          <figcaption>
+            <h3>{adjTitle}</h3>
+          </figcaption>
+        </Wrapper>
+      </a>
     </Link>
   );
 };

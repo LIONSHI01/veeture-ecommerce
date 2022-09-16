@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
+
 import { client } from "../../lib/sanity-client.utils";
 
 import CategoryList from "../../components/Category-List";
-
 import RecommendList from "../../components/Recommend-List";
 
 import { Wrapper } from "./index.styles";

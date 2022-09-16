@@ -1,5 +1,5 @@
 import styled from "styled-components";
-export const Wrapper = styled.main`
+export const Wrapper = styled.div`
   & .heading-container {
     max-width: var(--container);
     margin: 0 auto;

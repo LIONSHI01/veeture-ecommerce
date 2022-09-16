@@ -16,15 +16,17 @@ const FeatureSection = () => {
         <h2>Summer 2022</h2>
         <div className="feature-images">
           <Link href="/">
-            <figure className="card">
-              <Image
-                width={600}
-                height={400}
-                src={FeatureMen}
-                alt="Featured Men"
-              />
-              <span>men</span>
-            </figure>
+            <a>
+              <figure className="card">
+                <Image
+                  width={600}
+                  height={400}
+                  src={FeatureMen}
+                  alt="Featured Men"
+                />
+                <span>men</span>
+              </figure>
+            </a>
           </Link>
           <figure className="card">
             <Image
