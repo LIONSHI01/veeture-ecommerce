@@ -8,9 +8,10 @@ import Button from "../../Button";
 import { Wrapper } from "./index.styles";
 import { buildTime } from "../../../lib/buildTime.utils";
 import Accordion from "../Accordion";
+import SizesContainer from "../Sizes";
 
 const DetailSection = ({ product }) => {
-  const { defaultProductVariant, category, title } = product;
+  const { defaultProductVariant, category, title, sizes } = product;
   const { price, images } = defaultProductVariant;
   const deliveryDate = buildTime();
   return (
@@ -20,10 +21,8 @@ const DetailSection = ({ product }) => {
         <p>Black Ankle Boots</p>
         <span>{`$ ${price}`}</span>
       </div>
-      <div className="sizes-box">
-        EU36
-        {/* Loop over the available sizes */}
-      </div>
+      <div className="sizes-box">{/* Loop over the available sizes */}</div>
+      <SizesContainer sizes={sizes} />
       <Button fontSize="var(--fs-xl)" width="100%" height="7rem" type="solid">
         Add to cart
       </Button>

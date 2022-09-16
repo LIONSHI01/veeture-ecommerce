@@ -33,13 +33,13 @@ const Wrapper = styled.div`
   }
 
   .title {
-    font-size: var(--fs-x);
-    line-height: 1.7;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    cursor: pointer;
+    font-size: var(--fs-x);
+    line-height: 0;
     text-transform: uppercase;
+    cursor: pointer;
 
     h4 {
       font-weight: 500;
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   .icon {
     width: 3rem;
     height: 3rem;
-    transition: all 0.3s cubic-bezier(0.86, -0.06, 0.25, 1.08);
+    transition: all 0.7s cubic-bezier(0.86, -0.06, 0.25, 1.08);
   }
 
   .icon.select {
@@ -59,17 +59,18 @@ const Wrapper = styled.div`
   .content {
     font-size: var(--fs-s);
     line-height: 1.7;
+    transform: translateY(1rem);
     max-height: 0;
     opacity: 0;
     overflow-y: hidden;
-    transition: all 0.5s cubic-bezier(0.86, -0.06, 0.25, 1.08);
+    transition: all 0.7s cubic-bezier(0.86, -0.06, 0.25, 1.08);
   }
 
   .content.show {
     opacity: 1;
     height: auto;
     max-height: 999px;
-    transition: all 0.5s cubic-bezier(0.86, -0.06, 0.25, 1.08);
+    transition: all 0.7s cubic-bezier(0.86, -0.06, 0.25, 1.08);
   }
 `;
 

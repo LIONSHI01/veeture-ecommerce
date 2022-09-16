@@ -57,6 +57,12 @@ export default {
       type: "string",
     },
     {
+      name: "sizes",
+      title: "Sizes",
+      type: "array",
+      of: [{ type: "string" }],
+    },
+    {
       name: "categories",
       title: "Categories",
       type: "array",
