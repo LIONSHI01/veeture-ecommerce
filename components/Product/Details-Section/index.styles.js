@@ -4,7 +4,7 @@ export const Wrapper = styled.section`
   .product-infos {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    /* gap: 0.rem; */
     margin-bottom: var(--mg-m);
 
     h2 {
@@ -17,7 +17,8 @@ export const Wrapper = styled.section`
       font-size: var(--fs);
     }
     span {
-      font-size: var(--fs-x);
+      margin-top: var(--mg-m);
+      font-size: var(--fs-xl);
     }
   }
 

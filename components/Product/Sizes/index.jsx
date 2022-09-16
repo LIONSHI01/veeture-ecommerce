@@ -31,12 +31,11 @@ const SizesContainer = ({ sizes }) => {
   const toggleHandler = (i) => {
     if (selected === i) setSelected(null);
     setSelected(i);
-    console.log(selected);
   };
 
   return (
     <Wrapper>
-      {sizes.map((size, i) => (
+      {sizes?.map((size, i) => (
         <button
           className={selected === i ? "active" : ""}
           key={i}

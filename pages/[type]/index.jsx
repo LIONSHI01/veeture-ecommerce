@@ -9,7 +9,7 @@ import RecommendList from "../../components/Recommend-List";
 import { Wrapper } from "./index.styles";
 
 const CategoryPage = ({ categories, recommendProducts, type }) => {
-  console.log(recommendProducts);
+  // console.log(recommendProducts);
   return (
     <Wrapper>
       <div className="heading-container">

@@ -21,12 +21,11 @@ const DetailSection = ({ product }) => {
         <p>Black Ankle Boots</p>
         <span>{`$ ${price}`}</span>
       </div>
-      <div className="sizes-box">{/* Loop over the available sizes */}</div>
       <SizesContainer sizes={sizes} />
       <Button fontSize="var(--fs-xl)" width="100%" height="7rem" type="solid">
         Add to cart
       </Button>
-      {/* <button className="atc-btn">Add to cart</button> */}
+
       <ul className="purchase-terms">
         <li className="term">
           <BsCheck2Square className="icon" />
