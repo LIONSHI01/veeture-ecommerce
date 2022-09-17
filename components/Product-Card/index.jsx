@@ -34,9 +34,9 @@ const Wrapper = styled.figure`
 `;
 
 const ProductCard = ({ product }) => {
-  const { defaultProductVariant, category, type, slug } = product;
-  const { title, price } = defaultProductVariant;
-  const { images } = defaultProductVariant;
+  const { title, price, category, type, slug, images } = product;
+  // const { title, price } = defaultProductVariant;
+  // const { images } = defaultProductVariant;
   const imageUrl = urlFor(images && images[0]);
 
   return (

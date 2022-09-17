@@ -1,19 +1,26 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import { useDispatch, useSelector } from "react-redux";
 
 import { BsCheck2Square } from "react-icons/bs";
+
+import { addItemToCart } from "../../../store/cart/cart.action";
 
 import Button from "../../Button";
 import { Wrapper } from "./index.styles";
 import { buildTime } from "../../../lib/buildTime.utils";
 import Accordion from "../Accordion";
 import SizesContainer from "../Sizes";
+import { selectCartItems } from "../../../store/cart/cart.selector";
 
 const DetailSection = ({ product }) => {
-  const { defaultProductVariant, category, title, sizes } = product;
-  const { price, images } = defaultProductVariant;
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+  const { price, title, sizes } = product;
+  console.log({ price, title, sizes });
+  // const { price, images } = defaultProductVariant;
   const deliveryDate = buildTime();
+
+  const addCartHandler = () => dispatch(addItemToCart(cartItems, product));
   return (
     <Wrapper>
       <div className="product-infos">
@@ -22,7 +29,13 @@ const DetailSection = ({ product }) => {
         <span>{`$ ${price}`}</span>
       </div>
       <SizesContainer sizes={sizes} />
-      <Button fontSize="var(--fs-xl)" width="100%" height="7rem" type="solid">
+      <Button
+        fontSize="var(--fs-xl)"
+        width="100%"
+        height="7rem"
+        type="solid"
+        onClick={addCartHandler}
+      >
         Add to cart
       </Button>
 

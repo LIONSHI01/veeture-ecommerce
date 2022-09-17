@@ -18,10 +18,24 @@ export default {
       },
     },
     {
-      title: "Default variant",
-      name: "defaultProductVariant",
-      type: "productVariant",
+      name: "price",
+      title: "Price",
+      type: "number",
     },
+    {
+      name: "images",
+      title: "Images",
+      type: "array",
+      of: [{ type: "image" }],
+      options: {
+        hotspot: true,
+      },
+    },
+    // {
+    //   title: "Default variant",
+    //   name: "defaultProductVariant",
+    //   type: "productVariant",
+    // },
     {
       title: "Variants",
       name: "variants",
@@ -89,7 +103,7 @@ export default {
     select: {
       title: "title",
       manufactor: "manufactor.title",
-      media: "defaultProductVariant.images[0]",
+      media: "images[0]",
     },
   },
 };

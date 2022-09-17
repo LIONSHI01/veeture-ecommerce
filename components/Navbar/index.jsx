@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import styled from "styled-components";
+import { useSelector } from "react-redux";
+
+import { selectCartCount } from "../../store/cart/cart.selector";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
@@ -9,6 +11,9 @@ import { BsHeart, BsHandbag } from "react-icons/bs";
 import { NavbarContainer } from "./index.styles";
 
 const Navbar = () => {
+  const cartCount = useSelector(selectCartCount);
+  console.log(cartCount);
+
   return (
     <NavbarContainer>
       <div className="nav-container">
@@ -44,7 +49,7 @@ const Navbar = () => {
           </li>
           <li className="cart">
             <BsHandbag className="icon" />
-            <span className="cartNum">0</span>
+            <span className="cartNum">{cartCount || 0}</span>
           </li>
         </ul>
       </div>

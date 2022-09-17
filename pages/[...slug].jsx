@@ -4,7 +4,6 @@ import Image from "next/future/image";
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
 import ProductCard from "../components/Product-Card";
-
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -36,8 +35,9 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
 
   // Return Product Details Page
   if (product) {
-    const { defaultProductVariant, category, price, title } = product;
-    const { images } = defaultProductVariant;
+    console.log(product);
+    const { images } = product;
+
     const imageUrls = images?.map((image) => urlFor(image));
     return (
       <Wrapper>
