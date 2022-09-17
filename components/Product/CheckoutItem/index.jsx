@@ -18,7 +18,7 @@ import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
 
 const CheckoutItem = ({ product }) => {
-  const { title, price, images, slug, quantity, subTotal, selectType } =
+  const { title, price, images, slug, quantity, subTotal, selectedSize } =
     product;
 
   const cartItems = useSelector(selectCartItems);
@@ -46,7 +46,7 @@ const CheckoutItem = ({ product }) => {
             <a className="cartItem__name">{title}</a>
           </Link>
         </div>
-        <span>{selectType ? `Types: ${selectType}` : ""}</span>
+        <span>{selectedSize ? `Size: ${selectedSize}` : ""}</span>
         <span>{`HK$ ${price}`}</span>
         <div className="cartItem__qty_box">
           <span>Amount :</span>

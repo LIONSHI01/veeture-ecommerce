@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin: 5rem 0;
   .section-container {
     max-width: var(--container);
     margin: 0 auto;
@@ -172,8 +173,8 @@ export const Wrapper = styled.div`
 
     padding: 1rem 0;
     font-size: var(--fs-x);
-    background-color: var(--blue);
-    border-radius: var(--br-m);
+    background-color: var(--bg);
+    /* border-radius: var(--br-m); */
     text-transform: uppercase;
     text-decoration: none;
     color: var(--white);
@@ -183,7 +184,7 @@ export const Wrapper = styled.div`
 
   .cart__shopping-btn-box:hover,
   .cart__shopping-btn-box:active {
-    background-color: var(--blue-dark);
+    background-color: var(--black);
   }
 
   .cart__shopping-btn-icon {

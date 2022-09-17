@@ -62,11 +62,14 @@ const CartPage = () => {
                 <span>Remove</span>
               </div>
               <div className="cart__table-body">
-                {cartItems?.map((product) => (
-                  <CheckoutItem key={product._id} product={product} />
+                {cartItems?.map((product, i) => (
+                  <CheckoutItem
+                    key={`${product._id}-${product.selectedSize}`}
+                    product={product}
+                  />
                 ))}
               </div>
-              {cartItems.length >= 1 ? (
+              {cartItems?.length >= 1 ? (
                 <div className="cart__sum-box">
                   <span>Total</span>
                   <span>{`HK$ ${cartTotal}`}</span>
@@ -78,7 +81,7 @@ const CartPage = () => {
               )}
             </div>
             <div className="cart__btns-group">
-              <Link href="/product">
+              <Link href="/">
                 <a className="cart__shopping-btn-box">
                   <AiOutlineLeft className="cart__shopping-btn-left" />
                   <span>Shopping</span>
@@ -98,7 +101,7 @@ const CartPage = () => {
             <div className="cart__empty-text">
               {"No Item Yet ! Let's Explore !"}
             </div>
-            <Link href="/product">
+            <Link href="/">
               <a className="cart__shopping-btn-box">
                 <AiOutlineLeft className="cart__shopping-btn-left" />
                 <span>Shopping</span>
