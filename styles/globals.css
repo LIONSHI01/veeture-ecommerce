@@ -130,13 +130,13 @@ p {
   margin-inline-end: 0px;
 }
 
-
+/* 
 .Toastify__toast--warning {
-  /* background: #FFE8BC !important; */
+
 }
 .Toastify__toast--error {
-  /* background: #FCA7A9 !important; */
-}
+
+} */
 .toastBody {
   font-family: "Crimson Text", serif;
   color: #10171D; 

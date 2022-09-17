@@ -81,7 +81,7 @@ const Accordion = () => {
       return setSelected(null);
     }
 
-    setSelected(i);
+    return setSelected(i);
   };
 
   return (
