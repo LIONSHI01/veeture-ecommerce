@@ -35,8 +35,7 @@ const Wrapper = styled.figure`
 
 const ProductCard = ({ product }) => {
   const { title, price, category, type, slug, images } = product;
-  // const { title, price } = defaultProductVariant;
-  // const { images } = defaultProductVariant;
+
   const imageUrl = urlFor(images && images[0]);
 
   return (
@@ -48,7 +47,6 @@ const ProductCard = ({ product }) => {
           </div>
           <figcaption>
             <h4 className="name">{title}</h4>
-
             <span className="category">{category}</span>
             <span className="price">{`$ ${price}`}</span>
           </figcaption>

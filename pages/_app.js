@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import { Provider } from "react-redux";
 import { store } from "../store/store";
 
+import "react-toastify/dist/ReactToastify.css";
 import "../styles/nprogress.css";
 
 function MyApp({ Component, pageProps }) {

@@ -123,3 +123,19 @@ p {
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 }
+
+
+.Toastify__toast--warning {
+  /* background: #FFE8BC !important; */
+}
+.Toastify__toast--error {
+  /* background: #FCA7A9 !important; */
+}
+.toastBody {
+  font-family: "Crimson Text", serif;
+  color: #10171D; 
+  font-size: 1.8rem !important;
+}
+.toastProgress {
+  background: #333F48 !important;
+}

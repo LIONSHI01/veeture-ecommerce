@@ -3,7 +3,10 @@ import { CART_ACTION_TYPES } from "./cart.types";
 
 const addCartItem = (cartItems, itemToAdd) => {
   // check if exist
-  const existItem = cartItems.find((item) => item._id === itemToAdd._id);
+  const existItem = cartItems.find(
+    (item) =>
+      item._id === itemToAdd._id && item.selectedSize === itemToAdd.selectedSize
+  );
   console.log(existItem);
   // if exist, add original item quanity +1
   if (existItem) {

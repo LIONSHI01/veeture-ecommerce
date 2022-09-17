@@ -25,12 +25,13 @@ const Wrapper = styled.div`
   }
 `;
 
-const SizesContainer = ({ sizes }) => {
+const SizesContainer = ({ sizes, setSize }) => {
   const [selected, setSelected] = useState(null);
 
-  const toggleHandler = (i) => {
+  const toggleHandler = (i, size) => {
     if (selected === i) setSelected(null);
     setSelected(i);
+    setSize(size);
   };
 
   return (
@@ -39,7 +40,7 @@ const SizesContainer = ({ sizes }) => {
         <button
           className={selected === i ? "active" : ""}
           key={i}
-          onClick={() => toggleHandler(i)}
+          onClick={() => toggleHandler(i, size)}
         >{`EU ${size}`}</button>
       ))}
     </Wrapper>

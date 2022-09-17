@@ -12,7 +12,6 @@ import { NavbarContainer } from "./index.styles";
 
 const Navbar = () => {
   const cartCount = useSelector(selectCartCount);
-  console.log(cartCount);
 
   return (
     <NavbarContainer>
@@ -47,9 +46,14 @@ const Navbar = () => {
             <BsHeart className="icon" />
             <span className="wishNum">0</span>
           </li>
+
           <li className="cart">
-            <BsHandbag className="icon" />
-            <span className="cartNum">{cartCount || 0}</span>
+            <Link href="/cart">
+              <a>
+                <BsHandbag className="icon" />
+                <span className="cartNum">{cartCount || 0}</span>
+              </a>
+            </Link>
           </li>
         </ul>
       </div>

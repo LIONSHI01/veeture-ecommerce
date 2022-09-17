@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 import { BsCheck2Square } from "react-icons/bs";
 
@@ -13,14 +14,23 @@ import SizesContainer from "../Sizes";
 import { selectCartItems } from "../../../store/cart/cart.selector";
 
 const DetailSection = ({ product }) => {
+  const [selectedSize, setSelectedSize] = useState("");
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const { price, title, sizes } = product;
-  console.log({ price, title, sizes });
-  // const { price, images } = defaultProductVariant;
+
   const deliveryDate = buildTime();
 
-  const addCartHandler = () => dispatch(addItemToCart(cartItems, product));
+  const addCartHandler = () => {
+    if (selectedSize) {
+      dispatch(
+        addItemToCart(cartItems, { ...product, selectedSize: selectedSize })
+      );
+      toast.success(`Added * ${title.toUpperCase()} * to cart!`);
+    } else {
+      toast.warning(`Please select *SIZE first!`);
+    }
+  };
   return (
     <Wrapper>
       <div className="product-infos">
@@ -28,7 +38,7 @@ const DetailSection = ({ product }) => {
         <p>Black Ankle Boots</p>
         <span>{`$ ${price}`}</span>
       </div>
-      <SizesContainer sizes={sizes} />
+      <SizesContainer sizes={sizes} setSize={setSelectedSize} />
       <Button
         fontSize="var(--fs-xl)"
         width="100%"
@@ -57,6 +67,7 @@ const DetailSection = ({ product }) => {
         </li>
       </ul>
       <Accordion />
+      {/* <ToastContainer /> */}
     </Wrapper>
   );
 };

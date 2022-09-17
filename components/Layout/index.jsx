@@ -1,7 +1,7 @@
 import React from "react";
 import NProgress from "nprogress";
 import Router from "next/router";
-
+import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 
@@ -14,6 +14,10 @@ const Layout = ({ children }) => {
     <>
       <Navbar />
       <main>{children}</main>
+      <ToastContainer
+        progressClassName="toastProgress"
+        bodyClassName="toastBody"
+      />
       <Footer />
     </>
   );
