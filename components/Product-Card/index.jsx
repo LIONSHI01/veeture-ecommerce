@@ -34,17 +34,17 @@ const Wrapper = styled.figure`
 `;
 
 const ProductCard = ({ product }) => {
-  const { defaultProductVariant, category } = product;
+  const { defaultProductVariant, category, type, slug } = product;
   const { title, price } = defaultProductVariant;
   const { images } = defaultProductVariant;
   const imageUrl = urlFor(images && images[0]);
 
   return (
-    <Link href="/">
+    <Link href={`/${type}/${category}/${slug.current}`}>
       <a>
         <Wrapper>
           <div className="image-container">
-            <Image src={imageUrl} width={350} height={450} alt={title} />
+            <Image src={imageUrl} width={350} height={350} alt={title} />
           </div>
           <figcaption>
             <h4 className="name">{title}</h4>

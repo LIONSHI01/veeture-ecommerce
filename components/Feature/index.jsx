@@ -15,7 +15,7 @@ const FeatureSection = () => {
       <div className="feature-container">
         <h2>Summer 2022</h2>
         <div className="feature-images">
-          <Link href="/">
+          <Link href="/men">
             <a>
               <figure className="card">
                 <Image
@@ -28,15 +28,19 @@ const FeatureSection = () => {
               </figure>
             </a>
           </Link>
-          <figure className="card">
-            <Image
-              width={600}
-              height={400}
-              src={FeatureWomen}
-              alt="Featured Men"
-            />
-            <span>women</span>
-          </figure>
+          <Link href="/women">
+            <a>
+              <figure className="card">
+                <Image
+                  width={600}
+                  height={400}
+                  src={FeatureWomen}
+                  alt="Featured Men"
+                />
+                <span>women</span>
+              </figure>
+            </a>
+          </Link>
           <figure className="card">
             <Image
               width={600}

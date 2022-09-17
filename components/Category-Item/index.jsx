@@ -24,12 +24,12 @@ const Wrapper = styled.figure`
 `;
 
 const CategoryItem = ({ category }) => {
-  const { title, categoryImage } = category;
+  const { title, categoryImage, type, basicCategory } = category;
   const adjTitle = title.split("-")[0];
   const ImageUrl = urlFor(categoryImage && categoryImage[0]);
 
   return (
-    <Link href="/">
+    <Link href={`/${type}/${basicCategory}`}>
       <a>
         <Wrapper>
           <div className="image-box">

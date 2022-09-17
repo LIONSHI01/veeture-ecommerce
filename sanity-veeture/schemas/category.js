@@ -23,6 +23,11 @@ export default {
       type: "string",
     },
     {
+      name: "basicCategory",
+      title: "BasicCategory",
+      type: "string",
+    },
+    {
       name: "categoryImage",
       title: "CategoryImage",
       type: "array",
