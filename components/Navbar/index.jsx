@@ -1,8 +1,12 @@
 import React from "react";
 import Link from "next/link";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
-import { selectCartCount } from "../../store/cart/cart.selector";
+import {
+  selectCartCount,
+  selectIsCartOpen,
+} from "../../store/cart/cart.selector";
+import { setIsCartOpen } from "../../store/cart/cart.action";
 
 import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
@@ -11,11 +15,14 @@ import { BsHeart, BsHandbag } from "react-icons/bs";
 import { NavbarContainer } from "./index.styles";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
   const cartCount = useSelector(selectCartCount);
+  const isCartOpen = useSelector(selectIsCartOpen);
+  const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
   return (
     <NavbarContainer>
-      <div className="nav-container">
+      <div className="nav-container sticky">
         <div className="logo-container">
           <Link href="/">
             <a>
@@ -47,13 +54,9 @@ const Navbar = () => {
             <span className="wishNum">0</span>
           </li>
 
-          <li className="cart">
-            <Link href="/cart">
-              <a>
-                <BsHandbag className="icon" />
-                <span className="cartNum">{cartCount || 0}</span>
-              </a>
-            </Link>
+          <li className="cart" onClick={cartOpenHandler}>
+            <BsHandbag className="icon" />
+            <span className="cartNum">{cartCount || 0}</span>
           </li>
         </ul>
       </div>

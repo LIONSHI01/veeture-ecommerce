@@ -72,3 +72,6 @@ export const removeItemFromCart = (cartItems, itemToRemove) => {
   const newCartItems = removeCartItem(cartItems, itemToRemove);
   return createAction(CART_ACTION_TYPES.setCartItems, newCartItems);
 };
+
+export const setIsCartOpen = (boolean) =>
+  createAction(CART_ACTION_TYPES.setIsCartOpen, boolean);

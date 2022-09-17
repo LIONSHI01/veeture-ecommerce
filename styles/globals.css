@@ -15,9 +15,9 @@ html {
 body {
   box-sizing: border-box;
   font-family: "Open Sans", sans-serif;
-line-height: 1.2;
+  line-height: 1.2;
   width: 100%;
-  overflow-x: hidden;
+  overflow-x: hidden; 
 }
 
 
@@ -64,6 +64,12 @@ figure{
   --grey-dark-3: #333; */
 
   --white: #fff;
+
+  --red: #ff2e63;
+  --red-light: #ff5882;
+  --red-light-2: #ffc0d0;
+  --red-dark: #cc254f;
+
 
   /* FONT */
   --ff-display: "Crimson Text", serif;
@@ -139,3 +145,5 @@ p {
 .toastProgress {
   background: #333F48 !important;
 }
+
+

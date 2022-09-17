@@ -10,6 +10,12 @@ export const NavbarContainer = styled.nav`
   align-items: center;
   transition: all 0.3s;
 
+  /* width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000; */
+
   ul {
     list-style: none;
   }
@@ -100,4 +106,14 @@ export const NavbarContainer = styled.nav`
     height: 3rem;
     width: 3rem;
   }
+
+  /* .nav-container.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    background-color: var(--bg);
+    display: flex;
+    align-items: center;
+  } */
 `;

@@ -4,6 +4,7 @@ import Router from "next/router";
 import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
+import CartBar from "../Sidebar/Cart-Sidebar";
 
 const Layout = ({ children }) => {
   Router.onRouteChangeStart = () => NProgress.start();
@@ -13,6 +14,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Navbar />
+      <CartBar />
       <main>{children}</main>
       <ToastContainer
         progressClassName="toastProgress"
