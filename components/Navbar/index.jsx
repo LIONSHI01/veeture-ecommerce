@@ -41,6 +41,11 @@ const Navbar = () => {
               <a>women</a>
             </Link>
           </li>
+          <li>
+            <Link href="/products">
+              <a>All</a>
+            </Link>
+          </li>
         </ul>
         <ul className="links">
           <li className="searchbar">

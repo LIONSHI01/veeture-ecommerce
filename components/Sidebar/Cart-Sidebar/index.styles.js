@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     transform: translateX(100%);
     transition: all 0.3s cubic-bezier(0.81, -0.12, 0.35, 1.05);
 
-    box-shadow: var(--box-shadow-m);
+    box-shadow: var(--bs-m);
     visibility: none;
     opacity: 0;
   }

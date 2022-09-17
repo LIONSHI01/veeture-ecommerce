@@ -12,7 +12,7 @@ import { ImArrowLeft2 } from "react-icons/im";
 import { BsBagPlus } from "react-icons/bs";
 
 import { setIsCartOpen } from "../../../store/cart/cart.action";
-import CartItem from "../Cart-Item";
+import CartItem from "./Cart-Item";
 
 import { Wrapper } from "./index.styles";
 

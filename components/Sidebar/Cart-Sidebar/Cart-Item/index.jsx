@@ -3,15 +3,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 
-import { urlFor } from "../../../lib/sanity-client.utils";
+import { urlFor } from "../../../../lib/sanity-client.utils";
 
 import {
   addItemToCart,
   minusItemFromCart,
   removeItemFromCart,
-} from "../../../store/cart/cart.action";
+} from "../../../../store/cart/cart.action";
 
-import { selectCartItems } from "../../../store/cart/cart.selector";
+import { selectCartItems } from "../../../../store/cart/cart.selector";
 
 import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { MdDelete } from "react-icons/md";
