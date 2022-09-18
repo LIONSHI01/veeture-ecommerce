@@ -1,5 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { selectFilteredProducts } from "../../store/product/product.selector";
+import { setALLProducts } from "../../store/product/product.actions";
 import { client } from "../../lib/sanity-client.utils";
 import ProductCard from "../../components/Product-Card";
 import FilterSidebar from "../../components/Sidebar/Filter-Sidebar";
@@ -9,60 +12,14 @@ import { BiFilterAlt } from "react-icons/bi";
 import { ProductMain } from "./index.styles";
 
 const ProductsPage = ({ products }) => {
-  console.log(products);
+  const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
   const filterHandler = () => setOpenFilter(true);
+  const filteredProducts = useSelector(selectFilteredProducts);
 
-  const conditions = {
-    type: ["men", "women"],
-    category: ["boots", "clothing", "ankle-boots"],
-    sizes: ["45"],
-  };
-
-  const filterFn = (products, conditions) => {
-    // let filteredResult = [];
-    let genderResult = [];
-    let categoryResult = [];
-    let sizeResult = [];
-    const { type, category, sizes } = conditions;
-
-    if (type.length > 0) {
-      for (const i in type) {
-        genderResult = [
-          ...genderResult,
-          ...products.filter((product) => product.type === type[i]),
-        ];
-      }
-    }
-
-    if (category.length > 0) {
-      for (const i in category) {
-        categoryResult = [
-          ...categoryResult,
-          ...genderResult.filter((product) => product.category === category[i]),
-        ];
-      }
-    }
-    // console.log(sizes[0]);
-    if (sizes.length > 0) {
-      for (const i in sizes) {
-        sizeResult = [
-          ...sizeResult,
-          ...categoryResult.filter((product) =>
-            product.sizes.includes(sizes[i])
-          ),
-        ];
-      }
-    }
-
-    // price,  price[i] < x <  price[i] + 99
-
-    return sizeResult;
-  };
-
-  const filterdList = filterFn(products, conditions);
-
-  console.log(filterdList);
+  useEffect(() => {
+    dispatch(setALLProducts(products));
+  }, []);
 
   return (
     <>
@@ -74,9 +31,13 @@ const ProductsPage = ({ products }) => {
             <span>Filter &#38; Sorting</span>
           </button>
           <div className="gallary">
-            {products?.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))}
+            {filteredProducts.length > 0 ? (
+              filteredProducts.map((product) => (
+                <ProductCard key={product._id} product={product} />
+              ))
+            ) : (
+              <p className="not-found">No Product found, please try again.</p>
+            )}
           </div>
         </div>
       </ProductMain>

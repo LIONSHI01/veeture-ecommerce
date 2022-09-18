@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { setFilterConds } from "../../../store/product/product.actions";
 
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -13,15 +16,19 @@ const filterFormData = [
   },
   {
     title: "category",
-    options: ["derby", "boots", "ankle boots", "sneakers", "bag", "clothing"],
+    options: ["derby", "boots", "ankle-boots", "sneakers", "bag", "clothing"],
   },
   {
     title: "price",
-    options: [200, 300, 400, 500, 600],
+    options: [100, 200, 300, 400, 500, 600],
   },
   {
-    title: "size",
+    title: "sizes",
     options: [35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45],
+  },
+  {
+    title: "clothing",
+    options: ["S", "M", "X", "XL"],
   },
 ];
 
@@ -29,12 +36,14 @@ const INITIAL_FORM_FIELD = {
   gender: [],
   category: [],
   price: [],
-  size: [],
+  sizes: [],
+  clothing: [],
 };
 
 const FilterSidebar = ({ filterState, setFilterState }) => {
   const [selected, setSelected] = useState(null);
   const [formField, setFormField] = useState(INITIAL_FORM_FIELD);
+  const dispatch = useDispatch();
 
   const openHandler = (i) => {
     if (i === selected) {
@@ -63,7 +72,8 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(formField);
+    dispatch(setFilterConds(formField));
+    setFilterState(false);
   };
 
   const onResetHandler = () => {

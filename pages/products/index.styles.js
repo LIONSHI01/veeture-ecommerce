@@ -2,10 +2,12 @@ import styled from "styled-components";
 
 export const ProductMain = styled.div`
   margin: 10rem 0;
+  min-height: calc(100vh - 10rem - 40rem);
 
   .section-container {
     max-width: var(--container);
     width: 100%;
+    height: 100%;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr;
@@ -39,9 +41,17 @@ export const ProductMain = styled.div`
     }
 
     .gallary {
+      height: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
       gap: 3rem;
+    }
+
+    .not-found {
+      display: block;
+      font-size: var(--fs-xl);
+      font-weight: 600;
+      text-align: center;
     }
   }
 `;

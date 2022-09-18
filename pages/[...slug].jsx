@@ -35,7 +35,7 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
 
   // Return Product Details Page
   if (product) {
-    console.log(product);
+    // console.log(product);
     const { images } = product;
 
     const imageUrls = images?.map((image) => urlFor(image));
@@ -61,7 +61,7 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
 
   // Return Category Page
   if (categoryProductArr) {
-    console.log(categoryProductArr);
+    // console.log(categoryProductArr);
     return (
       <Wrapper>
         <div className="product-details-container">
