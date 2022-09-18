@@ -8,12 +8,14 @@ export const Wrapper = styled.div`
   width: 40rem;
   padding: 5rem 3rem;
   background-color: var(--white);
-  z-index: 100;
+  z-index: 200;
+  transform: translateX(${({ filterState }) => (filterState ? "0" : "-40rem")});
+  transition: all 0.5s;
 
   .filter-form {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 5rem;
   }
 
   .input-field {
@@ -53,18 +55,20 @@ export const Wrapper = styled.div`
     flex-wrap: wrap;
     gap: 2rem;
 
+    /* Hide the field setting */
     max-height: 0;
     opacity: 0;
     overflow-y: hidden;
-    transition: all 0.5s ease-in-out;
-  }
-  .options-field.active {
-    padding-top: 2rem;
-    opacity: 1;
-    height: auto;
-    max-height: 999px;
     transition: all 0.5s cubic-bezier(0.86, -0.06, 0.25, 1.08);
   }
+  .options-field.active {
+    max-height: 999px;
+    height: auto;
+    opacity: 1;
+    transition: all 0.5s cubic-bezier(0.86, -0.06, 0.25, 1.08);
+    /* padding-top: 2rem; */
+  }
+  /* ************************************** */
 
   .input-box {
     display: flex;
@@ -79,5 +83,10 @@ export const Wrapper = styled.div`
   .label {
     font-size: var(--fs);
     text-transform: capitalize;
+  }
+
+  .btn-group {
+    display: flex;
+    gap: 2rem;
   }
 `;
