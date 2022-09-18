@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   z-index: 100;
   transform: translateX(${({ visible }) => (visible ? "0" : "100%")});
   transition: all 0.3s;
+  opacity: ${({ visible }) => (visible ? "1" : "0")};
 `;
 
 const Overlay = ({ state, ...otherProps }) => {
