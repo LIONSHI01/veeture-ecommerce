@@ -62,7 +62,7 @@ const CartPage = () => {
                 <span>Remove</span>
               </div>
               <div className="cart__table-body">
-                {cartItems?.map((product, i) => (
+                {cartItems?.map((product) => (
                   <CheckoutItem
                     key={`${product._id}-${product.selectedSize}`}
                     product={product}
@@ -101,7 +101,7 @@ const CartPage = () => {
             <div className="cart__empty-text">
               {"No Item Yet ! Let's Explore !"}
             </div>
-            <Link href="/">
+            <Link href="/products">
               <a className="cart__shopping-btn-box">
                 <AiOutlineLeft className="cart__shopping-btn-left" />
                 <span>Shopping</span>

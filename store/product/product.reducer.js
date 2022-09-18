@@ -2,7 +2,13 @@ import { PRODUCT_ACTIONS_TYPES } from "./product.types";
 
 const INITIAL_PRODUCT_STATE = {
   allProducts: [],
-  filterConditions: {},
+  filterConditions: {
+    gender: [],
+    category: [],
+    price: [],
+    sizes: [],
+    clothing: [],
+  },
   filteredProducts: [],
 };
 

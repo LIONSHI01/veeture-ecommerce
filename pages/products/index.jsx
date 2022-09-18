@@ -19,7 +19,7 @@ const ProductsPage = ({ products }) => {
 
   useEffect(() => {
     dispatch(setALLProducts(products));
-  }, []);
+  }, [products, dispatch]);
 
   return (
     <>

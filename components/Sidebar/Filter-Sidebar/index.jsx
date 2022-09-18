@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setFilterConds } from "../../../store/product/product.actions";
-
+import { selectFilterConditions } from "../../../store/product/product.selector";
 import { AiOutlinePlus } from "react-icons/ai";
 
 import { Wrapper } from "./index.styles";
@@ -41,9 +41,9 @@ const INITIAL_FORM_FIELD = {
 };
 
 const FilterSidebar = ({ filterState, setFilterState }) => {
-  const [selected, setSelected] = useState(null);
-  const [formField, setFormField] = useState(INITIAL_FORM_FIELD);
   const dispatch = useDispatch();
+  const filterConds = useSelector(selectFilterConditions);
+  const [selected, setSelected] = useState(null);
 
   const openHandler = (i) => {
     if (i === selected) {
@@ -56,28 +56,30 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
     const { name, value } = e.target;
 
     if (e.target.checked) {
-      const newFormField = {
-        ...formField,
-        [name]: [...formField[name], value],
+      const newFilterConds = {
+        ...filterConds,
+        [name]: [...filterConds[name], value],
       };
-      setFormField(newFormField);
+
+      dispatch(setFilterConds(newFilterConds));
     } else {
-      const newFormField = {
-        ...formField,
-        [name]: [...formField[name].filter((val) => val !== value)],
+      const newFilterConds = {
+        ...filterConds,
+        [name]: [...filterConds[name].filter((val) => val !== value)],
       };
-      setFormField(newFormField);
+
+      dispatch(setFilterConds(newFilterConds));
     }
   };
 
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    dispatch(setFilterConds(formField));
+
     setFilterState(false);
   };
 
   const onResetHandler = () => {
-    setFormField(INITIAL_FORM_FIELD);
+    dispatch(setFilterConds(INITIAL_FORM_FIELD));
   };
 
   return (
@@ -103,7 +105,6 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
                       <input
                         type="checkbox"
                         className="input"
-                        // id={option}
                         name={`${title}`}
                         value={option}
                         onChange={onChangeHandler}

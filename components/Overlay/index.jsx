@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   backdrop-filter: blur(5px);
   z-index: 100;
   transform: translateX(${({ visible }) => (visible ? "0" : "100%")});
-  transition: all 0.5s;
+  transition: all 0.3s;
 `;
 
 const Overlay = ({ state, ...otherProps }) => {

@@ -1,5 +1,5 @@
 import React from "react";
-import Link from "next/link";
+
 import Image from "next/future/image";
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
