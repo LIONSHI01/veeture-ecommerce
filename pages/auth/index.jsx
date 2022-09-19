@@ -13,6 +13,7 @@ const Wrapper = styled.div`
 const SectionContainer = styled.div`
   max-width: var(--container);
   margin: 0 auto;
+  padding: 0 14px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
 `;

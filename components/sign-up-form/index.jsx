@@ -1,13 +1,14 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 import Button from "../Button";
-
 import FormInput from "../form-input";
 
 import { SignUpContainer } from "./index.styles";
+import { register } from "../../lib/authRequest";
 
 const defaultFormFields = {
-  displayName: "",
+  name: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -17,12 +18,10 @@ const SignUpForm = () => {
   // Moniter the sum state of signup form
   const [formFields, setFormFields] = useState(defaultFormFields);
 
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { name, email, password, confirmPassword } = formFields;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-
-    // Spread the original object, modify object with new values
     setFormFields({ ...formFields, [name]: value });
   };
 
@@ -34,22 +33,17 @@ const SignUpForm = () => {
     event.preventDefault();
     // 1) confirm password , confirmPassword match
     if (password !== confirmPassword) {
-      alert("password and confirm password are not match,Please try again!");
+      toast.alert(
+        "password and confirm password are not match,Please try again!"
+      );
       return;
     }
 
-    // 2) create userDoc in firebase
-    try {
-      // Reset form fields
-      resetFormFields();
-    } catch (error) {
-      console.log(error.code);
-      if (error.code === "auth/email-already-in-use") {
-        alert("This email is already registerd, please try another one!");
-      } else {
-        console.log(error);
-      }
-    }
+    // 2) create userDoc in MongoDB
+    const res = await register(formFields);
+    // if (res.response.status !== 201) toast.error(res.response.data.message);
+
+    console.log(res);
   };
 
   return (
@@ -62,8 +56,8 @@ const SignUpForm = () => {
           type="text"
           required
           onChange={handleChange}
-          value={displayName}
-          name="displayName"
+          value={name}
+          name="name"
         />
 
         <FormInput
@@ -94,7 +88,7 @@ const SignUpForm = () => {
           name="confirmPassword"
           minLength="6"
         />
-        <Button width="50%" height="5rem" bgType="solid">
+        <Button onClick={handleSubmit} width="50%" height="5rem" bgType="solid">
           Sign Up
         </Button>
       </form>

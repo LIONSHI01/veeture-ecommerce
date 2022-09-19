@@ -1,6 +1,6 @@
 import { useState } from "react";
-import Router from "next/router";
 import { signIn } from "next-auth/react";
+
 import { SignInContainer, ButtonsContainer } from "./index.styles";
 import FormInput from "../form-input";
 import Button from "../Button";
@@ -20,30 +20,20 @@ const SignInForm = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    // Update fields states with new [name]:value
     setFormFields({ ...formFields, [name]: value });
   };
 
   const googleSignHandler = async () => {
-    await signIn("google", { redirect: false, callbackUrl: "/" });
+    await signIn("google");
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    try {
-      resetFormFields();
-    } catch (error) {
-      switch (error.code) {
-        case "auth/wrong-password":
-          alert("Incorrect password for email");
-          break;
-        case "auth/user-not-found":
-          alert("Invalid email!");
-          break;
-        default:
-          console.log(error);
-      }
-    }
+    await signIn("credentials", {
+      email,
+      password,
+      callbackUrl: "/",
+    });
   };
 
   return (

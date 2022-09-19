@@ -54,8 +54,6 @@ export const getStaticProps = async ({ params: { type } }) => {
   const categories = await client.fetch(categoryQuery);
   const recommendProducts = await client.fetch(recomQuery);
 
-  if (!categories) return { notFound: true };
-
   return {
     props: {
       categories,
