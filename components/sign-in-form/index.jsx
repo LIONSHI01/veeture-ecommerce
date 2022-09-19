@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
+// import Router from "next/router";
 
 import { SignInContainer, ButtonsContainer } from "./index.styles";
 import FormInput from "../form-input";
@@ -27,13 +28,17 @@ const SignInForm = () => {
     await signIn("google");
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    await signIn("credentials", {
+    const res = signIn("credentials", {
       email,
       password,
-      callbackUrl: "/",
+      redirect: "/",
     });
+    // if (res.ok) {
+    //   Router.push("/");
+    // }
+    // console.log(res);
   };
 
   return (

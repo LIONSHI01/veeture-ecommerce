@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import axios from "axios";
+import getStripe from "../../lib/getStripe";
 
 import {
   selectCartItems,
@@ -18,11 +20,32 @@ import {
 
 import CheckoutItem from "../../components/Product/CheckoutItem";
 
-import { Wrapper } from '../../pages_styles/cart.styles';
+import { Wrapper } from "../../pages_styles/cart.styles";
+import { toast } from "react-toastify";
 
 const CartPage = () => {
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
+
+  const checkoutHandler = async () => {
+    const stripe = await getStripe();
+
+    const res = await axios({
+      url: "/api/stripe",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        cartItems,
+      },
+    });
+
+    if (res.status === 500) return;
+
+    toast.loading("Redirecting...");
+    stripe.redirectToCheckout({ sessionId: res.data.id });
+  };
 
   return (
     <Wrapper>
@@ -87,7 +110,7 @@ const CartPage = () => {
                   <span>Shopping</span>
                 </a>
               </Link>
-              <div onClick={() => {}}>
+              <div onClick={checkoutHandler}>
                 <a className="cart__shopping-btn-box">
                   <span>Check Out</span>
                   <SiCashapp />

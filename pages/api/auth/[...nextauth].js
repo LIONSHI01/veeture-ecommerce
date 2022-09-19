@@ -9,6 +9,9 @@ import User from "../../../models/userModel";
 import { verifyPassword } from "../../../lib/hashPassword";
 
 export default NextAuth({
+  session: {
+    strategy: "jwt",
+  },
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID,
