@@ -5,6 +5,12 @@ const nextConfig = {
   images: {
     domains: ["cdn.sanity.io"],
   },
+  compiler: {
+    styledComponents: {
+      displayName: true,
+      ssr: true,
+    },
+  },
 };
 
 module.exports = nextConfig;
