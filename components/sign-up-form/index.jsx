@@ -94,7 +94,9 @@ const SignUpForm = () => {
           name="confirmPassword"
           minLength="6"
         />
-        <Button>Sign Up</Button>
+        <Button width="50%" height="5rem" bgType="solid">
+          Sign Up
+        </Button>
       </form>
     </SignUpContainer>
   );

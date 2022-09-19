@@ -1,4 +1,5 @@
 import React from "react";
+import Link from "next/link";
 import styled from "styled-components";
 
 import Button from "../Button";
@@ -38,7 +39,9 @@ const CategoryList = ({ categories }) => {
       <div className="section-container">
         <div className="heading">
           <h2>Category</h2>
-          <Button url="/">view all products</Button>
+          <Link href="/products">
+            <Button height="4rem">view all products</Button>
+          </Link>
         </div>
         <div className="list-container">
           {categories.map((category) => (

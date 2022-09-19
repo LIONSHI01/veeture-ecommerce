@@ -9,7 +9,7 @@ import FilterSidebar from "../../components/Sidebar/Filter-Sidebar";
 
 import { BiFilterAlt } from "react-icons/bi";
 
-import { ProductMain } from "./index.styles";
+import { ProductMain } from "../../pages_styles/products.styles";
 
 const ProductsPage = ({ products }) => {
   const dispatch = useDispatch();

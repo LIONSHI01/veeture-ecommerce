@@ -1,15 +1,31 @@
 import React from "react";
-import Link from "next/link";
+import styled from "styled-components";
 
 import { client } from "../../lib/sanity-client.utils";
 
 import CategoryList from "../../components/Category-List";
 import RecommendList from "../../components/Recommend-List";
 
-import { Wrapper } from "./index.styles";
+const Wrapper = styled.div`
+  & .heading-container {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding-top: 3rem;
+
+    h1 {
+      font-size: var(--fs-xl);
+      text-transform: uppercase;
+      line-height: 0;
+      margin: 2rem 0;
+    }
+    & span {
+      font-size: var(--fs);
+      color: var(--black-light-3);
+    }
+  }
+`;
 
 const CategoryPage = ({ categories, recommendProducts, type }) => {
-  // console.log(recommendProducts);
   return (
     <Wrapper>
       <div className="heading-container">

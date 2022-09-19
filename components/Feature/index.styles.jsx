@@ -11,12 +11,14 @@ export const StyledFeature = styled.section`
   .feature-container {
     max-width: var(--container);
     margin: 0 auto;
+    padding: 0 16px;
   }
 
   .feature-images {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 5rem;
   }
 
   .card {

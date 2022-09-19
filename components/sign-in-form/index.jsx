@@ -1,4 +1,6 @@
 import { useState } from "react";
+import Router from "next/router";
+import { signIn } from "next-auth/react";
 import { SignInContainer, ButtonsContainer } from "./index.styles";
 import FormInput from "../form-input";
 import Button from "../Button";
@@ -20,6 +22,10 @@ const SignInForm = () => {
     const { name, value } = event.target;
     // Update fields states with new [name]:value
     setFormFields({ ...formFields, [name]: value });
+  };
+
+  const googleSignHandler = async () => {
+    await signIn("google", { redirect: false, callbackUrl: "/" });
   };
 
   const handleSubmit = async (event) => {
@@ -64,8 +70,12 @@ const SignInForm = () => {
           onChange={handleChange}
         />
         <ButtonsContainer>
-          <Button type="submit">Sign In</Button>
-          <Button type="button">Google Sign In</Button>
+          <Button width="50%" height="5rem" bgType="solid" type="submit">
+            Sign In
+          </Button>
+          <Button onClick={googleSignHandler} type="button">
+            Google Sign In
+          </Button>
         </ButtonsContainer>
       </form>
     </SignInContainer>

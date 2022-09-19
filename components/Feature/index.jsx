@@ -5,7 +5,7 @@ import Image from "next/image";
 
 import FeatureMen from "../../assets/feature/feature-men.jpg";
 import FeatureWomen from "../../assets/feature/feature-women.jpg";
-import FeatureKids from "../../assets/feature/feature-kids.jpg";
+import FeaturePop from "../../assets/feature/feature-popular.jpg";
 
 import { StyledFeature } from "./index.styles";
 
@@ -41,15 +41,19 @@ const FeatureSection = () => {
               </figure>
             </a>
           </Link>
-          <figure className="card">
-            <Image
-              width={600}
-              height={400}
-              src={FeatureKids}
-              alt="Featured Men"
-            />
-            <span>kids</span>
-          </figure>
+          <Link href="/products">
+            <a>
+              <figure className="card">
+                <Image
+                  width={600}
+                  height={400}
+                  src={FeaturePop}
+                  alt="Featured Popular"
+                />
+                <span>Popular</span>
+              </figure>
+            </a>
+          </Link>
         </div>
       </div>
     </StyledFeature>

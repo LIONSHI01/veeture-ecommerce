@@ -18,7 +18,7 @@ import {
 
 import CheckoutItem from "../../components/Product/CheckoutItem";
 
-import { Wrapper } from "./index.styles";
+import { Wrapper } from '../../pages_styles/cart.styles';
 
 const CartPage = () => {
   const cartItems = useSelector(selectCartItems);

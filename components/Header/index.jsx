@@ -4,8 +4,8 @@ import Navbar from "../Navbar";
 import Hero from "../Hero";
 
 const StyledHeader = styled.header`
-  height: 100vh;
-  width: 100vw;
+  /* height: 100vh;
+  width: 100vw; */
 `;
 
 const Header = () => {
