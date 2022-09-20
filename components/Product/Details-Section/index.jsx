@@ -43,7 +43,7 @@ const DetailSection = ({ product }) => {
         fontSize="var(--fs-xl)"
         width="100%"
         height="7rem"
-        type="solid"
+        bgType="solid"
         onClick={addCartHandler}
       >
         Add to cart
@@ -67,7 +67,6 @@ const DetailSection = ({ product }) => {
         </li>
       </ul>
       <Accordion />
-      {/* <ToastContainer /> */}
     </Wrapper>
   );
 };

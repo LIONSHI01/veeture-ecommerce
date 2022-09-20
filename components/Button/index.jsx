@@ -17,6 +17,11 @@ const Wrapper = styled.button`
     bgType === "solid" ? "var(--white)" : "var(--black)"};
   font-size: ${({ fontSize }) => fontSize};
   font-weight: 100;
+  transition: all 0.3s;
+
+  &:hover {
+    background-color: var(--black-light);
+  }
 `;
 
 const Button = ({

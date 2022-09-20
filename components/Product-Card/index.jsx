@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
 
+import { selectRecentViews } from "../../store/user/user.selector";
+import { setRecentViews } from "../../store/user/user.action";
 import { urlFor } from "../../lib/sanity-client.utils";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 const Wrapper = styled.figure`
   transition: all 0.5s;
@@ -67,12 +70,17 @@ const Wrapper = styled.figure`
 `;
 
 const ProductCard = ({ product }) => {
+  const dispatch = useDispatch();
+  const recentViews = useSelector(selectRecentViews);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { title, price, category, type, slug, images } = product;
 
   const imageUrls = images.map((image) => urlFor(image));
 
   const goToSlide = (slideIndex) => setCurrentIndex(slideIndex);
+
+  const setRecentViewHandler = () =>
+    dispatch(setRecentViews(recentViews, product));
 
   return (
     <Wrapper>
@@ -99,7 +107,7 @@ const ProductCard = ({ product }) => {
       </div>
       <Link href={`/${type}/${category}/${slug.current}`}>
         <a>
-          <figcaption>
+          <figcaption onClick={setRecentViewHandler}>
             <h4 className="name">{title}</h4>
             <span className="category">{category}</span>
             <span className="price">{`$ ${price}`}</span>

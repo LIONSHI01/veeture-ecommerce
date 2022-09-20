@@ -1,10 +1,14 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import Image from "next/image";
+
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
 import ProductCard from "../components/Product-Card";
 import styled from "styled-components";
+import RecentViewSection from "../components/Product/Recent-View";
+
+import { selectRecentViews } from "../store/user/user.selector";
 
 const Wrapper = styled.div`
   margin: 5rem 0;
@@ -12,8 +16,10 @@ const Wrapper = styled.div`
   .product-details-container {
     max-width: var(--container);
     margin: 0 auto;
+    padding: 0 14px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
   }
 
   .image-section {
@@ -29,6 +35,7 @@ const Wrapper = styled.div`
 `;
 
 const ProductDetailsPage = ({ product, categoryProductArr }) => {
+  const recentViews = useSelector(selectRecentViews);
   if (!product && !categoryProductArr) {
     return <p>Not Found</p>;
   }
@@ -55,6 +62,9 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
             ))}
           </section>
           <DetailSection product={product} />
+          {recentViews.length > 1 && (
+            <RecentViewSection recentViews={recentViews} />
+          )}
         </div>
       </Wrapper>
     );

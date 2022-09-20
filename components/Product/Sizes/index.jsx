@@ -14,9 +14,11 @@ const Wrapper = styled.div`
     background-color: transparent;
     border: 2px solid var(--black-light-3);
     border-radius: var(--br-m);
+    transition: all 0.3s;
     cursor: pointer;
 
-    &:active {
+    &:hover {
+      background-color: var(--grey-light-2);
     }
   }
 
