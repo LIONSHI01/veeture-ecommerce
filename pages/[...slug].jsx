@@ -1,6 +1,6 @@
 import React from "react";
 
-import Image from "next/future/image";
+import Image from "next/image";
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
 import ProductCard from "../components/Product-Card";
@@ -48,7 +48,8 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
                 key={i}
                 src={url}
                 width={450}
-                height={450}
+                height={600}
+                objectFit="cover"
                 alt="PRODUCT IMAGE"
               />
             ))}

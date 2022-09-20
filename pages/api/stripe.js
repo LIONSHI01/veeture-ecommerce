@@ -41,10 +41,10 @@ export default async function handler(req, res) {
             quantity: item.quantity,
           };
         }),
-        success_url: `${req.headers.origin}/?success`,
+        success_url: `${req.headers.origin}/success`,
         cancel_url: `${req.headers.origin}/`,
       };
-      // Create Checkout Sessions from body params.
+
       // console.log("this is params:", params);
       const session = await stripe.checkout.sessions.create(params);
       // res.redirect(303, session.url);

@@ -1,17 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 import { urlFor } from "../../lib/sanity-client.utils";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Wrapper = styled.figure`
-  cursor: pointer;
+  transition: all 0.5s;
+  &:hover {
+    transform: translateY(-1rem);
+  }
+
   .image-container {
     width: 35rem;
-    height: auto;
+    height: 35rem;
     margin-bottom: var(--mg-s);
+    position: relative;
   }
+
+  .dots {
+    display: flex;
+    gap: 1rem;
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+  }
+
+  .dot {
+    height: 1.4rem;
+    width: 1.4rem;
+    background-color: rgba(37, 42, 52, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: rgba(37, 42, 52, 1);
+    }
+  }
+  .dot.active {
+    border: 3px solid var(--black);
+    background-color: var(--white);
+    box-shadow: var(--bs-s);
+  }
+
   figcaption {
     display: flex;
     flex-direction: column;
@@ -34,25 +67,46 @@ const Wrapper = styled.figure`
 `;
 
 const ProductCard = ({ product }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const { title, price, category, type, slug, images } = product;
 
-  const imageUrl = urlFor(images && images[0]);
+  const imageUrls = images.map((image) => urlFor(image));
+
+  const goToSlide = (slideIndex) => setCurrentIndex(slideIndex);
 
   return (
-    <Link href={`/${type}/${category}/${slug.current}`}>
-      <a>
-        <Wrapper>
-          <div className="image-container">
-            <Image src={imageUrl} width={350} height={350} alt={title} />
-          </div>
+    <Wrapper>
+      <div className="image-container">
+        <Image
+          src={imageUrls[currentIndex]}
+          width={350}
+          height={350}
+          objectFit="cover"
+          alt={title}
+          className="image"
+        />
+        <div className="dots">
+          {images.map((image, imageIndex) => (
+            <div
+              key={imageIndex}
+              className={currentIndex === imageIndex ? "dot active" : "dot"}
+              onClick={() => goToSlide(imageIndex)}
+            >
+              &nbsp;
+            </div>
+          ))}
+        </div>
+      </div>
+      <Link href={`/${type}/${category}/${slug.current}`}>
+        <a>
           <figcaption>
             <h4 className="name">{title}</h4>
             <span className="category">{category}</span>
             <span className="price">{`$ ${price}`}</span>
           </figcaption>
-        </Wrapper>
-      </a>
-    </Link>
+        </a>
+      </Link>
+    </Wrapper>
   );
 };
 
