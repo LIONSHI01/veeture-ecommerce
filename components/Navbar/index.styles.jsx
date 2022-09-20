@@ -74,8 +74,64 @@ export const NavbarContainer = styled.nav`
   }
 
   .searchbar {
+    position: relative;
+    height: 5rem;
+    width: 5rem;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--white);
+    border-radius: 200px;
+    padding: 0.8rem;
+    line-height: 0;
+    transition: all 0.5s cubic-bezier(0.78, -0.1, 0.49, 1.12);
+    overflow: hidden;
+
+    &.show {
+      width: 30rem;
+      transition: all 0.5s cubic-bezier(0.78, -0.1, 0.49, 1.12);
+      background-color: var(--white);
+    }
   }
-  .account {
+
+  .search-box {
+    width: 30rem;
+    height: 5rem;
+    border: none;
+    border-radius: 200px;
+    outline: none;
+    font-size: var(--fs);
+    background-color: var(--white);
+    visibility: hidden;
+    transition: all 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(100%);
+
+    &.show {
+      top: 0;
+      left: 0;
+      opacity: 1;
+
+      transform: translateX(0%);
+      padding: 0 2rem;
+      transition: all 0.5s;
+      visibility: visible;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    color: var(--white);
+    height: 3rem;
+    width: 3rem;
+
+    &.show {
+      color: var(--black);
+    }
   }
 
   .wishlist {
@@ -105,6 +161,11 @@ export const NavbarContainer = styled.nav`
   .icon {
     height: 3rem;
     width: 3rem;
+    z-index: 10;
+
+    &.show {
+      color: var(--black);
+    }
   }
 
   /* .nav-container.sticky {

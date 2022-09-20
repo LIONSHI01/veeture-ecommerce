@@ -10,6 +10,7 @@ const INITIAL_PRODUCT_STATE = {
     clothing: [],
   },
   filteredProducts: [],
+  searchResults: [],
 };
 
 export const productReducer = (state = INITIAL_PRODUCT_STATE, action = {}) => {
@@ -31,6 +32,11 @@ export const productReducer = (state = INITIAL_PRODUCT_STATE, action = {}) => {
       return {
         ...state,
         filteredProducts: payload,
+      };
+    case PRODUCT_ACTIONS_TYPES.setSearchResults:
+      return {
+        ...state,
+        searchResults: payload,
       };
 
     default:

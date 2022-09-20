@@ -1,11 +1,26 @@
 import styled from "styled-components";
 
-export const ProductMain = styled.div`
+export const ProductGroup = styled.div`
   margin: 10rem 0;
   min-height: calc(100vh - 10rem - 40rem);
+  .group-container {
+    max-width: var(--container-x);
+    margin: 0 auto;
+    padding: 0 14px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .sidebar-container {
+    grid-column: 1 / span 1;
+  }
+`;
+
+export const ProductMain = styled.div`
+  grid-column: 2 / -1;
 
   .section-container {
-    max-width: var(--container);
+    /* max-width: var(--container); */
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -48,10 +63,18 @@ export const ProductMain = styled.div`
     }
 
     .not-found {
-      display: block;
-      font-size: var(--fs-xl);
-      font-weight: 600;
-      text-align: center;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      p {
+        font-size: var(--fs-xl);
+        font-weight: 600;
+        text-align: center;
+        text-transform: capitalize;
+      }
     }
   }
 `;

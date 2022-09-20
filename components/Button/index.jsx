@@ -21,6 +21,7 @@ const Wrapper = styled.button`
 
   &:hover {
     background-color: var(--black-light);
+    color: var(--white);
   }
 `;
 

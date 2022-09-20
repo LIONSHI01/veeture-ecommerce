@@ -9,12 +9,12 @@ import FilterSidebar from "../../components/Sidebar/Filter-Sidebar";
 
 import { BiFilterAlt } from "react-icons/bi";
 
-import { ProductMain } from "../../pages_styles/products.styles";
+import { ProductGroup, ProductMain } from "../../pages_styles/products.styles";
 
 const ProductsPage = ({ products }) => {
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
-  const filterHandler = () => setOpenFilter(true);
+
   const filteredProducts = useSelector(selectFilteredProducts);
 
   useEffect(() => {
@@ -22,26 +22,31 @@ const ProductsPage = ({ products }) => {
   }, [products, dispatch]);
 
   return (
-    <>
-      <FilterSidebar filterState={openFilter} setFilterState={setOpenFilter} />
-      <ProductMain>
-        <div className="section-container">
-          <button className="filter-btn" onClick={filterHandler}>
-            <BiFilterAlt className="filter-icon" />
-            <span>Filter &#38; Sorting</span>
-          </button>
-          <div className="gallary">
-            {filteredProducts.length > 0 ? (
-              filteredProducts.map((product) => (
-                <ProductCard key={product._id} product={product} />
-              ))
-            ) : (
-              <p className="not-found">No Product found, please try again.</p>
-            )}
-          </div>
+    <ProductGroup>
+      <div className="group-container">
+        <div className="sidebar-container">
+          <FilterSidebar
+            filterState={openFilter}
+            setFilterState={setOpenFilter}
+          />
         </div>
-      </ProductMain>
-    </>
+        <ProductMain>
+          <div className="section-container">
+            <div className="gallary">
+              {filteredProducts.length > 0 ? (
+                filteredProducts.map((product) => (
+                  <ProductCard key={product._id} product={product} />
+                ))
+              ) : (
+                <div className="not-found">
+                  <p>No Product found, please try again.</p>
+                </div>
+              )}
+            </div>
+          </div>
+        </ProductMain>
+      </div>
+    </ProductGroup>
   );
 };
 

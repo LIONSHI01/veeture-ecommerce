@@ -6,7 +6,7 @@ import { selectFilterConditions } from "../../../store/product/product.selector"
 import { AiOutlinePlus } from "react-icons/ai";
 
 import { Wrapper } from "./index.styles";
-import Overlay from "../../Overlay";
+
 import Button from "../../Button";
 
 const filterFormData = [
@@ -40,7 +40,7 @@ const INITIAL_FORM_FIELD = {
   clothing: [],
 };
 
-const FilterSidebar = ({ filterState, setFilterState }) => {
+const FilterSidebar = () => {
   const dispatch = useDispatch();
   const filterConds = useSelector(selectFilterConditions);
   const [selected, setSelected] = useState(null);
@@ -72,11 +72,11 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
     }
   };
 
-  const onSubmitHandler = (e) => {
-    e.preventDefault();
+  // const onSubmitHandler = (e) => {
+  //   e.preventDefault();
 
-    setFilterState(false);
-  };
+  //   setFilterState(false);
+  // };
 
   const onResetHandler = () => {
     dispatch(setFilterConds(INITIAL_FORM_FIELD));
@@ -84,7 +84,7 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
 
   return (
     <>
-      <Wrapper filterState={filterState} onSubmit={onSubmitHandler}>
+      <Wrapper>
         <form id="filter-form" className="filter-form">
           <div className="form-content">
             {filterFormData.map(({ title, options }, i) => (
@@ -119,9 +119,9 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
             ))}
           </div>
           <div className="btn-group">
-            <Button type="submit" bgType="solid" height="5rem" width="100%">
+            {/* <Button type="submit" bgType="solid" height="5rem" width="100%">
               Search
-            </Button>
+            </Button> */}
             <Button
               type="reset"
               height="5rem"
@@ -133,7 +133,6 @@ const FilterSidebar = ({ filterState, setFilterState }) => {
           </div>
         </form>
       </Wrapper>
-      <Overlay state={filterState} onClick={() => setFilterState(false)} />
     </>
   );
 };

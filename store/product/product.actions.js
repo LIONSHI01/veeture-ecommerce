@@ -6,3 +6,6 @@ export const setALLProducts = (productsArr) =>
 
 export const setFilterConds = (conditions) =>
   createAction(PRODUCT_ACTIONS_TYPES.setFilterConds, conditions);
+
+export const setSearchResults = (productsArr) =>
+  createAction(PRODUCT_ACTIONS_TYPES.setSearchResults, productsArr);

@@ -1,16 +1,18 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
+  /* position: fixed; */
+  /* top: 0;
+  left: 0; */
+  /* margin: 5rem 0; */
   height: 100%;
   width: 40rem;
-  padding: 5rem 3rem;
-  background-color: var(--white);
-  z-index: 200;
-  transform: translateX(${({ filterState }) => (filterState ? "0" : "-40rem")});
-  transition: all 0.5s;
+  padding: 0 3rem;
+
+  /* background-color: var(--white); */
+  /* transform: translateX(${({ filterState }) =>
+    filterState ? "0" : "-40rem"}); */
+  /* transition: all 0.5s; */
 
   .filter-form {
     display: flex;
