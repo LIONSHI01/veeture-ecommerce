@@ -16,6 +16,7 @@ import { AiOutlineUser } from "react-icons/ai";
 import { FiSearch } from "react-icons/fi";
 import { BsHeart, BsHandbag } from "react-icons/bs";
 import { VscSignOut } from "react-icons/vsc";
+import buildSearchResults from "../../lib/buildSearchResults.utils";
 
 import { NavbarContainer } from "./index.styles";
 
@@ -27,7 +28,6 @@ const Navbar = () => {
   const cartCount = useSelector(selectCartCount);
   const isCartOpen = useSelector(selectIsCartOpen);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
-
   //Make it async, so extract data promise and let Router push to '/' without refresh page
   const signOutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/" });
@@ -43,12 +43,12 @@ const Navbar = () => {
     console.log(inputSearch);
     e.preventDefault();
     setInputSearch("");
-    const searchQuery = `*[_type=="product"]`;
-    const searchResults = await client.fetch(searchQuery);
+    const allProductsQuery = `*[_type=="product"]`;
+    const allProducts = await client.fetch(allProductsQuery);
+    const searchResults = buildSearchResults(allProducts, inputSearch);
     dispatch(setSearchResults(searchResults));
     Router.push("/search");
   };
-  // &&title=="${inputSearch}"
 
   return (
     <NavbarContainer>

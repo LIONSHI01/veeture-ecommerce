@@ -75,7 +75,7 @@ const ProductCard = ({ product }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const { title, price, category, type, slug, images } = product;
 
-  const imageUrls = images.map((image) => urlFor(image));
+  const imageUrls = images?.map((image) => urlFor(image));
 
   const goToSlide = (slideIndex) => setCurrentIndex(slideIndex);
 
@@ -86,7 +86,7 @@ const ProductCard = ({ product }) => {
     <Wrapper>
       <div className="image-container">
         <Image
-          src={imageUrls[currentIndex]}
+          src={imageUrls && imageUrls[currentIndex]}
           width={350}
           height={350}
           objectFit="cover"
@@ -94,7 +94,7 @@ const ProductCard = ({ product }) => {
           className="image"
         />
         <div className="dots">
-          {images.map((image, imageIndex) => (
+          {images?.map((image, imageIndex) => (
             <div
               key={imageIndex}
               className={currentIndex === imageIndex ? "dot active" : "dot"}

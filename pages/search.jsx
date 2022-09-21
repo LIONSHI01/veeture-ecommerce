@@ -7,7 +7,7 @@ import FilterSidebar from "../components/Sidebar/Filter-Sidebar";
 
 import { ProductGroup, ProductMain } from "../pages_styles/products.styles";
 
-const SearchResultsPage = ({ products }) => {
+const SearchResultsPage = () => {
   const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
 
@@ -41,18 +41,5 @@ const SearchResultsPage = ({ products }) => {
     </ProductGroup>
   );
 };
-
-// export const getStaticProps = async () => {
-//   const productsQuery = `*[_type=="product"]`;
-
-//   // Fetch data from Sanity
-//   const products = await client.fetch(productsQuery);
-
-//   return {
-//     props: {
-//       products,
-//     },
-//   };
-// };
 
 export default SearchResultsPage;
