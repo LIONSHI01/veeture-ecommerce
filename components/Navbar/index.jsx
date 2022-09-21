@@ -40,13 +40,13 @@ const Navbar = () => {
 
   // Fetch Products with search keywords
   const onSubmitSearch = async (e) => {
-    console.log(inputSearch);
     e.preventDefault();
     setInputSearch("");
     const allProductsQuery = `*[_type=="product"]`;
     const allProducts = await client.fetch(allProductsQuery);
     const searchResults = buildSearchResults(allProducts, inputSearch);
     dispatch(setSearchResults(searchResults));
+    setOpenSearch(false);
     Router.push("/search");
   };
 

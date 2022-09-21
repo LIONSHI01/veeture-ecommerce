@@ -15,14 +15,14 @@ export const StyledFeature = styled.section`
   }
 
   .feature-images {
-    width: 100%;
+    /* width: 100%; */
     display: flex;
     justify-content: center;
     gap: 5rem;
   }
 
   .card {
-    width: 45rem;
+    max-width: 45rem;
     height: 100%;
     display: flex;
     flex-direction: column;

@@ -26,8 +26,8 @@ const Hero = () => {
       <div className="hero-container">
         <Image
           src={HeroImg}
-          width={2400}
-          height={1600}
+          width={6000}
+          height={4000}
           alt="trendy picture"
           className="hero-image"
         />

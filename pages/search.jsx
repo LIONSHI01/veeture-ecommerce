@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { selectSearchResults } from "../store/product/product.selector";
 import ProductCard from "../components/Product-Card";
@@ -8,7 +8,6 @@ import FilterSidebar from "../components/Sidebar/Filter-Sidebar";
 import { ProductGroup, ProductMain } from "../pages_styles/products.styles";
 
 const SearchResultsPage = () => {
-  const dispatch = useDispatch();
   const [openFilter, setOpenFilter] = useState(false);
 
   const searchResults = useSelector(selectSearchResults);

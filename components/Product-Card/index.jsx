@@ -2,77 +2,23 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Link from "next/link";
 import Image from "next/image";
+import { AiOutlineHeart } from "react-icons/ai";
 
-import { selectRecentViews } from "../../store/user/user.selector";
-import { setRecentViews } from "../../store/user/user.action";
+import {
+  selectRecentViews,
+  selectLikeList,
+} from "../../store/user/user.selector";
+import { setRecentViews, setLikeList } from "../../store/user/user.action";
 import { urlFor } from "../../lib/sanity-client.utils";
-import styled from "styled-components";
 
-const Wrapper = styled.figure`
-  transition: all 0.5s;
-  &:hover {
-    transform: translateY(-1rem);
-  }
-
-  .image-container {
-    width: 35rem;
-    height: 35rem;
-    margin-bottom: var(--mg-s);
-    position: relative;
-  }
-
-  .dots {
-    display: flex;
-    gap: 1rem;
-    position: absolute;
-    bottom: 1.5rem;
-    right: 1.5rem;
-  }
-
-  .dot {
-    height: 1.4rem;
-    width: 1.4rem;
-    background-color: rgba(37, 42, 52, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    z-index: 10;
-    transition: all 0.3s;
-
-    &:hover {
-      background-color: rgba(37, 42, 52, 1);
-    }
-  }
-  .dot.active {
-    border: 3px solid var(--black);
-    background-color: var(--white);
-    box-shadow: var(--bs-s);
-  }
-
-  figcaption {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-  .name {
-    font-size: var(--fs-x);
-    font-weight: 600;
-    text-transform: uppercase;
-  }
-  .category {
-    font-size: var(--fs);
-    text-transform: capitalize;
-    font-weight: 500;
-  }
-  .price {
-    font-size: var(--fs-s);
-    color: var(--black-light-2);
-  }
-`;
+import { Wrapper } from "./index.styles";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
   const recentViews = useSelector(selectRecentViews);
+  const likeList = useSelector(selectLikeList);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLiked, setIsLiked] = useState(product.isLiked);
   const { title, price, category, type, slug, images } = product;
 
   const imageUrls = images?.map((image) => urlFor(image));
@@ -81,6 +27,12 @@ const ProductCard = ({ product }) => {
 
   const setRecentViewHandler = () =>
     dispatch(setRecentViews(recentViews, product));
+
+  const setLikeListHandler = () => {
+    dispatch(setLikeList(likeList, product));
+
+    setIsLiked(!isLiked);
+  };
 
   return (
     <Wrapper>
@@ -93,6 +45,9 @@ const ProductCard = ({ product }) => {
           alt={title}
           className="image"
         />
+        <div className="icon-container" onClick={setLikeListHandler}>
+          <AiOutlineHeart className={isLiked ? "icon like" : "icon"} />
+        </div>
         <div className="dots">
           {images?.map((image, imageIndex) => (
             <div
