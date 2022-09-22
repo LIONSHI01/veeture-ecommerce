@@ -27,6 +27,7 @@ const Layout = ({ children }) => {
       <CartBar />
       <main>{children}</main>
       <ToastContainer
+        position="bottom-right"
         progressClassName="toastProgress"
         bodyClassName="toastBody"
       />

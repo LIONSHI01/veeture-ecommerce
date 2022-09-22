@@ -9,6 +9,9 @@ import {
   selectCartCount,
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
+
+import { setWishlist, setLogout } from "../../store/user/user.action";
+import { selectWishlistCount } from "../../store/user/user.selector";
 import { setIsCartOpen } from "../../store/cart/cart.action";
 import { setSearchResults } from "../../store/product/product.actions";
 
@@ -21,22 +24,28 @@ import buildSearchResults from "../../lib/buildSearchResults.utils";
 import { NavbarContainer } from "./index.styles";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const { data: session } = useSession();
+
+  // STATES MANAGEMENT
   const [openSearch, setOpenSearch] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
-  const { data: session } = useSession();
-  const dispatch = useDispatch();
+  const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
+
+  // REDUX DATA
   const cartCount = useSelector(selectCartCount);
   const isCartOpen = useSelector(selectIsCartOpen);
-  const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
+  const wishlistCount = useSelector(selectWishlistCount);
+
+  // HANDLERS
+  const toggleSearchHandler = () => setOpenSearch(!openSearch);
+  const onChangeInput = (e) => setInputSearch(e.target.value);
   //Make it async, so extract data promise and let Router push to '/' without refresh page
   const signOutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/" });
+    dispatch(setLogout());
     Router.push(data.url);
   };
-
-  const toggleSearchHandler = () => setOpenSearch(!openSearch);
-
-  const onChangeInput = (e) => setInputSearch(e.target.value);
 
   // Fetch Products with search keywords
   const onSubmitSearch = async (e) => {
@@ -103,7 +112,7 @@ const Navbar = () => {
             <a>
               <li className="wishlist">
                 <BsHeart className="icon" />
-                <span className="wishNum">0</span>
+                <span className="wishNum">{wishlistCount}</span>
               </li>
             </a>
           </Link>

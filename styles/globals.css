@@ -111,6 +111,9 @@ figure{
   /* SPACE */
   --container:144rem;
   --container-x:188rem;
+
+  --toastify-toast-width: 380px !important;
+
 }
 
 

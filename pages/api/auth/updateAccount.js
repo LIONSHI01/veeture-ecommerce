@@ -10,8 +10,6 @@ const handler = async (req, res) => {
   const { wishlist } = req.body;
   // console.log(wishlist);
 
-  // console.log(session);
-
   try {
     if (!session) {
       return res.status(401).json({ unauthorized: true });
@@ -33,7 +31,7 @@ const handler = async (req, res) => {
     // Update user profile
     await User.findByIdAndUpdate(
       user._id,
-      { wishlist: wishlist },
+      { wishlist },
       { new: true }
     );
 

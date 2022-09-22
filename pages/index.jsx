@@ -1,10 +1,10 @@
 import React from "react";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import FeatureSection from "../components/Feature";
 import Header from "../components/Header";
 
 const Home = () => {
-  const { data: session, status } = useSession();
+  // const { data: session, status } = useSession();
 
   return (
     <>

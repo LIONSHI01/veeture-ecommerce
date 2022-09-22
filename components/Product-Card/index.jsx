@@ -11,32 +11,37 @@ import {
   selectRecentViews,
   selectWishlist,
 } from "../../store/user/user.selector";
-import { setRecentViews, setWishlist } from "../../store/user/user.action";
+import { setRecentViews, toggleWishlist } from "../../store/user/user.action";
 import { urlFor } from "../../lib/sanity-client.utils";
 import { Wrapper } from "./index.styles";
 
 const ProductCard = ({ product }) => {
+  // CONFIGURATION
   const dispatch = useDispatch();
   const { status } = useSession();
-  const recentViews = useSelector(selectRecentViews);
-  const wishlist = useSelector(selectWishlist);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLiked, setIsLiked] = useState(product.isLiked);
   const { title, price, category, type, slug, images } = product;
-
   const imageUrls = images?.map((image) => urlFor(image));
 
+  // STATES MANAGEMENT
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLiked, setIsLiked] = useState(product.isLiked);
+
+  // REDUX DATA
+  const recentViews = useSelector(selectRecentViews);
+  const wishlist = useSelector(selectWishlist);
+
+  // HANDLERS
   const goToSlide = (slideIndex) => setCurrentIndex(slideIndex);
 
   const setRecentViewHandler = () =>
     dispatch(setRecentViews(recentViews, product));
 
-  const setWishlistHandler = () => {
+  const toggleWishlistHandler = () => {
     if (status === "unauthenticated") {
-      toast.warning("Please login to access your favorite list!");
+      toast.warning("Please login to access your wishlist!");
       return;
     }
-    dispatch(setWishlist(wishlist, product));
+    dispatch(toggleWishlist(wishlist, product));
     setIsLiked(!isLiked);
   };
 
@@ -51,7 +56,7 @@ const ProductCard = ({ product }) => {
           alt={title}
           className="image"
         />
-        <div className="icon-container" onClick={setWishlistHandler}>
+        <div className="icon-container" onClick={toggleWishlistHandler}>
           <AiOutlineHeart className={isLiked ? "icon like" : "icon"} />
         </div>
         <div className="dots">

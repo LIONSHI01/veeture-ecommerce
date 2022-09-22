@@ -19,6 +19,13 @@ export const userReducer = (state = INITIAL_USER_STATE, action = {}) => {
         ...state,
         wishlist: payload,
       };
+    case USER_ACTION_TYPES.setLogout:
+      return {
+        ...state,
+        recentViewsArr: [],
+        wishlist: [],
+      };
+
     default:
       return state;
   }

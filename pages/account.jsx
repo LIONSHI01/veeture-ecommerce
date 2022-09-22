@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Router from "next/router";
-import { getSession, useSession } from "next-auth/react";
+import { useDispatch } from "react-redux";
+import { useSession } from "next-auth/react";
 import styled from "styled-components";
+import { getUserProfile } from "../lib/authRequest";
+import { setWishlist } from "../store/user/user.action";
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 10rem - 40rem);
@@ -17,7 +20,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const Account = () => {
+const AccountPage = () => {
+  const dispatch = useDispatch();
   const { data: session } = useSession({
     required: true,
     onUnauthenticated: () => {
@@ -25,33 +29,27 @@ const Account = () => {
     },
   });
 
-  // console.log(session);
+  useEffect(() => {
+    const fetchUserProfile = async () => {
+      const userData = await getUserProfile();
+      if (userData) {
+        const userWishlist = userData.wishlist;
+        dispatch(setWishlist(userWishlist));
+      }
+    };
+    fetchUserProfile();
+  }, []);
 
   return (
     <Wrapper>
       <div className="container">
         <div className="heading-box">
           <h1 className="heading">Account Page</h1>
-          <h2 className="useremail">{session.user.email}</h2>
+          <h2 className="useremail">{session?.user.email}</h2>
         </div>
       </div>
     </Wrapper>
   );
 };
 
-export const getServerSideProps = async (context) => {
-  const session = await getSession(context);
-  if (!session) {
-    return {
-      redirect: {
-        destination: "/auth",
-      },
-    };
-  }
-
-  return {
-    props: { session },
-  };
-};
-
-export default Account;
+export default AccountPage;
