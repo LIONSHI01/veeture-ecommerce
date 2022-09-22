@@ -1,4 +1,4 @@
 export const USER_ACTION_TYPES = {
   setRecentViews: "user/setRecentViews",
-  setLikeList: "user/setLikeList",
+  setWishlist: "user/setWishlist",
 };

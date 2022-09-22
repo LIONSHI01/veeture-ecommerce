@@ -6,7 +6,6 @@ import Header from "../components/Header";
 const Home = () => {
   const { data: session, status } = useSession();
 
-  console.log(session);
   return (
     <>
       <Header />

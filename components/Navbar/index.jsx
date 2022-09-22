@@ -99,10 +99,14 @@ const Navbar = () => {
               </li>
             </a>
           </Link>
-          <li className="wishlist">
-            <BsHeart className="icon" />
-            <span className="wishNum">0</span>
-          </li>
+          <Link href="/wishlist">
+            <a>
+              <li className="wishlist">
+                <BsHeart className="icon" />
+                <span className="wishNum">0</span>
+              </li>
+            </a>
+          </Link>
 
           <li className="cart" onClick={cartOpenHandler}>
             <BsHandbag className="icon" />

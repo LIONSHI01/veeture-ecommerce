@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-
+import { useSession } from "next-auth/react";
+import { getUserProfile } from "../lib/authRequest";
 import { selectSearchResults } from "../store/product/product.selector";
 import ProductCard from "../components/Product-Card";
 import FilterSidebar from "../components/Sidebar/Filter-Sidebar";
+import { selectWishlist } from "../store/user/user.selector";
+import { ProductGroup, ProductMain } from "../pages_styles/favorites.styles";
 
-import { ProductGroup, ProductMain } from "../pages_styles/products.styles";
+const WishlistPage = () => {
+  const wishlist = useSelector(selectWishlist);
 
-const SearchResultsPage = () => {
-  const searchResults = useSelector(selectSearchResults);
-
+  // console.log(user);
   return (
     <ProductGroup>
       <div className="group-container">
@@ -19,8 +21,8 @@ const SearchResultsPage = () => {
         <ProductMain>
           <div className="section-container">
             <div className="gallary">
-              {searchResults.length > 0 ? (
-                searchResults.map((product) => (
+              {wishlist.length > 0 ? (
+                wishlist.map((product) => (
                   <ProductCard key={product._id} product={product} />
                 ))
               ) : (
@@ -36,4 +38,12 @@ const SearchResultsPage = () => {
   );
 };
 
-export default SearchResultsPage;
+export const getServerSideProps = async (context) => {
+  const user = await getUserProfile();
+
+  return {
+    props: {},
+  };
+};
+
+export default WishlistPage;

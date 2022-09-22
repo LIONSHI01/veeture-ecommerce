@@ -2,7 +2,7 @@ import { USER_ACTION_TYPES } from "./user.types";
 
 const INITIAL_USER_STATE = {
   recentViewsArr: [],
-  likeList: [],
+  wishlist: [],
 };
 
 export const userReducer = (state = INITIAL_USER_STATE, action = {}) => {
@@ -14,10 +14,10 @@ export const userReducer = (state = INITIAL_USER_STATE, action = {}) => {
         ...state,
         recentViewsArr: payload,
       };
-    case USER_ACTION_TYPES.setLikeList:
+    case USER_ACTION_TYPES.setWishlist:
       return {
         ...state,
-        likeList: payload,
+        wishlist: payload,
       };
     default:
       return state;

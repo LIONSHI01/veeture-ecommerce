@@ -7,7 +7,7 @@ const addCartItem = (cartItems, itemToAdd) => {
     (item) =>
       item._id === itemToAdd._id && item.selectedSize === itemToAdd.selectedSize
   );
-  // console.log(existItem);
+
   // if exist, add original item quanity +1
   if (existItem) {
     return cartItems.map((item) =>

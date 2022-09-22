@@ -1,5 +1,6 @@
 import createAction from "../../lib/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
+import { updateAccount } from "../../lib/authRequest";
 
 const addItemToArr = (recentViewsArr, productToAdd) => {
   const existingItem = recentViewsArr?.find(
@@ -26,10 +27,12 @@ export const setRecentViews = (recentViewsArr, productToAdd) => {
   return createAction(USER_ACTION_TYPES.setRecentViews, newRecentViewsArr);
 };
 
-export const setLikeList = (likeList, itemToAdd) => {
-  const newLikeList = toggleLikeItem(likeList, itemToAdd);
+export const setWishlist = (wishlist, itemToAdd) => {
+  const newWishlist = toggleLikeItem(wishlist, itemToAdd);
 
+  // Update in Database
+  updateAccount(newWishlist);
   // TEMPORARY
-  localStorage.setItem("likeList", JSON.stringify(newLikeList));
-  return createAction(USER_ACTION_TYPES.setLikeList, newLikeList);
+  // localStorage.setItem("Wishlist", JSON.stringify(newWishlist));
+  return createAction(USER_ACTION_TYPES.setWishlist, newWishlist);
 };

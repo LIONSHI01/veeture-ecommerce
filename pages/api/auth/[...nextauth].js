@@ -8,7 +8,7 @@ import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
 import { verifyPassword } from "../../../lib/hashPassword";
 
-export default NextAuth({
+export const authOptions = {
   session: {
     strategy: "jwt",
   },
@@ -23,9 +23,8 @@ export default NextAuth({
       async authorize(credentials, req) {
         const { email, password } = credentials;
         await connectMongoose();
-        console.log(req.body);
+
         const user = await User.findOne({ email: email });
-        console.log(user);
 
         if (!user) {
           throw Error("No user found with this email");
@@ -35,7 +34,6 @@ export default NextAuth({
         if (!isValid) {
           throw Error("Invalid password, please try again!");
         }
-        console.log("verify password:", isValid);
 
         return user;
       },
@@ -46,4 +44,22 @@ export default NextAuth({
     signIn: "/auth",
   },
   secret: process.env.NEXT_JWT_SECRET,
-});
+
+  // From Reference [TEST]
+  callbacks: {
+    async jwt({ token, user }) {
+      // Persist the OAuth access_token to the token right after signin
+      if (user) {
+        token.accessToken = user.access_token;
+      }
+      return token;
+    },
+    async session({ session, token, user }) {
+      // Send properties to the client, like an access_token from a provider.
+      session.accessToken = token.accessToken;
+      return session;
+    },
+  },
+};
+
+export default NextAuth(authOptions);

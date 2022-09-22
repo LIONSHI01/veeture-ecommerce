@@ -40,10 +40,9 @@ const SignUpForm = () => {
     }
 
     // 2) create userDoc in MongoDB
-    const res = await register(formFields);
+    await register(formFields);
+    resetFormFields;
     // if (res.response.status !== 201) toast.error(res.response.data.message);
-
-    console.log(res);
   };
 
   return (

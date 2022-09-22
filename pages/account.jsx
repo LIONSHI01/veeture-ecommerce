@@ -18,19 +18,21 @@ const Wrapper = styled.div`
 `;
 
 const Account = () => {
-  const { data: session, status } = useSession({
+  const { data: session } = useSession({
     required: true,
     onUnauthenticated: () => {
       Router.push("/auth");
     },
   });
 
+  // console.log(session);
+
   return (
     <Wrapper>
       <div className="container">
         <div className="heading-box">
           <h1 className="heading">Account Page</h1>
-          <h2 className="useremail">{session.user.name}</h2>
+          <h2 className="useremail">{session.user.email}</h2>
         </div>
       </div>
     </Wrapper>

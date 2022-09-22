@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
+import { toast } from "react-toastify";
+
 import { AiOutlineHeart } from "react-icons/ai";
 
 import {
   selectRecentViews,
-  selectLikeList,
+  selectWishlist,
 } from "../../store/user/user.selector";
-import { setRecentViews, setLikeList } from "../../store/user/user.action";
+import { setRecentViews, setWishlist } from "../../store/user/user.action";
 import { urlFor } from "../../lib/sanity-client.utils";
-
 import { Wrapper } from "./index.styles";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
+  const { status } = useSession();
   const recentViews = useSelector(selectRecentViews);
-  const likeList = useSelector(selectLikeList);
+  const wishlist = useSelector(selectWishlist);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isLiked, setIsLiked] = useState(product.isLiked);
   const { title, price, category, type, slug, images } = product;
@@ -28,9 +31,12 @@ const ProductCard = ({ product }) => {
   const setRecentViewHandler = () =>
     dispatch(setRecentViews(recentViews, product));
 
-  const setLikeListHandler = () => {
-    dispatch(setLikeList(likeList, product));
-
+  const setWishlistHandler = () => {
+    if (status === "unauthenticated") {
+      toast.warning("Please login to access your favorite list!");
+      return;
+    }
+    dispatch(setWishlist(wishlist, product));
     setIsLiked(!isLiked);
   };
 
@@ -45,7 +51,7 @@ const ProductCard = ({ product }) => {
           alt={title}
           className="image"
         />
-        <div className="icon-container" onClick={setLikeListHandler}>
+        <div className="icon-container" onClick={setWishlistHandler}>
           <AiOutlineHeart className={isLiked ? "icon like" : "icon"} />
         </div>
         <div className="dots">
