@@ -33,6 +33,9 @@ const WishlistPage = () => {
   if (status === "authenticated") {
     return (
       <ProductGroup>
+        <div className="heading">
+          <h1>My wishlist</h1>
+        </div>
         <div className="group-container">
           <ProductMain>
             <div className="section-container">

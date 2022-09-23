@@ -20,15 +20,12 @@ const SectionWrapper = styled.section`
     text-transform: capitalize;
     font-size: var(--fs-xxl);
     letter-spacing: -1px;
-    text-align: center;
-    margin-bottom: var(--mg-x);
-
-    /* &::after{
-      height: ;
-    } */
+    margin-bottom: var(--mg-xl);
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--black-light-3);
+    font-weight: 600;
   }
   .card-container {
-    /* grid-column: 1/-1; */
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 

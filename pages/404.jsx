@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ErrorImage from "../assets/404.jpg";
-import LinkButton, { BUTTON_TYPE_CLASSES } from "../components/LinkButton";
+import LinkButton from "../components/LinkButton";
 
 import {
   PageWrapper,
@@ -17,25 +17,25 @@ const ErrorPage = () => {
         <div className="title">
           <h1>404</h1>
           <p>
-            It looks like that page doesn't exist - May be you can find
+            It looks like that page doesn&#39;t exist - May be you can find
             something helpful below.
           </p>
           <LinkButton url="/">Explore Our Site</LinkButton>
         </div>
         <div className="links">
-          <h2>Can't find what you were looking for?</h2>
+          <h2>Can&#39;t find what you were looking for?</h2>
           <ul>
             <Link href="/men">
               <a className="link">
                 <li>
-                  Most fashionable trend of <span>men</span> &rarr;
+                  Today&#39;s trend of <span>men</span> &rarr;
                 </li>
               </a>
             </Link>
             <Link href="/women">
               <a className="link">
                 <li>
-                  Most fashionable trend of <span>women</span> &rarr;
+                  Today&#39;s trend of <span>women</span> &rarr;
                 </li>
               </a>
             </Link>

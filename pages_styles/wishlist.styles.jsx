@@ -1,24 +1,35 @@
 import styled from "styled-components";
 
 export const ProductGroup = styled.div`
-  margin: 10rem 0;
   min-height: calc(100vh - 10rem - 40rem);
+  .heading {
+    width: 100%;
+    min-height: 50vh;
+    background-color: var(--grey-light-3);
+    display: grid;
+    /* margin-bottom: var(--mg-xl); */
+    align-items: center;
 
+    h1 {
+      font-family: var(--ff-display);
+      font-size: var(--fs-mega);
+      letter-spacing: -2px;
+      text-transform: capitalize;
+
+      text-align: center;
+    }
+  }
   .group-container {
-    max-width: var(--container-x);
+    max-width: var(--container);
     margin: 0 auto;
     padding: 0 14px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .sidebar-container {
-    grid-column: 1 / span 1;
-  }
 `;
 
 export const ProductMain = styled.div`
-  grid-column: 2 / -1;
+  grid-column: 1 / -1;
 
   .section-container {
     width: 100%;
@@ -56,6 +67,7 @@ export const ProductMain = styled.div`
     }
 
     .gallary {
+      margin: 10rem 0;
       height: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
@@ -63,12 +75,13 @@ export const ProductMain = styled.div`
     }
 
     .not-found {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+
       width: 100%;
-      height: 100%;
+      height: 20rem;
       align-items: center;
-      justify-content: center;
+      justify-items: center;
+      margin: 10rem 0;
 
       p {
         font-size: var(--fs-xl);

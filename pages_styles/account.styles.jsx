@@ -32,10 +32,15 @@ export const PageHeader = styled.header`
     letter-spacing: -2px;
     font-family: var(--ff-display);
     margin-bottom: var(--mg-x);
+    text-transform: capitalize;
   }
   p {
     font-size: var(--fs-m);
     text-transform: capitalize;
+  }
+  span {
+    font-weight: 600;
+    text-transform: uppercase;
   }
 `;
 
@@ -45,13 +50,14 @@ export const AccountDetails = styled.div`
   grid-template-columns: repeat(2, 1fr);
   margin: 5rem 0;
   padding: 0 10rem;
+
+  h2 {
+    font-family: var(--ff-display);
+    font-size: var(--fs-xxl);
+  }
 `;
 
 export const OrderDetails = styled.div`
-  h2 {
-    font-size: var(--fs-xxl);
-  }
-
   .empty-orders {
     p {
       font-size: var(--fs-xl);
@@ -60,9 +66,6 @@ export const OrderDetails = styled.div`
 `;
 
 export const AddressDetails = styled.div`
-  h2 {
-    font-size: var(--fs-xxl);
-  }
   form {
     display: flex;
     flex-direction: column;

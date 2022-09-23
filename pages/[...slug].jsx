@@ -2,39 +2,27 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
 
+import Link from "next/link";
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
 import ProductCard from "../components/Product-Card";
-import styled from "styled-components";
-import RecentViewSection from "../components/Product/Recent-View";
 
+import RecentViewSection from "../components/Product/Recent-View";
 import { selectRecentViews } from "../store/user/user.selector";
 
-const Wrapper = styled.div`
-  margin: 5rem 0;
+import {
+  ProductDetails,
+  CategoryDetails,
+} from "../pages_styles/product-list.styles";
 
-  .product-details-container {
-    max-width: var(--container);
-    margin: 0 auto;
-    padding: 0 14px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-  }
+const ProductDetailsPage = ({
+  product,
+  categoryProductArr,
+  type,
+  category,
+}) => {
+  // CONFIGURATION
 
-  .image-section {
-    grid-column: 1 / span 2;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45rem, max-content));
-    gap: 2rem;
-  }
-
-  .details-section {
-    grid-column: 3 / -1;
-  }
-`;
-
-const ProductDetailsPage = ({ product, categoryProductArr }) => {
   const recentViews = useSelector(selectRecentViews);
   if (!product && !categoryProductArr) {
     return <p>Not Found</p>;
@@ -46,7 +34,7 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
 
     const imageUrls = images?.map((image) => urlFor(image));
     return (
-      <Wrapper>
+      <ProductDetails>
         <div className="product-details-container">
           <section className="image-section">
             {imageUrls.map((url, i) => (
@@ -65,20 +53,36 @@ const ProductDetailsPage = ({ product, categoryProductArr }) => {
             <RecentViewSection recentViews={recentViews} />
           )}
         </div>
-      </Wrapper>
+      </ProductDetails>
     );
   }
 
   // Return Category Page
   if (categoryProductArr) {
     return (
-      <Wrapper>
-        <div className="product-details-container">
-          {categoryProductArr.map((product) => (
-            <ProductCard key={product._id} product={product} />
-          ))}
+      <CategoryDetails>
+        <div className="container">
+          <div className="heading">
+            <h1>{type}</h1>
+            <div className="guide-links">
+              <Link href="/">
+                <a>Home&nbsp;|</a>
+              </Link>
+              <Link href={`/${type}`}>
+                <a>&nbsp;{type}&nbsp;|</a>
+              </Link>
+              <Link href={`/${category}`}>
+                <a>&nbsp;{category}</a>
+              </Link>
+            </div>
+          </div>
+          <div className="product-details-container">
+            {categoryProductArr.map((product) => (
+              <ProductCard key={product._id} product={product} />
+            ))}
+          </div>
         </div>
-      </Wrapper>
+      </CategoryDetails>
     );
   }
 };
@@ -103,6 +107,9 @@ export const getServerSideProps = async ({ params: { slug } }) => {
     return {
       props: {
         product,
+        slug,
+        type,
+        category,
       },
     };
   }
@@ -112,6 +119,8 @@ export const getServerSideProps = async ({ params: { slug } }) => {
     return {
       props: {
         categoryProductArr,
+        type,
+        category,
       },
     };
   }

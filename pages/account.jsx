@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Router from "next/router";
 import { useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
+import { toast } from "react-toastify";
 
 import { updateAccount } from "../lib/authRequest";
 import { getUserProfile } from "../lib/authRequest";
@@ -61,9 +62,12 @@ const AccountPage = () => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
-  const onSubmtHandler = (e) => {
+  const onSubmtHandler = async (e) => {
     e.preventDefault();
-    updateAccount(formFields, "address");
+    const res = await updateAccount(formFields, "address");
+    if (res.status === 200) {
+      toast.success("Update ADDRESS successfully!");
+    }
   };
 
   return (
@@ -71,7 +75,9 @@ const AccountPage = () => {
       <PageHeader>
         <div className="heading">
           <h1>My account</h1>
-          <p>Welcome back {session?.user.name}</p>
+          <p>
+            Welcome back,&nbsp; <span> {session?.user.name}</span>
+          </p>
         </div>
       </PageHeader>
       <AccountDetails>
