@@ -12,7 +12,10 @@ import { combinLikeList } from "../../lib/combineLikeList.utils";
 import { ProductGroup, ProductMain } from "../../pages_styles/products.styles";
 
 const ProductsPage = ({ products }) => {
+  // CONFIGURATION
   const dispatch = useDispatch();
+
+  // STATE MANAGEMENT
   const filteredProducts = useSelector(selectFilteredProducts);
   const likeList = useSelector(selectWishlist);
 

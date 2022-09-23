@@ -2,8 +2,12 @@ import createAction from "../../lib/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
 import { updateAccount } from "../../lib/authRequest";
 
-// LOGOUT MANAGEMENT
-export const setLogout = () => createAction(USER_ACTION_TYPES.setLogout);
+// // LOGOUT MANAGEMENT
+// export const setLogout = () => createAction(USER_ACTION_TYPES.setLogout);
+
+// USER PROFILE
+export const setUserProfile = (profile) =>
+  createAction(USER_ACTION_TYPES.setUserProfile, profile);
 
 // RECENTVIEWS MANAGEMENT
 const addItemToArr = (recentViewsArr, productToAdd) => {
@@ -38,7 +42,7 @@ export const toggleWishlist = (wishlist, itemToAdd) => {
   const newWishlist = toggleLikeItem(wishlist, itemToAdd);
 
   // STEP2: UPDATE DATABASE
-  updateAccount(newWishlist);
+  updateAccount(newWishlist, "wishlist");
 
   // STEP3: RETURN ACTION
   return createAction(USER_ACTION_TYPES.setWishlist, newWishlist);

@@ -7,7 +7,7 @@ import User from "../../../models/userModel";
 const handler = async (req, res) => {
   // console.log(req);
   const session = await unstable_getServerSession(req, res, authOptions);
-  const { wishlist } = req.body;
+
   // console.log(wishlist);
 
   try {
@@ -29,11 +29,16 @@ const handler = async (req, res) => {
     }
 
     // Update user profile
-    await User.findByIdAndUpdate(
-      user._id,
-      { wishlist },
-      { new: true }
-    );
+    if (req.body.dataType === "wishlist") {
+      const wishlist = req.body.updateData;
+      await User.findByIdAndUpdate(user._id, { wishlist }, { new: true });
+    }
+
+    if (req.body.dataType === "cartList") {
+      const cartList = req.body.updateData;
+      await User.findByIdAndUpdate(user._id, { cartList }, { new: true });
+    }
+    // console.log(req.body);
 
     return res.status(200).json({ message: "Updated successfully" });
   } catch (error) {

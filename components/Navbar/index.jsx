@@ -10,7 +10,6 @@ import {
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
 
-import { setWishlist, setLogout } from "../../store/user/user.action";
 import { selectWishlistCount } from "../../store/user/user.selector";
 import { setIsCartOpen } from "../../store/cart/cart.action";
 import { setSearchResults } from "../../store/product/product.actions";
@@ -43,7 +42,9 @@ const Navbar = () => {
   //Make it async, so extract data promise and let Router push to '/' without refresh page
   const signOutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/" });
-    dispatch(setLogout());
+
+    // CLEAR ALL STATES
+    dispatch({ type: "USER_LOGOUT" });
     Router.push(data.url);
   };
 

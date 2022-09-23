@@ -1,6 +1,8 @@
 import createAction from "../../lib/reducer.utils";
 import { CART_ACTION_TYPES } from "./cart.types";
+import { updateAccount } from "../../lib/authRequest";
 
+// HELPER FUNCTIONS
 const addCartItem = (cartItems, itemToAdd) => {
   // check if exist
   const existItem = cartItems.find(
@@ -59,19 +61,30 @@ const removeCartItem = (cartItems, itemToRemove) =>
       )
   );
 
+// ACTIONS ON CARTLIST
+// Fetch user data from database
+export const setCartList = (cartItems) =>
+  createAction(CART_ACTION_TYPES.setCartItems, cartItems);
+
 export const addItemToCart = (cartItems, itemToAdd) => {
   const newCartItems = addCartItem(cartItems, itemToAdd);
+
+  // Update user profile in Database
+  updateAccount(newCartItems, "cartList");
   return createAction(CART_ACTION_TYPES.setCartItems, newCartItems);
 };
 
 export const minusItemFromCart = (cartItems, itemToMinus) => {
   const newCartItems = minusCartItem(cartItems, itemToMinus);
+  updateAccount(newCartItems, "cartList");
   return createAction(CART_ACTION_TYPES.setCartItems, newCartItems);
 };
 export const removeItemFromCart = (cartItems, itemToRemove) => {
   const newCartItems = removeCartItem(cartItems, itemToRemove);
+  updateAccount(newCartItems, "cartList");
   return createAction(CART_ACTION_TYPES.setCartItems, newCartItems);
 };
 
+// ACTIONS ON CART SIDEBAR
 export const setIsCartOpen = (boolean) =>
   createAction(CART_ACTION_TYPES.setIsCartOpen, boolean);

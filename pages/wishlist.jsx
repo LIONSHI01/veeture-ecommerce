@@ -13,8 +13,8 @@ import {
 import LinkButton from "../components/LinkButton";
 
 const WishlistPage = () => {
+  // STATE MANAGEMENT
   const { status } = useSession();
-
   const wishlist = useSelector(selectWishlist);
 
   if (status === "unauthenticated") {

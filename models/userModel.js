@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema(
       type: String,
     },
     wishlist: [{}],
+    cartList: [{}],
   },
   { timestamps: true }
 );

@@ -42,6 +42,7 @@ const ProductCard = ({ product }) => {
       return;
     }
     dispatch(toggleWishlist(wishlist, product));
+    toast.success("Wishlist changed successfully!");
     setIsLiked(!isLiked);
   };
 

@@ -20,6 +20,7 @@ const SectionContainer = styled.div`
 `;
 
 const AuthPage = () => {
+  // CONFIGURATION
   const { data: session, status } = useSession();
 
   // Redirect user to account page if already signin

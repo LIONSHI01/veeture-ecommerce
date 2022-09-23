@@ -4,7 +4,8 @@ import { useDispatch } from "react-redux";
 import { useSession } from "next-auth/react";
 import styled from "styled-components";
 import { getUserProfile } from "../lib/authRequest";
-import { setWishlist } from "../store/user/user.action";
+import { setUserProfile, setWishlist } from "../store/user/user.action";
+import { setCartList } from "../store/cart/cart.action";
 
 const Wrapper = styled.div`
   min-height: calc(100vh - 10rem - 40rem);
@@ -34,7 +35,10 @@ const AccountPage = () => {
       const userData = await getUserProfile();
       if (userData) {
         const userWishlist = userData.wishlist;
+        const userCartList = userData.cartList;
+        dispatch(setCartList(userCartList));
         dispatch(setWishlist(userWishlist));
+        dispatch(setUserProfile(userData));
       }
     };
     fetchUserProfile();
