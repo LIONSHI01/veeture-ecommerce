@@ -21,6 +21,15 @@ const userSchema = new mongoose.Schema(
     image: {
       type: String,
     },
+    address: [
+      {
+        streetAddress: String,
+        streetAddress2: String,
+        city: String,
+        state: String,
+        postal: String,
+      },
+    ],
     wishlist: [{}],
     cartList: [{}],
   },

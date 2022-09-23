@@ -81,6 +81,7 @@ figure{
   --fs-xl: 2.4rem;
   --fs-xxl: 3.5rem;
   --fs-xxxl: 4.5rem;
+  --fs-mega: 7.2rem;
 
   /* MARGIN */
   --mg-xs: 0.5rem;
@@ -116,6 +117,15 @@ figure{
 
 }
 
+h1 {
+  display: block;
+  
+  margin-block-start: 0;
+  margin-block-end: 0;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
 
 h4 {
   display: block;
