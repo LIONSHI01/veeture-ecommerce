@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  padding: 10rem 0;
+  margin-bottom: 10rem;
   /* Min-height = 100vh - footer height - navbar height */
   min-height: calc(100vh - 30rem - 10rem);
 

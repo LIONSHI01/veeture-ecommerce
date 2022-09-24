@@ -2,23 +2,25 @@ import styled from "styled-components";
 
 export const ProductGroup = styled.div`
   min-height: calc(100vh - 10rem - 40rem);
-  .heading {
-    width: 100%;
-    min-height: 50vh;
-    background-color: var(--grey-light-3);
-    display: grid;
-    /* margin-bottom: var(--mg-xl); */
-    align-items: center;
+  margin-bottom: 10rem;
 
-    h1 {
-      font-family: var(--ff-display);
-      font-size: var(--fs-mega);
-      letter-spacing: -2px;
-      text-transform: capitalize;
+  .hero-section {
+    position: relative;
 
+    p {
+      position: absolute;
+      top: 70%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: var(--fs-xxl);
       text-align: center;
+      text-transform: capitalize;
+    }
+    span {
+      font-weight: 600;
     }
   }
+
   .group-container {
     max-width: var(--container);
     margin: 0 auto;
@@ -26,16 +28,14 @@ export const ProductGroup = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
-
-  .heading {
-    grid-column: 1/-1;
-  }
 `;
 
 export const ProductMain = styled.div`
   grid-column: 1 / -1;
+  margin-top: 10rem;
 
   .section-container {
+    /* max-width: var(--container); */
     width: 100%;
     height: 100%;
     margin: 0 auto;
@@ -71,42 +71,16 @@ export const ProductMain = styled.div`
     }
 
     .gallary {
-      margin: 10rem 0;
       height: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-      gap: 3rem;
+      justify-items: flex-start;
+      column-gap: 3rem;
+      row-gap: 10rem;
+      margin-bottom: 5rem;
     }
 
     .not-found {
-      display: grid;
-      width: 100%;
-      height: 20rem;
-      align-items: center;
-      justify-items: center;
-      margin: 5rem 0;
-
-      p {
-        font-size: var(--fs-xl);
-        font-weight: 600;
-        text-align: center;
-        text-transform: capitalize;
-      }
-    }
-  }
-`;
-
-export const Unauthentication = styled.div`
-  margin: 10rem 0;
-  min-height: calc(100vh - 10rem - 40rem);
-
-  .section-container {
-    max-width: var(--container);
-    height: 50rem;
-    margin: 0 auto;
-    padding: 14px;
-
-    .unauthenticate-box {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -116,8 +90,14 @@ export const Unauthentication = styled.div`
 
       p {
         font-size: var(--fs-xl);
+        font-weight: 600;
+        text-align: center;
+        text-transform: capitalize;
         margin-bottom: var(--mg-x);
       }
+    }
+    .btn-group {
+      justify-self: center;
     }
   }
 `;

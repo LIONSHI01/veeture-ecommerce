@@ -3,19 +3,26 @@ import { useSelector } from "react-redux";
 
 import { selectSearchResults } from "../store/product/product.selector";
 import ProductCard from "../components/Product-Card";
-import FilterSidebar from "../components/Sidebar/Filter-Sidebar";
 
-import { ProductGroup, ProductMain } from "../pages_styles/products.styles";
+import PageHero from "../components/PageHero";
+
+import { ProductGroup, ProductMain } from "../pages_styles/search.styles";
+import Button from "../components/Button";
+import LinkButton from "../components/LinkButton";
 
 const SearchResultsPage = () => {
   const searchResults = useSelector(selectSearchResults);
 
   return (
     <ProductGroup>
+      <div className="hero-section">
+        <PageHero heading="Search Results" />
+        <p>
+          <span>{searchResults.length}&nbsp;</span>
+          products found ...
+        </p>
+      </div>
       <div className="group-container">
-        <div className="sidebar-container">
-          <FilterSidebar />
-        </div>
         <ProductMain>
           <div className="section-container">
             <div className="gallary">
@@ -25,9 +32,12 @@ const SearchResultsPage = () => {
                 ))
               ) : (
                 <div className="not-found">
-                  <p>No Product found, please try again.</p>
+                  <p>Sorry, no Product found, please try again.</p>
                 </div>
               )}
+            </div>
+            <div className="btn-group">
+              <LinkButton url="/products">View All Products</LinkButton>
             </div>
           </div>
         </ProductMain>

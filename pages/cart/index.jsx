@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import getStripe from "../../lib/getStripe";
+import PageHero from "../../components/PageHero";
 
 import {
   selectCartItems,
@@ -49,6 +50,7 @@ const CartPage = () => {
 
   return (
     <Wrapper>
+      <PageHero heading="My Cart" />
       <div className="section-container">
         <div className="cart__flow-container">
           <div className="cart__flow-step">

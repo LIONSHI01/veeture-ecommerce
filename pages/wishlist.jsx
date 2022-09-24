@@ -3,14 +3,14 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { selectWishlist } from "../store/user/user.selector";
-
+import PageHero from "../components/PageHero";
+import LinkButton from "../components/LinkButton";
 import ProductCard from "../components/Product-Card";
 import {
   ProductGroup,
   ProductMain,
   Unauthentication,
 } from "../pages_styles/wishlist.styles";
-import LinkButton from "../components/LinkButton";
 
 const WishlistPage = () => {
   // STATE MANAGEMENT
@@ -33,9 +33,7 @@ const WishlistPage = () => {
   if (status === "authenticated") {
     return (
       <ProductGroup>
-        <div className="heading">
-          <h1>My wishlist</h1>
-        </div>
+        <PageHero heading="My Wishlist" />
         <div className="group-container">
           <ProductMain>
             <div className="section-container">
@@ -47,6 +45,7 @@ const WishlistPage = () => {
                 ) : (
                   <div className="not-found">
                     <p>No Item yet. Lets explore!</p>
+                    <LinkButton url="/products">View All Products</LinkButton>
                   </div>
                 )}
               </div>
