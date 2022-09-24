@@ -1,14 +1,14 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import Image from "next/image";
-
 import Link from "next/link";
+
+import { selectRecentViews } from "../store/user/user.selector";
 import { client, urlFor } from "../lib/sanity-client.utils";
 import DetailSection from "../components/Product/Details-Section";
 import ProductCard from "../components/Product-Card";
-
+import HeaderBar from "../components/HeaderBar";
 import RecentViewSection from "../components/Product/Recent-View";
-import { selectRecentViews } from "../store/user/user.selector";
 
 import {
   ProductDetails,
@@ -20,6 +20,7 @@ const ProductDetailsPage = ({
   categoryProductArr,
   type,
   category,
+  productSlug,
 }) => {
   // CONFIGURATION
 
@@ -31,11 +32,18 @@ const ProductDetailsPage = ({
   // Return Product Details Page
   if (product) {
     const { images } = product;
-
     const imageUrls = images?.map((image) => urlFor(image));
+
+    console.log(productSlug);
     return (
       <ProductDetails>
         <div className="product-details-container">
+          <HeaderBar
+            heading="Product Details"
+            type={type}
+            category={category}
+            productSlug={productSlug}
+          />
           <section className="image-section">
             {imageUrls.map((url, i) => (
               <Image
@@ -62,20 +70,11 @@ const ProductDetailsPage = ({
     return (
       <CategoryDetails>
         <div className="container">
-          <div className="heading">
-            <h1>{type}</h1>
-            <div className="guide-links">
-              <Link href="/">
-                <a>Home&nbsp;|</a>
-              </Link>
-              <Link href={`/${type}`}>
-                <a>&nbsp;{type}&nbsp;|</a>
-              </Link>
-              <Link href={`/${category}`}>
-                <a>&nbsp;{category}</a>
-              </Link>
-            </div>
-          </div>
+          <HeaderBar
+            heading="Product Details"
+            type={type}
+            category={category}
+          />
           <div className="product-details-container">
             {categoryProductArr.map((product) => (
               <ProductCard key={product._id} product={product} />
@@ -110,6 +109,7 @@ export const getServerSideProps = async ({ params: { slug } }) => {
         slug,
         type,
         category,
+        productSlug,
       },
     };
   }

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { client } from "../lib/sanity-client.utils";
-
+import HeaderBar from "../components/HeaderBar";
 import CategoryList from "../components/Category-List";
 import RecommendList from "../components/Recommend-List";
 
@@ -10,18 +10,7 @@ const Wrapper = styled.div`
   & .heading-container {
     max-width: var(--container);
     margin: 0 auto;
-    padding: 3rem 0;
-
-    h1 {
-      font-size: var(--fs-xl);
-      text-transform: uppercase;
-      line-height: 0;
-      margin: 2rem 0;
-    }
-    & span {
-      font-size: var(--fs);
-      color: var(--black-light-2);
-    }
+    padding-top: 3rem;
   }
 `;
 
@@ -29,8 +18,7 @@ const CategoryPage = ({ categories, recommendProducts, type }) => {
   return (
     <Wrapper>
       <div className="heading-container">
-        <h1>{type}</h1>
-        <span>{`Home|${type}`}</span>
+        <HeaderBar heading={type} type={type} />
       </div>
       <CategoryList categories={categories} />
       <RecommendList products={recommendProducts} />

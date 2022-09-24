@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const ProductGroup = styled.div`
-  margin: 10rem 0;
+  margin: 5rem 0 10rem 0;
   min-height: calc(100vh - 10rem - 40rem);
   .group-container {
     max-width: var(--container-x);
@@ -13,6 +13,7 @@ export const ProductGroup = styled.div`
 
   .sidebar-container {
     grid-column: 1 / span 1;
+    margin-right: 8rem;
   }
 `;
 
@@ -59,7 +60,9 @@ export const ProductMain = styled.div`
       height: 100%;
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
-      gap: 3rem;
+      justify-items: flex-start;
+      column-gap: 3rem;
+      row-gap: 10rem;
     }
 
     .not-found {

@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   /* margin: 5rem 0; */
   height: 100%;
   width: 40rem;
-  padding: 0 3rem;
 
   /* background-color: var(--white); */
   /* transform: translateX(${({ filterState }) =>

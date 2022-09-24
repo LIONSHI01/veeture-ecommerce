@@ -48,7 +48,7 @@ export const AccountDetails = styled.div`
   min-height: 30rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin: 5rem 0;
+  margin: 10rem 0;
   padding: 0 10rem;
 
   h2 {

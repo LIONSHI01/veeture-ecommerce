@@ -8,13 +8,16 @@ export const Wrapper = styled.section`
     margin-bottom: var(--mg-m);
 
     h2 {
-      font-size: var(--fs-xl);
+      font-size: var(--fs-xxl);
       text-transform: uppercase;
       font-weight: 700;
-      line-height: 0;
+      line-height: 1;
+      font-family: var(--ff-display);
+      margin-bottom: var(--mg-s);
     }
     p {
       font-size: var(--fs);
+      color: var(--black-light-2);
     }
     span {
       margin-top: var(--mg-m);

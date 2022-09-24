@@ -67,6 +67,7 @@ export const Wrapper = styled.figure`
     font-size: var(--fs-x);
     font-weight: 600;
     text-transform: uppercase;
+    font-family: var(--ff-display);
   }
   .category {
     font-size: var(--fs);

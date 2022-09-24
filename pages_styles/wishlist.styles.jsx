@@ -26,6 +26,10 @@ export const ProductGroup = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
+
+  .heading {
+    grid-column: 1/-1;
+  }
 `;
 
 export const ProductMain = styled.div`

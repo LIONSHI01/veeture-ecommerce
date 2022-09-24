@@ -14,6 +14,7 @@ const Wrapper = styled.section`
       font-size: var(--fs-xl);
       font-weight: 500;
       text-transform: uppercase;
+      margin-bottom: var(--mg-m);
     }
   }
 

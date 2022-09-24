@@ -21,9 +21,10 @@ const SectionWrapper = styled.section`
     font-size: var(--fs-xxl);
     letter-spacing: -1px;
     margin-bottom: var(--mg-xl);
-    padding-bottom: 2rem;
+    padding-bottom: 1rem;
     border-bottom: 1px solid var(--black-light-3);
     font-weight: 600;
+    font-family: var(--ff-display);
   }
   .card-container {
     display: grid;

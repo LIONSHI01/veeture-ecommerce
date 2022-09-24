@@ -14,7 +14,7 @@ import SizesContainer from "../Sizes";
 import { selectCartItems } from "../../../store/cart/cart.selector";
 
 const DetailSection = ({ product }) => {
-  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedSize, setSelectedSize] = useState(null);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
   const { price, title, sizes } = product;
@@ -46,7 +46,7 @@ const DetailSection = ({ product }) => {
         bgType="solid"
         onClick={addCartHandler}
       >
-        Add to cart
+        {selectedSize ? "Add to Cart" : "Select Size"}
       </Button>
 
       <ul className="purchase-terms">

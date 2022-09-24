@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import Link from "next/link";
 import { selectWishlist } from "../store/user/user.selector";
 import { selectFilteredProducts } from "../store/product/product.selector";
 import { setALLProducts } from "../store/product/product.actions";
 import { client } from "../lib/sanity-client.utils";
 import ProductCard from "../components/Product-Card";
 import FilterSidebar from "../components/Sidebar/Filter-Sidebar";
+import HeaderBar from "../components/HeaderBar";
 import { combinLikeList } from "../lib/combineLikeList.utils";
-
 import { ProductGroup, ProductMain } from "../pages_styles/products.styles";
 
 const ProductsPage = ({ products }) => {
@@ -27,6 +27,7 @@ const ProductsPage = ({ products }) => {
   return (
     <ProductGroup>
       <div className="group-container">
+        <HeaderBar heading="All Products" type="products" />
         <div className="sidebar-container">
           <FilterSidebar />
         </div>
