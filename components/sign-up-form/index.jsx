@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { signIn } from "next-auth/react";
 
 import Button from "../Button";
 import FormInput from "../form-input";
-
 import { SignUpContainer } from "./index.styles";
 import { register } from "../../lib/authRequest";
 
@@ -14,12 +14,12 @@ const defaultFormFields = {
   confirmPassword: "",
 };
 
-const SignUpForm = () => {
-  // Moniter the sum state of signup form
+const SignUpForm = ({ setSignup }) => {
+  // STATE MANAGEMENT
   const [formFields, setFormFields] = useState(defaultFormFields);
-
   const { name, email, password, confirmPassword } = formFields;
 
+  // HANDLERS
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormFields({ ...formFields, [name]: value });
@@ -41,19 +41,17 @@ const SignUpForm = () => {
 
     // 2) create userDoc in MongoDB
     const res = await register(formFields);
-    console.log(res);
 
     if (res.status !== 201) {
       toast.error(`${res.message}`);
-    }
-    if (res.status == 201) toast.success(`${res.message}`);
+    } else if (res.status == 201) toast.success(`${res.message}`);
 
     resetFormFields();
   };
 
   return (
     <SignUpContainer>
-      <h2>Dont have an account?</h2>
+      <h2>Create your account</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
@@ -93,10 +91,18 @@ const SignUpForm = () => {
           name="confirmPassword"
           minLength="6"
         />
-        <Button onClick={handleSubmit} width="50%" height="5rem" bgType="solid">
+        <Button
+          onClick={handleSubmit}
+          width="100%"
+          height="5rem"
+          bgType="solid"
+        >
           Sign Up
         </Button>
       </form>
+      <button className="switch-btn" onClick={setSignup}>
+        Already have an account?
+      </button>
     </SignUpContainer>
   );
 };
