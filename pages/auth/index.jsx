@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { useSession } from "next-auth/react";
-import Router from "next/router";
 import { authOptions } from "../api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
 
@@ -23,10 +21,6 @@ const SectionContainer = styled.div`
 
 const AuthPage = () => {
   // CONFIGURATION
-  const { status } = useSession();
-
-  // Redirect user to account page if already signin
-  if (status === "authenticated") Router.replace("/account");
 
   return (
     <Wrapper>

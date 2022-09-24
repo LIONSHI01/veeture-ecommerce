@@ -33,16 +33,22 @@ const SignUpForm = () => {
     event.preventDefault();
     // 1) confirm password , confirmPassword match
     if (password !== confirmPassword) {
-      toast.alert(
-        "password and confirm password are not match,Please try again!"
+      toast.error(
+        "password and confirm password are not match, Please try again!"
       );
       return;
     }
 
     // 2) create userDoc in MongoDB
-    await register(formFields);
-    resetFormFields;
-    // if (res.response.status !== 201) toast.error(res.response.data.message);
+    const res = await register(formFields);
+    console.log(res);
+
+    if (res.status !== 201) {
+      toast.error(`${res.message}`);
+    }
+    if (res.status == 201) toast.success(`${res.message}`);
+
+    resetFormFields();
   };
 
   return (
