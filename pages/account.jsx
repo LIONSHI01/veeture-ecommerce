@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Router from "next/router";
+import { authOptions } from "./api/auth/[...nextauth]";
+import { unstable_getServerSession } from "next-auth/next";
 import { useDispatch } from "react-redux";
-import { useSession } from "next-auth/react";
+import { getSession } from "next-auth/react";
 import { toast } from "react-toastify";
 
 import { updateAccount } from "../lib/authRequest";
@@ -26,15 +27,11 @@ const INITIAL_FORM_STATE = {
   postal: "",
 };
 
-const AccountPage = () => {
+const AccountPage = ({ sessionData }) => {
   // CONFIGURATION
   const dispatch = useDispatch();
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated: () => {
-      Router.push("/auth");
-    },
-  });
+
+  const { user } = sessionData;
 
   // STATE MANAGEMENT
   const [formFields, setFormFields] = useState(INITIAL_FORM_STATE);
@@ -76,7 +73,7 @@ const AccountPage = () => {
         <div className="heading">
           <h1>My account</h1>
           <p>
-            Welcome back,&nbsp; <span> {session?.user.name}</span>
+            Welcome back,&nbsp; <span> {user?.name}</span>
           </p>
         </div>
       </PageHeader>
@@ -133,6 +130,24 @@ const AccountPage = () => {
       </AccountDetails>
     </Wrapper>
   );
+};
+
+export const getServerSideProps = async ({ req, res }) => {
+  
+  const session = await unstable_getServerSession(req, res, authOptions);
+
+  
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/auth",
+        permanent: false,
+      },
+    };
+  }
+  const sessionData = JSON.parse(JSON.stringify(session));
+  
+  return { props: { sessionData } };
 };
 
 export default AccountPage;

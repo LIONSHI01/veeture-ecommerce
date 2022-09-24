@@ -61,18 +61,20 @@ export const Wrapper = styled.figure`
   figcaption {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
   }
   .name {
     font-size: var(--fs-x);
     font-weight: 600;
     text-transform: uppercase;
     font-family: var(--ff-display);
+    margin-bottom: var(--mg-s);
   }
   .category {
     font-size: var(--fs);
     text-transform: capitalize;
     font-weight: 500;
+    color: var(--black-light-2);
+    margin-bottom: var(--mg-xs);
   }
   .price {
     font-size: var(--fs-s);

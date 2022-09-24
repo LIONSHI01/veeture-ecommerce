@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { useSession } from "next-auth/react";
 import Router from "next/router";
+import { authOptions } from "../api/auth/[...nextauth]";
+import { unstable_getServerSession } from "next-auth/next";
 
 import SignInForm from "../../components/sign-in-form";
 import SignUpForm from "../../components/sign-up-form";
@@ -21,7 +23,7 @@ const SectionContainer = styled.div`
 
 const AuthPage = () => {
   // CONFIGURATION
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   // Redirect user to account page if already signin
   if (status === "authenticated") Router.replace("/account");
@@ -34,6 +36,20 @@ const AuthPage = () => {
       </SectionContainer>
     </Wrapper>
   );
+};
+
+export const getServerSideProps = async ({ req, res }) => {
+  const session = await unstable_getServerSession(req, res, authOptions);
+
+  if (session) {
+    return {
+      redirect: {
+        destination: "/account",
+        permanent: false,
+      },
+    };
+  }
+  return { props: { session } };
 };
 
 export default AuthPage;
