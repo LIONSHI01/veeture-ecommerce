@@ -19,6 +19,22 @@ const handler = async (req, res) => {
       return;
     }
 
+    if (email.length === 0 || password.length === 0) {
+      res.status(401).json({
+        status: "failed",
+        message: "Email and Password are required, please try again.",
+      });
+      return;
+    }
+    
+    if (password.length < 7) {
+      res.status(401).json({
+        status: "failed",
+        message: "Password length should be more than 6 characters.",
+      });
+      return;
+    }
+
     const hashedPassword = await hashPassword(password);
     const newUser = await User.create({
       name,

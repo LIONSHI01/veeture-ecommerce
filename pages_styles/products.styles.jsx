@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "./device";
 
 export const ProductGroup = styled.div`
   margin: 5rem 0 10rem 0;
@@ -14,6 +15,25 @@ export const ProductGroup = styled.div`
   .sidebar-container {
     grid-column: 1 / span 1;
     margin-right: 8rem;
+  }
+
+  .filter-btn {
+    /* display: none; */
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    span {
+      font-size: var(--fs);
+    }
+
+    @media ${device.tablet} {
+      display: flex;
+    }
+  }
+
+  .button-cion {
+    height: 2rem;
+    width: 2rem;
   }
 `;
 

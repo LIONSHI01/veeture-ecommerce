@@ -9,12 +9,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
   transition: all 0.3s;
-
-  /* width: 100%;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 1000; */
+  padding: 0 5rem;
 
   ul {
     list-style: none;

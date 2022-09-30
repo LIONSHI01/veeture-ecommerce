@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../pages_styles/device";
 
 export const StyledFeature = styled.section`
   margin: 10rem 0;
@@ -7,6 +8,8 @@ export const StyledFeature = styled.section`
     font-size: var(--fs-xxl);
     text-transform: uppercase;
     letter-spacing: -1px;
+    margin-bottom: var(--mg-s);
+    font-family: var(--ff-display);
   }
   .feature-container {
     max-width: var(--container);
@@ -15,10 +18,13 @@ export const StyledFeature = styled.section`
   }
 
   .feature-images {
-    /* width: 100%; */
     display: flex;
     justify-content: center;
     gap: 5rem;
+
+    @media ${device.mobileL} {
+      flex-direction: column;
+    }
   }
 
   .card {

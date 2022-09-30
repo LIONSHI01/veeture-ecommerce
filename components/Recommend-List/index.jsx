@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { device } from "../../pages_styles/device";
 import ProductCard from "../Product-Card";
 
 const Wrapper = styled.section`
@@ -9,6 +10,13 @@ const Wrapper = styled.section`
   .section-container {
     max-width: var(--container);
     margin: 0 auto;
+    padding: 0 14px;
+
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
     h2 {
       font-size: var(--fs-xl);
@@ -22,6 +30,13 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(35rem, max-content));
     justify-content: space-between;
+
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 3rem;
+    }
   }
 `;
 

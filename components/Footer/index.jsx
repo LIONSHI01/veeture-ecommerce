@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { device } from "../../pages_styles/device";
 
 import { GrFacebookOption } from "react-icons/gr";
 import { AiFillInstagram, AiOutlineTwitter } from "react-icons/ai";
@@ -8,7 +9,7 @@ import { FaPinterestP } from "react-icons/fa";
 import { SiMinutemailer } from "react-icons/si";
 
 const StyledFooter = styled.footer`
-  height: 30rem;
+  min-height: 30rem;
   background-color: var(--bg);
   color: var(--white);
 
@@ -21,6 +22,12 @@ const StyledFooter = styled.footer`
 
     display: grid;
     grid-template-columns: 2fr 1fr 1fr;
+
+    @media ${device.tablet} {
+      grid-template-columns: 1fr;
+      align-items: flex-start;
+      row-gap: 2rem;
+    }
   }
 
   .logo-container {
@@ -47,23 +54,33 @@ const StyledFooter = styled.footer`
       color: var(--black-light-3);
     }
   }
+`;
 
-  .social-col {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
-    gap: 1rem;
-  }
+const SocialCol = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 1rem;
+  /* background-color: var(--bg); */
 
   .subscribe {
     width: 100%;
     margin-bottom: var(--mg-m);
+
+    @media ${device.tablet} {
+      width: 30rem;
+      margin-bottom: var(--mg-s);
+    }
 
     p {
       display: block;
       font-size: var(--fs-x);
       text-transform: capitalize;
       margin-bottom: var(--mg-m);
+
+      @media ${device.tablet} {
+        margin-bottom: var(--mg-s);
+      }
     }
 
     input {
@@ -74,6 +91,11 @@ const StyledFooter = styled.footer`
       border: none;
       font-size: var(--fs);
 
+      @media ${device.tablet} {
+        width: 30rem;
+        height: unset;
+      }
+
       &:focus {
         outline: none;
       }
@@ -83,8 +105,6 @@ const StyledFooter = styled.footer`
   .input-box {
     display: flex;
     align-items: center;
-
-    width: 100%;
     background-color: var(--white);
   }
 
@@ -160,7 +180,7 @@ const Footer = () => {
             </Link>
           </li>
         </ul>
-        <div className="social-col">
+        <SocialCol>
           <div className="subscribe">
             <p>Subscribe to our news</p>
             <div className="input-box">
@@ -200,7 +220,7 @@ const Footer = () => {
               </Link>
             </li>
           </ul>
-        </div>
+        </SocialCol>
       </div>
     </StyledFooter>
   );

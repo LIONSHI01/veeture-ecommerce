@@ -51,7 +51,15 @@ const ErrorPage = () => {
         </div>
       </LinkSection>
       <ImageSection>
-        <Image src={ErrorImage} alt="404" />
+        <div className="image-container">
+          <Image
+            src={ErrorImage}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="top"
+            alt="404"
+          />
+        </div>
       </ImageSection>
     </PageWrapper>
   );

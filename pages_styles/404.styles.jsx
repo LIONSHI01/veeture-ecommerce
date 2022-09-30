@@ -1,20 +1,27 @@
 import styled from "styled-components";
+import { device } from "./device";
 
 export const PageWrapper = styled.main`
   min-height: calc(100vh - 50rem);
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(50rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
 `;
 
 export const LinkSection = styled.section`
   display: grid;
   align-items: center;
-  padding: 0 10rem;
+  padding: 5rem 10rem;
+
+  @media ${device.mobileL} {
+    padding: 5rem 3rem;
+  }
+
   .title {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    margin-bottom: var(--mg-x);
 
     & > :last-child {
       align-self: self-start;
@@ -64,5 +71,20 @@ export const LinkSection = styled.section`
   }
 `;
 export const ImageSection = styled.section`
-  line-height: 0;
+  height: 100%;
+  width: 100%;
+  position: relative;
+
+  @media ${device.laptop} {
+    display: none;
+  }
+
+  .image-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 0;
+    height: 100%;
+    width: 100%;
+  }
 `;

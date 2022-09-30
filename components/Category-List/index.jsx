@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { device } from "../../pages_styles/device";
 
 import Button from "../Button";
 
@@ -8,6 +9,7 @@ import CategoryItem from "../Category-Item";
 
 const Wrapper = styled.section`
   margin-bottom: 5rem;
+  padding: 0 14px;
 
   .section-container {
     max-width: var(--container);
@@ -18,6 +20,13 @@ const Wrapper = styled.section`
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
     gap: 1rem;
+
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
   }
 
   .heading {
@@ -25,6 +34,11 @@ const Wrapper = styled.section`
     align-items: center;
     justify-content: space-between;
     margin-bottom: var(--mg-s);
+
+    @media ${device.tablet} {
+      margin-bottom: var(--mg-x);
+    }
+
     h2 {
       font-size: var(--fs-xl);
       font-weight: 500;

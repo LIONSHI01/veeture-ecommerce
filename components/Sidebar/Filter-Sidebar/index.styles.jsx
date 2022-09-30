@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../pages_styles/device";
 
 export const Wrapper = styled.div`
   /* position: fixed; */

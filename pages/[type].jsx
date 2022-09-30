@@ -10,7 +10,7 @@ const Wrapper = styled.div`
   & .heading-container {
     max-width: var(--container);
     margin: 0 auto;
-    padding-top: 3rem;
+    padding: 3rem 14px 0 14px;
   }
 `;
 

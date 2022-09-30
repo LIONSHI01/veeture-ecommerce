@@ -19,7 +19,7 @@ const handler = async (req, res) => {
     if (!user) {
       return res
         .status(401)
-        .json({ message: "No User found with this user, please login again" });
+        .json({ message: "No User found with this user, please try again" });
     }
 
     res.status(200).json({ message: "success", data: { user } });

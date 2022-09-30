@@ -8,15 +8,16 @@ const StyledHeader = styled.section`
   height: 100%;
   width: 100%;
   z-index: -1;
+  position: relative;
 
   .hero-container {
     height: 100%;
     width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
-  }
-
-  .hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 `;
 
@@ -26,10 +27,12 @@ const Hero = () => {
       <div className="hero-container">
         <Image
           src={HeroImg}
-          width={6000}
-          height={4000}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="top"
+          // width={6000}
+          // height={4000}
           alt="trendy picture"
-          className="hero-image"
         />
       </div>
     </StyledHeader>

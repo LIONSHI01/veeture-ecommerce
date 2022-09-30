@@ -3,7 +3,7 @@ import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
-import { register } from "../lib/authRequest";
+import { register, registerAndLogin } from "../lib/authRequest";
 import AuthImage from "../assets/404.jpg";
 import FormInput from "../components/form-input";
 import {
@@ -58,7 +58,7 @@ const AuthPage = () => {
       }
 
       // 2) create userDoc in MongoDB
-      const res = await register(formFields);
+      const res = await registerAndLogin(formFields, signIn, router);
 
       if (res.status !== 201) {
         toast.error(`${res.message}`);

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { FiFilter } from "react-icons/fi";
 import { selectWishlist } from "../store/user/user.selector";
 import { selectFilteredProducts } from "../store/product/product.selector";
 import { setALLProducts } from "../store/product/product.actions";
@@ -29,8 +29,13 @@ const ProductsPage = ({ products }) => {
     <ProductGroup>
       <div className="group-container">
         <HeaderBar heading="All Products" type="products" />
+
         <div className="sidebar-container">
-          <FilterSidebar />
+          {/* <FilterSidebar /> */}
+          <div className="filter-btn">
+            <FiFilter className="button-cion" />
+            <span>FilterBar</span>
+          </div>
         </div>
         <ProductMain>
           <div className="section-container">
