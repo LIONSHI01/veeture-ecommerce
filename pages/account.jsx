@@ -17,7 +17,7 @@ import {
   OrderDetails,
 } from "../pages_styles/account.styles";
 
-import { Button, FormInput } from "../components";
+import { Button, FormInput, Meta } from "../components";
 
 const INITIAL_FORM_STATE = {
   streetAddress: "",
@@ -68,67 +68,70 @@ const AccountPage = ({ sessionData }) => {
   };
 
   return (
-    <Wrapper>
-      <PageHeader>
-        <div className="heading">
-          <h1>My account</h1>
-          <p>
-            Welcome back,&nbsp; <span> {user?.name}</span>
-          </p>
-        </div>
-      </PageHeader>
-      <AccountDetails>
-        <OrderDetails>
-          <h2>My Orders</h2>
-          <div className="orders">{/* Order items */}</div>
-          <div className="empty-orders">
-            <p>You have no order at the moment.</p>
+    <>
+      <Meta title="Account" />
+      <Wrapper>
+        <PageHeader>
+          <div className="heading">
+            <h1>My account</h1>
+            <p>
+              Welcome back,&nbsp; <span> {user?.name}</span>
+            </p>
           </div>
-        </OrderDetails>
-        <div className="address">
-          <AddressDetails>
-            <h2>My Address</h2>
-            <form onSubmit={onSubmtHandler}>
-              <FormInput
-                label="Street Address"
-                name="streetAddress"
-                value={streetAddress}
-                onChange={onChangeFormfields}
-              />
-              <FormInput
-                label="Street Address Line 2"
-                name="streetAddress2"
-                value={streetAddress2}
-                onChange={onChangeFormfields}
-              />
-              <div className="stateAndPostal">
+        </PageHeader>
+        <AccountDetails>
+          <OrderDetails>
+            <h2>My Orders</h2>
+            <div className="orders">{/* Order items */}</div>
+            <div className="empty-orders">
+              <p>You have no order at the moment.</p>
+            </div>
+          </OrderDetails>
+          <div className="address">
+            <AddressDetails>
+              <h2>My Address</h2>
+              <form onSubmit={onSubmtHandler}>
                 <FormInput
-                  label="State"
-                  name="state"
-                  value={state}
+                  label="Street Address"
+                  name="streetAddress"
+                  value={streetAddress}
                   onChange={onChangeFormfields}
                 />
                 <FormInput
-                  label="City"
-                  name="city"
-                  value={city}
+                  label="Street Address Line 2"
+                  name="streetAddress2"
+                  value={streetAddress2}
                   onChange={onChangeFormfields}
                 />
-              </div>
-              <FormInput
-                label="Postal"
-                name="postal"
-                value={postal}
-                onChange={onChangeFormfields}
-              />
-              <Button bgType="solid" width="25rem" height="5rem">
-                Update address
-              </Button>
-            </form>
-          </AddressDetails>
-        </div>
-      </AccountDetails>
-    </Wrapper>
+                <div className="stateAndPostal">
+                  <FormInput
+                    label="State"
+                    name="state"
+                    value={state}
+                    onChange={onChangeFormfields}
+                  />
+                  <FormInput
+                    label="City"
+                    name="city"
+                    value={city}
+                    onChange={onChangeFormfields}
+                  />
+                </div>
+                <FormInput
+                  label="Postal"
+                  name="postal"
+                  value={postal}
+                  onChange={onChangeFormfields}
+                />
+                <Button bgType="solid" width="25rem" height="5rem">
+                  Update address
+                </Button>
+              </form>
+            </AddressDetails>
+          </div>
+        </AccountDetails>
+      </Wrapper>
+    </>
   );
 };
 

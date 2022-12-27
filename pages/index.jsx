@@ -1,11 +1,11 @@
 import React from "react";
 
-import FeatureSection from "../components/Feature";
-import Header from "../components/Header";
+import { Header, Meta, FeatureSection } from "../components";
 
 const Home = () => {
   return (
     <>
+      <Meta title="Home" />
       <Header />
       <main>
         <FeatureSection />

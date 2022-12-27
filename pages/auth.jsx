@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import { register, registerAndLogin } from "../lib/authRequest";
 import AuthImage from "../assets/404.jpg";
 
-import { FormInput, Button } from "../components";
+import { FormInput, Button, Meta } from "../components";
 
 import {
   PageContainer,
@@ -83,75 +83,77 @@ const AuthPage = () => {
   };
 
   return (
-    <PageContainer>
-      <ImageSection>
-        <Image
-          src={AuthImage}
-          layout="fill"
-          objectFit="cover"
-          objectPosition="center"
-          alt="veeture image"
-        />
-      </ImageSection>
-      <FormSection>
-        <FormContainer>
-          <h2>{isSignup ? "Create your account" : "Sign in your account"}</h2>
-          <span>
-            {isSignup
-              ? "Sign up with email and password"
-              : "Sign in with email and password"}
-          </span>
-          <form onSubmit={handleSubmit}>
-            {isSignup && (
+    <>
+      <Meta title="Authentication" />
+      <PageContainer>
+        <ImageSection>
+          <Image
+            src={AuthImage}
+            layout="fill"
+            objectFit="cover"
+            objectPosition="center"
+            alt="veeture image"
+          />
+        </ImageSection>
+        <FormSection>
+          <FormContainer>
+            <h2>{isSignup ? "Create your account" : "Sign in your account"}</h2>
+            <span>
+              {isSignup
+                ? "Sign up with email and password"
+                : "Sign in with email and password"}
+            </span>
+            <form onSubmit={handleSubmit}>
+              {isSignup && (
+                <FormInput
+                  label="Display Name"
+                  type="text"
+                  required
+                  onChange={handleChange}
+                  value={name}
+                  name="name"
+                />
+              )}
+
               <FormInput
-                label="Display Name"
-                type="text"
+                label="Email"
+                type="email"
                 required
                 onChange={handleChange}
-                value={name}
-                name="name"
+                value={email}
+                name="email"
               />
-            )}
 
-            <FormInput
-              label="Email"
-              type="email"
-              required
-              onChange={handleChange}
-              value={email}
-              name="email"
-            />
-
-            <FormInput
-              label="Password"
-              type="password"
-              required
-              onChange={handleChange}
-              value={password}
-              name="password"
-              minLength="6"
-            />
-            {isSignup && (
               <FormInput
-                label="Confirm Password"
+                label="Password"
                 type="password"
                 required
                 onChange={handleChange}
-                value={confirmPassword}
-                name="confirmPassword"
+                value={password}
+                name="password"
                 minLength="6"
               />
-            )}
-            <div className="button-group">
-              <Button
-                onClick={handleSubmit}
-                width="100%"
-                height="5rem"
-                bgType="solid"
-              >
-                {isSignup ? "Sign Up" : "Sign in"}
-              </Button>
-              {/* <Button
+              {isSignup && (
+                <FormInput
+                  label="Confirm Password"
+                  type="password"
+                  required
+                  onChange={handleChange}
+                  value={confirmPassword}
+                  name="confirmPassword"
+                  minLength="6"
+                />
+              )}
+              <div className="button-group">
+                <Button
+                  onClick={handleSubmit}
+                  width="100%"
+                  height="5rem"
+                  bgType="solid"
+                >
+                  {isSignup ? "Sign Up" : "Sign in"}
+                </Button>
+                {/* <Button
                 onClick={handleSubmit}
                 width="100%"
                 height="5rem"
@@ -159,14 +161,15 @@ const AuthPage = () => {
               >
                 Sign in with Google
               </Button> */}
-            </div>
-          </form>
-          <button className="switch-btn" onClick={switchMode}>
-            {isSignup ? "Already have an account ?" : "Create an account"}
-          </button>
-        </FormContainer>
-      </FormSection>
-    </PageContainer>
+              </div>
+            </form>
+            <button className="switch-btn" onClick={switchMode}>
+              {isSignup ? "Already have an account ?" : "Create an account"}
+            </button>
+          </FormContainer>
+        </FormSection>
+      </PageContainer>
+    </>
   );
 };
 

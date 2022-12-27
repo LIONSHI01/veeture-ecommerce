@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import Hero from "../Hero";
+
+import { Hero } from "../index";
 
 const StyledHeader = styled.header`
   height: 100vh;

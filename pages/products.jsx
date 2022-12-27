@@ -13,6 +13,7 @@ import {
   HeaderBar,
   FilterSidebar,
   DisplayList,
+  Meta,
 } from "../components";
 import {
   ProductGroup,
@@ -36,6 +37,7 @@ const ProductsPage = ({ products }) => {
 
   return (
     <>
+      <Meta title="All Products" keywords="products, shoes, boots" />
       <ProductGroup>
         <MasterContainer>
           <div className="group-container">
