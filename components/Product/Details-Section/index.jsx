@@ -17,7 +17,7 @@ const DetailSection = ({ product }) => {
   const [selectedSize, setSelectedSize] = useState(null);
   const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
-  const { price, title, sizes } = product;
+  const { price, title, sizes, category } = product;
 
   const deliveryDate = buildTime();
 
@@ -35,7 +35,7 @@ const DetailSection = ({ product }) => {
     <Wrapper>
       <div className="product-infos">
         <h2>{title}</h2>
-        <p>Black Ankle Boots</p>
+        <p>{category?.replace("-", " ")}</p>
         <span>{`$ ${price}`}</span>
       </div>
       <SizesContainer sizes={sizes} setSize={setSelectedSize} />

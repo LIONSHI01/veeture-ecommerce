@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { signIn } from "next-auth/react";
-// import Router from "next/router";
 
 import { SignInContainer, ButtonsContainer } from "./index.styles";
-import FormInput from "../form-input";
-import Button from "../Button";
+
+import { FormInput, Button } from "../index";
 
 const defaultFormFields = {
   email: "",

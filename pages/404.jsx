@@ -1,8 +1,9 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import ErrorImage from "../assets/404.jpg";
-import LinkButton from "../components/LinkButton";
+
+import { ErrorImage } from "../assets/imagesExport";
+import { LinkButton } from "../components";
 
 import {
   PageWrapper,

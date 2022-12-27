@@ -1,26 +1,46 @@
 import styled from "styled-components";
-export const PageContainer = styled.div`
-  min-height: calc(100vh - 10rem - 40rem);
+import { device } from "../styles/devices";
 
+export const PageContainer = styled.div`
+  height: 80vh;
   display: grid;
+  gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
+
+  @media ${device.tablet} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 export const FormSection = styled.div`
-  margin: 0 auto;
+  margin: auto;
   padding: 0 14px;
-  display: grid;
-  align-items: center;
+  display: flex;
+  flex-direction: column;
+  width: 45rem;
+
+  @media ${device.tablet} {
+    width: 100%;
+  }
 `;
 
 export const ImageSection = styled.div`
-  line-height: 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  @media ${device.tablet} {
+    height: 40%;
+  }
 `;
 
 export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
-  width: 450px;
+  /* max-width: 60rem; */
+  width: 100%;
+  margin: 5rem 0;
 
   .switch-btn {
     position: relative;
@@ -61,7 +81,7 @@ export const FormContainer = styled.div`
   }
 
   form {
-    margin-bottom: var(--mg-m);
+    margin-bottom: var(--mg-s);
   }
 
   h2 {

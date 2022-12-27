@@ -2,10 +2,11 @@ import React from "react";
 
 import styled from "styled-components";
 
-import ProductCard from "../../Product-Card";
+// import ProductCard from "../../Product-Card";
+import { DisplayList, ProductCard } from "../../index";
 
 const SectionWrapper = styled.section`
-  grid-column: 1/-1;
+  width: 100%;
   margin: 5rem 0;
   .container {
     max-width: var(--container);
@@ -14,7 +15,6 @@ const SectionWrapper = styled.section`
     padding: 14px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
   }
   .heading {
     text-transform: capitalize;
@@ -35,16 +35,12 @@ const SectionWrapper = styled.section`
 `;
 
 const RecentViewSection = ({ recentViews }) => {
-  const displayRecentViews = recentViews?.slice(1, 4);
+  const displayRecentViews = recentViews?.slice(1, 5);
   return (
     <SectionWrapper>
       <div className="container">
         <h2 className="heading">recent views</h2>
-        <div className="card-container">
-          {displayRecentViews.map((item) => (
-            <ProductCard key={item._id} product={item} />
-          ))}
-        </div>
+        <DisplayList products={displayRecentViews} />
       </div>
     </SectionWrapper>
   );

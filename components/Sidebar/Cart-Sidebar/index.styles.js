@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   .cartbar {
+    max-width: 80%;
     width: 50rem;
     height: 100vh;
     position: fixed;

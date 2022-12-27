@@ -14,7 +14,7 @@ const FeatureSection = () => {
   return (
     <StyledFeature>
       <div className="feature-container">
-        <h2>Summer 2022</h2>
+        <h2>Spring 2023</h2>
         <div className="feature-images">
           <Link href="/men">
             <a>
@@ -51,7 +51,7 @@ const FeatureSection = () => {
                   src={FeaturePopImage}
                   alt="Featured Popular"
                 />
-                <span>Popular</span>
+                <span>All</span>
               </figure>
             </a>
           </Link>

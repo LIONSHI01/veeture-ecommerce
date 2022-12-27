@@ -1,26 +1,53 @@
 import styled from "styled-components";
+import { device } from "../styles/devices";
 
 export const ProductDetails = styled.div`
   margin: 5rem 0;
 
-  .product-details-container {
+  @media ${device.tablet} {
+    margin: 2.5rem 0;
+  }
+
+  .master-container {
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 14px;
+  }
+
+  .product-details-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
+
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  .recent-views-container {
+    grid-column: 1 / -1;
+    display: flex;
   }
 
   .image-section {
     grid-column: 1 / span 2;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(45rem, max-content));
+    grid-template-columns: repeat(auto-fit, minmax(43rem, 1fr));
+    justify-items: center;
     gap: 2rem;
   }
 
-  .details-section {
-    grid-column: 3 / -1;
+  .image-container {
+    position: relative;
+    width: 43rem;
+    height: 50rem;
+  }
+
+  .details-container {
+    @media ${device.tablet} {
+      margin-top: var(--mg-m);
+    }
   }
 `;
 export const CategoryDetails = styled.div`

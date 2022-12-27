@@ -63,7 +63,7 @@ export const SocialCol = styled.div`
 
   .subscribe {
     width: 100%;
-    margin-bottom: var(--mg-m);
+    /* margin-bottom: var(--mg-s); */
 
     @media ${device.tablet} {
       width: 30rem;
@@ -104,6 +104,7 @@ export const SocialCol = styled.div`
     display: flex;
     align-items: center;
     background-color: var(--white);
+    border-radius: var(--br-m);
   }
 
   .subs-icon-box {

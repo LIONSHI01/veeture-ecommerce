@@ -3,18 +3,20 @@ import { signIn } from "next-auth/react";
 import { toast } from "react-toastify";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 import { register, registerAndLogin } from "../lib/authRequest";
 import AuthImage from "../assets/404.jpg";
-import FormInput from "../components/form-input";
+
+import { FormInput, Button } from "../components";
+
 import {
   PageContainer,
   ImageSection,
   FormSection,
   FormContainer,
 } from "../pages_styles/auth.styles";
-import Button from "../components/Button";
-import Image from "next/image";
-import { useRouter } from "next/router";
 
 const defaultFormFields = {
   name: "",
@@ -67,7 +69,6 @@ const AuthPage = () => {
       const res = await signIn("credentials", {
         email,
         password,
-        // redirect: "/",
         redirect: false,
       });
       if (!res.ok) {
@@ -76,7 +77,6 @@ const AuthPage = () => {
         toast.success("Sign in successfully!");
         router.replace("/");
       }
-      // console.log(res);
     }
 
     resetFormFields();
@@ -85,7 +85,13 @@ const AuthPage = () => {
   return (
     <PageContainer>
       <ImageSection>
-        <Image src={AuthImage} alt="veeture image" />
+        <Image
+          src={AuthImage}
+          layout="fill"
+          objectFit="cover"
+          objectPosition="center"
+          alt="veeture image"
+        />
       </ImageSection>
       <FormSection>
         <FormContainer>
@@ -145,14 +151,14 @@ const AuthPage = () => {
               >
                 {isSignup ? "Sign Up" : "Sign in"}
               </Button>
-              <Button
+              {/* <Button
                 onClick={handleSubmit}
                 width="100%"
                 height="5rem"
                 bgType="outline"
               >
                 Sign in with Google
-              </Button>
+              </Button> */}
             </div>
           </form>
           <button className="switch-btn" onClick={switchMode}>

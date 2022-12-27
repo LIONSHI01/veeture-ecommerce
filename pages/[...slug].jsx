@@ -1,19 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
 import Image from "next/image";
-import Link from "next/link";
+import { useSelector } from "react-redux";
 
 import { selectRecentViews } from "../store/user/user.selector";
 import { client, urlFor } from "../lib/sanity-client.utils";
-import DetailSection from "../components/Product/Details-Section";
-import ProductCard from "../components/Product-Card";
-import HeaderBar from "../components/HeaderBar";
-import RecentViewSection from "../components/Product/Recent-View";
 
+import {
+  DetailSection,
+  HeaderBar,
+  RecentViewSection,
+  DisplayList,
+} from "../components";
 import {
   ProductDetails,
   CategoryDetails,
-} from "../pages_styles/product-list.styles";
+} from "../pages_styles/product-details-page.styles";
 
 const ProductDetailsPage = ({
   product,
@@ -34,32 +35,39 @@ const ProductDetailsPage = ({
     const { images } = product;
     const imageUrls = images?.map((image) => urlFor(image));
 
-    console.log(productSlug);
     return (
       <ProductDetails>
-        <div className="product-details-container">
+        <div className="master-container">
           <HeaderBar
             heading="Product Details"
             type={type}
             category={category}
             productSlug={productSlug}
           />
-          <section className="image-section">
-            {imageUrls.map((url, i) => (
-              <Image
-                key={i}
-                src={url}
-                width={450}
-                height={600}
-                objectFit="cover"
-                alt="PRODUCT IMAGE"
-              />
-            ))}
-          </section>
-          <DetailSection product={product} />
-          {recentViews.length > 1 && (
-            <RecentViewSection recentViews={recentViews} />
-          )}
+          <div className="product-details-container">
+            <section className="image-section">
+              {imageUrls.map((url, i) => (
+                <div className="image-container" key={i}>
+                  <Image
+                    src={url}
+                    objectFit="cover"
+                    layout="fill"
+                    objectPosition="center"
+                    alt="product"
+                  />
+                </div>
+              ))}
+            </section>
+            <div className="details-container">
+              <DetailSection product={product} />
+            </div>
+          </div>
+          <div className="recent-views-container">
+            {recentViews.length > 0 && (
+              <RecentViewSection recentViews={recentViews} />
+            )}
+            {/* <DisplayList products={recentViews} /> */}
+          </div>
         </div>
       </ProductDetails>
     );
@@ -75,11 +83,7 @@ const ProductDetailsPage = ({
             type={type}
             category={category}
           />
-          <div className="product-details-container">
-            {categoryProductArr.map((product) => (
-              <ProductCard key={product._id} product={product} />
-            ))}
-          </div>
+          <DisplayList products={categoryProductArr} />
         </div>
       </CategoryDetails>
     );

@@ -4,17 +4,19 @@ import { device } from "../../styles/devices";
 export const ListContainer = styled.div`
   width: 100%;
   height: 100%;
+
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
-  column-gap: 3rem;
-  row-gap: 5rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
   justify-items: center;
 
-  @media ${device.mobileL} {
+  column-gap: 3rem;
+  row-gap: 5rem;
+
+  /* @media ${device.mobileL} {
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+  } */
 
   .not-found {
     display: flex;

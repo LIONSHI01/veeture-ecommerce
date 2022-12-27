@@ -46,10 +46,12 @@ export const PageHeader = styled.header`
 
 export const AccountDetails = styled.div`
   min-height: 30rem;
+  max-width: var(--container);
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  margin: 10rem 0;
-  padding: 0 10rem;
+  grid-template-columns: repeat(auto-fit, minmax(30rem, auto));
+  gap: 5rem;
+  margin: 10rem auto;
+  padding: 0 14px;
 
   h2 {
     font-family: var(--ff-display);

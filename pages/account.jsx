@@ -2,14 +2,13 @@ import React, { useEffect, useState } from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
 import { useDispatch } from "react-redux";
-
 import { toast } from "react-toastify";
 
 import { updateAccount } from "../lib/authRequest";
 import { getUserProfile } from "../lib/authRequest";
 import { setUserProfile, setWishlist } from "../store/user/user.action";
 import { setCartList } from "../store/cart/cart.action";
-import Button from "../components/Button";
+
 import {
   Wrapper,
   PageHeader,
@@ -17,7 +16,8 @@ import {
   AddressDetails,
   OrderDetails,
 } from "../pages_styles/account.styles";
-import FormInput from "../components/form-input";
+
+import { Button, FormInput } from "../components";
 
 const INITIAL_FORM_STATE = {
   streetAddress: "",
@@ -133,10 +133,8 @@ const AccountPage = ({ sessionData }) => {
 };
 
 export const getServerSideProps = async ({ req, res }) => {
-  
   const session = await unstable_getServerSession(req, res, authOptions);
 
-  
   if (!session) {
     return {
       redirect: {
@@ -146,7 +144,7 @@ export const getServerSideProps = async ({ req, res }) => {
     };
   }
   const sessionData = JSON.parse(JSON.stringify(session));
-  
+
   return { props: { sessionData } };
 };
 

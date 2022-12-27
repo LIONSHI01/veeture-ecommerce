@@ -18,6 +18,7 @@ export const Wrapper = styled.section`
     p {
       font-size: var(--fs);
       color: var(--black-light-2);
+      text-transform: capitalize;
     }
     span {
       margin-top: var(--mg-m);

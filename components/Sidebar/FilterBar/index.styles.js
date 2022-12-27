@@ -66,6 +66,7 @@ export const Wrapper = styled.div`
 
   .input-box {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
   }
 

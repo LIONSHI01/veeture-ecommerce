@@ -47,17 +47,21 @@ const MobileSidebar = ({ showup, setShowup }) => {
         <div className="navbar__authentication">
           {status === "unauthenticated" || status === "loading" ? (
             <div className="auth-box">
-              <Link href="/auth/signin">
-                <a className="link">Sign In</a>
+              <Link href="/auth">
+                <a className="link" onClick={closeSidebarHandler}>
+                  Sign In
+                </a>
               </Link>
-              <Link href="/auth/register">
+              {/* <Link href="/auth">
                 <a className="link">Register</a>
-              </Link>
+              </Link> */}
             </div>
           ) : (
             <div className="accountBox">
               <Link href="/account">
-                <a className="link">Account</a>
+                <a className="link" onClick={closeSidebarHandler}>
+                  Account
+                </a>
               </Link>
               <a className="signout-btn" onClick={signOutHandler}>
                 Sign Out

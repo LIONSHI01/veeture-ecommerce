@@ -47,6 +47,7 @@ export const Input = styled.input`
 export const Group = styled.div`
   position: relative;
   margin: 20px 0;
+  width: 100%;
 
   input[type="password"] {
     letter-spacing: 0.3em;

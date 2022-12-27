@@ -8,7 +8,7 @@ import {
 export const navbarItems = [
   {
     title: "all",
-    url: "/all",
+    url: "/products",
   },
   {
     title: "men",
