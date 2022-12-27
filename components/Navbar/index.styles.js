@@ -1,18 +1,47 @@
 import styled from "styled-components";
+import { device } from "../../styles/devices";
 
 export const NavbarContainer = styled.nav`
-  height: 10rem;
-  /* background-color: var(--bg); */
+  display: flex;
+  align-items: center;
+
+  height: 8rem;
   background-color: var(--bg);
   color: var(--white);
   font-size: var(--fs);
-  display: flex;
-  align-items: center;
   transition: all 0.3s;
-  padding: 0 5rem;
+  padding: 0 3rem;
+
+  @media ${device.tablet} {
+    padding: 0 1rem;
+  }
 
   ul {
     list-style: none;
+  }
+
+  .navRight {
+    display: flex;
+    align-items: center;
+  }
+
+  .mobileSidebarBtn {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    @media ${device.tablet} {
+      display: flex;
+    }
+
+    svg {
+      color: var(--white);
+      height: 3rem;
+      width: 3rem;
+    }
   }
 
   .nav-container {
@@ -32,16 +61,20 @@ export const NavbarContainer = styled.nav`
       text-transform: uppercase;
       font-size: 5.4rem;
       letter-spacing: -1px;
+      font-family: "rubik vinyl";
     }
   }
 
   /* CATEGORIES */
-
   .categories {
     display: flex;
     gap: 2.5rem;
     font-size: var(--fs-x);
     font-weight: 600;
+
+    @media ${device.tablet} {
+      display: none;
+    }
 
     & > * {
       transition: all 0.3s;
@@ -56,15 +89,21 @@ export const NavbarContainer = styled.nav`
     }
   }
 
-  /* LINKS */
+  /* Auth Box */
 
-  .links {
+  .authBox {
     display: flex;
     align-items: center;
     gap: 3rem;
+    margin-left: auto;
+    margin-right: 3rem;
 
     & > * {
       cursor: pointer;
+    }
+
+    @media ${device.tablet} {
+      display: none;
     }
   }
 
@@ -129,11 +168,11 @@ export const NavbarContainer = styled.nav`
     }
   }
 
-  .wishlist {
+  .cart {
     position: relative;
   }
 
-  .cart {
+  .item {
     position: relative;
   }
 
@@ -152,10 +191,15 @@ export const NavbarContainer = styled.nav`
     color: var(--black);
     background-color: var(--white);
     border-radius: 50%;
+
+    @media ${device.tablet} {
+      top: -5px;
+      right: -10px;
+    }
   }
   .icon {
-    height: 3rem;
-    width: 3rem;
+    height: 3.5rem;
+    width: 3.5rem;
     z-index: 10;
 
     &.show {

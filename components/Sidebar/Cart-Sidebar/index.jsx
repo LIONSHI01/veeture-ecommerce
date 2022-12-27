@@ -14,8 +14,9 @@ import { BsBagPlus } from "react-icons/bs";
 import { setIsCartOpen } from "../../../store/cart/cart.action";
 import CartItem from "./Cart-Item";
 
-import Overlay from "../../Overlay";
+// import Overlay from "../../Overlay";
 import { Wrapper } from "./index.styles";
+import { Overlay } from "../../index";
 
 const CartBar = () => {
   const disptach = useDispatch();
@@ -66,7 +67,7 @@ const CartBar = () => {
           )}
         </div>
       </Wrapper>
-      <Overlay state={isCartOpen} onClick={closeCartHandler} />
+      <Overlay showup={isCartOpen} setShowup={closeCartHandler} />
     </>
   );
 };

@@ -8,13 +8,20 @@ export const StyledFeature = styled.section`
     font-size: var(--fs-xxl);
     text-transform: uppercase;
     letter-spacing: -1px;
-    margin-bottom: var(--mg-s);
+    margin-bottom: var(--mg-m);
     font-family: var(--ff-display);
   }
+
   .feature-container {
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 16px;
+
+    @media ${device.tablet} {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .feature-images {
@@ -22,8 +29,9 @@ export const StyledFeature = styled.section`
     justify-content: center;
     gap: 5rem;
 
-    @media ${device.mobileL} {
+    @media ${device.tablet} {
       flex-direction: column;
+      align-items: center;
     }
   }
 

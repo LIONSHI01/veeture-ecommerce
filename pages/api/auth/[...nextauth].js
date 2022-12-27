@@ -1,10 +1,9 @@
 import NextAuth from "next-auth";
-import GoogleProvider from "next-auth/providers/google";
 import CredentialsProvider from "next-auth/providers/credentials";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-
-import clientPromise from "../../../lib/connectDB";
-import connectMongoose from "../../../lib/connectMongo";
+// import GoogleProvider from "next-auth/providers/google";
+// import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
+// import clientPromise from "../../../lib/connectDB";
+// import connectMongoose from "../../../lib/connectMongo";
 import { connectMongo } from "../../../lib/connectMongoose";
 import User from "../../../models/userModel";
 import { verifyPassword } from "../../../lib/hashPassword";

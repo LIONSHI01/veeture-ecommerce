@@ -3,10 +3,11 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 
-import FeatureMen from "../../assets/feature/feature-men.jpg";
-import FeatureWomen from "../../assets/feature/feature-women.jpg";
-import FeaturePop from "../../assets/feature/feature-popular.jpg";
-
+import {
+  FeatureMenImage,
+  FeatureWomenImage,
+  FeaturePopImage,
+} from "../../assets/imagesExport";
 import { StyledFeature } from "./index.styles";
 
 const FeatureSection = () => {
@@ -21,7 +22,7 @@ const FeatureSection = () => {
                 <Image
                   width={600}
                   height={400}
-                  src={FeatureMen}
+                  src={FeatureMenImage}
                   alt="Featured Men"
                 />
                 <span>men</span>
@@ -34,7 +35,7 @@ const FeatureSection = () => {
                 <Image
                   width={600}
                   height={400}
-                  src={FeatureWomen}
+                  src={FeatureWomenImage}
                   alt="Featured Men"
                 />
                 <span>women</span>
@@ -47,7 +48,7 @@ const FeatureSection = () => {
                 <Image
                   width={600}
                   height={400}
-                  src={FeaturePop}
+                  src={FeaturePopImage}
                   alt="Featured Popular"
                 />
                 <span>Popular</span>

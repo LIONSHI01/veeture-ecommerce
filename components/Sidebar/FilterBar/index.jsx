@@ -3,11 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { setFilterConds } from "../../../store/product/product.actions";
 import { selectFilterConditions } from "../../../store/product/product.selector";
-import { AiOutlinePlus } from "react-icons/ai";
 
+import { AiOutlinePlus } from "../../ReactIcons";
 import { Wrapper } from "./index.styles";
-
-import Button from "../../Button";
+import { Button } from "../../index";
 
 const filterFormData = [
   {
@@ -40,7 +39,7 @@ const INITIAL_FORM_FIELD = {
   clothing: [],
 };
 
-const FilterSidebar = () => {
+const FilterBar = () => {
   const dispatch = useDispatch();
   const filterConds = useSelector(selectFilterConditions);
   const [selected, setSelected] = useState(null);
@@ -137,4 +136,4 @@ const FilterSidebar = () => {
   );
 };
 
-export default FilterSidebar;
+export default FilterBar;

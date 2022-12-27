@@ -4,6 +4,7 @@ import { device } from "./device";
 export const ProductGroup = styled.div`
   margin: 5rem 0 10rem 0;
   min-height: calc(100vh - 10rem - 40rem);
+
   .group-container {
     max-width: var(--container-x);
     margin: 0 auto;
@@ -11,10 +12,18 @@ export const ProductGroup = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
   }
-
+  .header-container {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+  }
   .sidebar-container {
     grid-column: 1 / span 1;
     margin-right: 8rem;
+
+    @media ${device.tablet} {
+      display: none;
+    }
   }
 
   .filter-btn {
@@ -22,6 +31,8 @@ export const ProductGroup = styled.div`
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    cursor: pointer;
+
     span {
       font-size: var(--fs);
     }
@@ -45,36 +56,8 @@ export const ProductMain = styled.div`
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr;
-
-    .filter-btn {
-      display: flex;
-      align-items: center;
-      justify-self: start;
-
-      gap: 1rem;
-      border: 1px solid var(--black-light-3);
-      padding: 1rem 1rem;
-      border-radius: var(--br-s);
-      background-color: var(--var);
-
-      margin-bottom: var(--mg-x);
-      cursor: pointer;
-      transition: all 0.3s;
-
-      &:hover {
-        background-color: var(--black-light-3);
-      }
-
-      span {
-        font-size: var(--fs-x);
-      }
-    }
-    .filter-icon {
-      width: 3rem;
-      height: 3rem;
-    }
+    /* display: grid;
+    grid-template-columns: 1fr; */
 
     .gallary {
       height: 100%;
@@ -100,4 +83,10 @@ export const ProductMain = styled.div`
       }
     }
   }
+`;
+
+export const MasterContainer = styled.div`
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 14px;
 `;

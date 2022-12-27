@@ -1,4 +1,4 @@
-import connectMongoose from "../../../lib/connectMongo";
+// import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
 import { hashPassword } from "../../../lib/hashPassword";
 import { connectMongo } from "../../../lib/connectMongoose";

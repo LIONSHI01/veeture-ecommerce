@@ -3,23 +3,27 @@ import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut, useSession } from "next-auth/react";
 import Router from "next/router";
-import { client } from "../../lib/sanity-client.utils";
 
+import { client } from "../../lib/sanity-client.utils";
 import {
   selectCartCount,
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
-
 import { selectWishlistCount } from "../../store/user/user.selector";
 import { setIsCartOpen } from "../../store/cart/cart.action";
 import { setSearchResults } from "../../store/product/product.actions";
-
-import { AiOutlineUser } from "react-icons/ai";
-import { FiSearch } from "react-icons/fi";
-import { BsHeart, BsHandbag } from "react-icons/bs";
-import { VscSignOut } from "react-icons/vsc";
 import buildSearchResults from "../../lib/buildSearchResults.utils";
 
+import {
+  GiHamburgerMenu,
+  BsHeart,
+  BsHandbag,
+  AiOutlineUser,
+  FiSearch,
+  VscSignOut,
+} from "../ReactIcons";
+import { navbarItems } from "../../assets/constants";
+import { MobileSidebar } from "../index";
 import { NavbarContainer } from "./index.styles";
 
 const Navbar = () => {
@@ -29,6 +33,7 @@ const Navbar = () => {
   // STATES MANAGEMENT
   const [openSearch, setOpenSearch] = useState(false);
   const [inputSearch, setInputSearch] = useState("");
+  const [openMobielSidebar, setOpenMobielSidebar] = useState(false);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
   // REDUX DATA
@@ -48,6 +53,10 @@ const Navbar = () => {
     Router.push(data.url);
   };
 
+  const onOpenMobileSidebarHandler = () => {
+    setOpenMobielSidebar((prev) => !prev);
+  };
+
   // Fetch Products with search keywords
   const onSubmitSearch = async (e) => {
     e.preventDefault();
@@ -61,34 +70,37 @@ const Navbar = () => {
   };
 
   return (
-    <NavbarContainer>
-      <div className="nav-container sticky">
-        <div className="logo-container">
-          <Link href="/">
-            <a>
-              <span>veeture</span>
-            </a>
-          </Link>
-        </div>
-        <ul className="categories">
-          <li>
-            <Link href="/men">
-              <a>men</a>
+    <>
+      <MobileSidebar
+        showup={openMobielSidebar}
+        setShowup={setOpenMobielSidebar}
+      />
+      <NavbarContainer>
+        <div className="nav-container sticky">
+          {/* Open Mobile sidebar */}
+          <button
+            className="mobileSidebarBtn"
+            onClick={onOpenMobileSidebarHandler}
+          >
+            <GiHamburgerMenu size={25} />
+          </button>
+          <div className="logo-container">
+            <Link href="/">
+              <a>
+                <span>vee</span>
+              </a>
             </Link>
-          </li>
-          <li>
-            <Link href="/women">
-              <a>women</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/products">
-              <a>All</a>
-            </Link>
-          </li>
-        </ul>
-        <ul className="links">
-          <li className={openSearch ? "searchbar show" : "searchbar"}>
+          </div>
+          <ul className="categories">
+            {navbarItems.map(({ title, url }) => (
+              <li key={title}>
+                <Link href={url}>
+                  <a>{title}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+          {/* <div className={openSearch ? "searchbar show" : "searchbar"}>
             <form onSubmit={onSubmitSearch}>
               <input
                 type="text"
@@ -101,35 +113,39 @@ const Navbar = () => {
               className={openSearch ? "search-icon show" : "search-icon"}
               onClick={toggleSearchHandler}
             />
-          </li>
-          <Link href="/account">
-            <a>
-              <li className="account">
-                <AiOutlineUser className="icon" />
-              </li>
-            </a>
-          </Link>
-          <Link href="/wishlist">
-            <a>
-              <li className="wishlist">
-                <BsHeart className="icon" />
-                <span className="wishNum">{wishlistCount}</span>
-              </li>
-            </a>
-          </Link>
+          </div> */}
+          <div className="navRight">
+            <ul className="authBox">
+              <Link href="/account">
+                <a>
+                  <li className="item">
+                    <AiOutlineUser className="icon" />
+                  </li>
+                </a>
+              </Link>
+              <Link href="/wishlist">
+                <a>
+                  <li className="item">
+                    <BsHeart className="icon" />
+                    <span className="wishNum">{wishlistCount}</span>
+                  </li>
+                </a>
+              </Link>
 
-          <li className="cart" onClick={cartOpenHandler}>
-            <BsHandbag className="icon" />
-            <span className="cartNum">{cartCount || 0}</span>
-          </li>
-          {session && (
-            <li className="signout" onClick={signOutHandler}>
-              <VscSignOut className="icon" />
-            </li>
-          )}
-        </ul>
-      </div>
-    </NavbarContainer>
+              {session && (
+                <li className="signout" onClick={signOutHandler}>
+                  <VscSignOut className="icon" />
+                </li>
+              )}
+            </ul>
+            <div className="cart" onClick={cartOpenHandler}>
+              <BsHandbag className="icon" />
+              <span className="cartNum">{cartCount || 0}</span>
+            </div>
+          </div>
+        </div>
+      </NavbarContainer>
+    </>
   );
 };
 

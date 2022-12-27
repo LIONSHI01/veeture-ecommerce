@@ -5,14 +5,13 @@ import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
 
-import { AiOutlineHeart } from "react-icons/ai";
-
 import {
   selectRecentViews,
   selectWishlist,
 } from "../../store/user/user.selector";
 import { setRecentViews, toggleWishlist } from "../../store/user/user.action";
 import { urlFor } from "../../lib/sanity-client.utils";
+import { AiOutlineHeart } from "../ReactIcons";
 import { Wrapper } from "./index.styles";
 
 const ProductCard = ({ product }) => {
@@ -51,11 +50,12 @@ const ProductCard = ({ product }) => {
       <div className="image-container">
         <Image
           src={imageUrls && imageUrls[currentIndex]}
-          width={350}
-          height={350}
+          // width={350}
+          // height={350}
           objectFit="cover"
+          objectPosition="center"
+          layout="fill"
           alt={title}
-          className="image"
         />
         <div className="icon-container" onClick={toggleWishlistHandler}>
           <AiOutlineHeart className={isLiked ? "icon like" : "icon"} />

@@ -8,8 +8,8 @@ export const Wrapper = styled.figure`
 
   .image-container {
     position: relative;
-    width: 35rem;
-    height: 35rem;
+    width: 30rem;
+    height: 30rem;
     margin-bottom: var(--mg-s);
     position: relative;
   }
