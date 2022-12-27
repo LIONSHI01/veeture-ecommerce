@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { device } from "../../pages_styles/device";
+import { device } from "../../styles/devices";
 import ProductCard from "../Product-Card";
 
 const Wrapper = styled.section`

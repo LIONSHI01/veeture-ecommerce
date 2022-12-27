@@ -9,10 +9,10 @@ import { client } from "../lib/sanity-client.utils";
 import { combinLikeList } from "../lib/combineLikeList.utils";
 
 import {
-  ProductCard,
   FilterBar,
   HeaderBar,
   FilterSidebar,
+  DisplayList,
 } from "../components";
 import {
   ProductGroup,
@@ -27,7 +27,7 @@ const ProductsPage = ({ products }) => {
   // STATE MANAGEMENT
   const filteredProducts = useSelector(selectFilteredProducts);
   const likeList = useSelector(selectWishlist);
-  const [showFilterSidebar, setShowFilterSidebar] = useState(true);
+  const [showFilterSidebar, setShowFilterSidebar] = useState(false);
 
   useEffect(() => {
     const newAllProducts = combinLikeList(products, likeList);
@@ -54,19 +54,7 @@ const ProductsPage = ({ products }) => {
               <FilterBar />
             </div>
             <ProductMain>
-              <div className="section-container">
-                <div className="gallary">
-                  {filteredProducts.length > 0 ? (
-                    filteredProducts.map((product) => (
-                      <ProductCard key={product._id} product={product} />
-                    ))
-                  ) : (
-                    <div className="not-found">
-                      <p>No Product found, please try again.</p>
-                    </div>
-                  )}
-                </div>
-              </div>
+              <DisplayList products={filteredProducts} />
             </ProductMain>
           </div>
         </MasterContainer>

@@ -14,12 +14,6 @@ html {
   width: 100%;
   height: 100%;
   overflow-x: hidden;
-
-  @media only screen and (max-width: 160em){
-    font-size:80%;
-  };
-
-
 }
 
 @media only screen and (max-width: 90em) {
@@ -106,10 +100,7 @@ figure{
   --grey-light-1: #eaeaea;
   --grey-light-2: #eeeeee;
   --grey-light-3: #f7f7f7;
-  /* 
-  --grey-dark-1: #5c5c5c;
-  --grey-dark-2: #474747;
-  --grey-dark-3: #333; */
+
 
   --white: #fff;
 
@@ -121,6 +112,7 @@ figure{
 
   /* FONT */
   --ff-display: "Crimson Text", serif;
+  --ff-logo-font: "Rubik Vinyl", serif;
 
   --fs-ss: 1.2rem;
   --fs-s: 1.6rem;
@@ -167,7 +159,6 @@ figure{
 
 h1 {
   display: block;
-  
   margin-block-start: 0;
   margin-block-end: 0;
   margin-inline-start: 0px;

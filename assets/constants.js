@@ -20,14 +20,14 @@ export const navbarItems = [
   },
 ];
 
-export const footerAboutLinks = [
+export const FOOTER_AOUBT_LINKS = [
   { title: "Veeture", link: "/" },
   { title: "policies", link: "/" },
   { title: "investors", link: "/" },
   { title: "careers", link: "/" },
 ];
 
-export const socialLinks = [
+export const SOCIAL_LINKS = [
   { title: "homePage", link: "/", icon: <RiEarthFill /> },
   {
     title: "github",

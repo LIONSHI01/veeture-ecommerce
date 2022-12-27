@@ -1,10 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import styled from "styled-components";
-import { device } from "../../pages_styles/device";
+
+import { device } from "../../styles/devices";
 
 import Button from "../Button";
-
 import CategoryItem from "../Category-Item";
 
 const Wrapper = styled.section`

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../../pages_styles/device";
+import { device } from "../../../styles/devices";
 
 export const Wrapper = styled.div`
   height: 100%;

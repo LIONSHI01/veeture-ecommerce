@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../pages_styles/device";
+import { device } from "../../styles/devices";
 
 export const StyledFeature = styled.section`
   margin: 10rem 0;

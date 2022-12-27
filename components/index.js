@@ -6,6 +6,7 @@ import FilterBar from "./Sidebar/FilterBar";
 import FilterSidebar from "./FilterSidebar";
 import HeaderBar from "./HeaderBar";
 import Button from "./Button";
+import DisplayList from "./DisplayList";
 
 export {
   IconButton,
@@ -16,4 +17,5 @@ export {
   FilterSidebar,
   HeaderBar,
   Button,
+  DisplayList,
 };

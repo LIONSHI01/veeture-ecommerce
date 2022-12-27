@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "./device";
+import { device } from "../styles/devices";
 
 export const PageWrapper = styled.main`
   min-height: calc(100vh - 50rem);

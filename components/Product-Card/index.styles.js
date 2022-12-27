@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.figure`
   transition: all 0.5s;
+
   &:hover {
     transform: translateY(-1rem);
   }
@@ -11,7 +12,6 @@ export const Wrapper = styled.figure`
     width: 30rem;
     height: 30rem;
     margin-bottom: var(--mg-s);
-    position: relative;
   }
   .icon-container {
     position: absolute;

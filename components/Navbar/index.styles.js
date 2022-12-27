@@ -61,7 +61,7 @@ export const NavbarContainer = styled.nav`
       text-transform: uppercase;
       font-size: 5.4rem;
       letter-spacing: -1px;
-      font-family: "rubik vinyl";
+      font-family: var(--ff-logo-font);
     }
   }
 
