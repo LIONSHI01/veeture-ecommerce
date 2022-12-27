@@ -10,7 +10,6 @@ const Home = () => {
       <main>
         <FeatureSection />
       </main>
-      ;
     </>
   );
 };

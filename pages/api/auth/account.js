@@ -2,6 +2,7 @@ import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
 import { authOptions } from "./[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
+import { connectMongo } from "../../../lib/connectMongoose";
 
 const handler = async (req, res) => {
   const session = await unstable_getServerSession(req, res, authOptions);
@@ -11,7 +12,7 @@ const handler = async (req, res) => {
       return res.status(401).json({ unauthorized: true });
     }
 
-    await connectMongoose();
+    await connectMongo();
 
     const user = await User.findOne({ email: session.user.email });
     // console.log(user);

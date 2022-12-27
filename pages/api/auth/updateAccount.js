@@ -3,6 +3,7 @@ import { authOptions } from "./[...nextauth]";
 
 import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
+import { connectMongo } from "../../../lib/connectMongoose";
 
 const handler = async (req, res) => {
   // console.log(req);
@@ -19,7 +20,7 @@ const handler = async (req, res) => {
       return res.status(401).json({ message: "Not the right fetching method" });
     }
 
-    await connectMongoose();
+    await connectMongo();
     // Check if User exist
     const user = await User.findOne({ email: session.user.email });
     if (!user) {

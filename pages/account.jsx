@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
 import { useDispatch } from "react-redux";
-import { getSession } from "next-auth/react";
+
 import { toast } from "react-toastify";
 
 import { updateAccount } from "../lib/authRequest";

@@ -1,13 +1,14 @@
 import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
 import { hashPassword } from "../../../lib/hashPassword";
+import { connectMongo } from "../../../lib/connectMongoose";
 
 const handler = async (req, res) => {
   if (req.method !== "POST") return;
   try {
     const { name, email, password } = req.body;
 
-    await connectMongoose();
+    await connectMongo();
 
     const existingUser = await User.findOne({ email });
 
@@ -26,7 +27,7 @@ const handler = async (req, res) => {
       });
       return;
     }
-    
+
     if (password.length < 7) {
       res.status(401).json({
         status: "failed",
