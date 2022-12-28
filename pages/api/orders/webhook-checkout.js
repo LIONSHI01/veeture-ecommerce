@@ -1,8 +1,5 @@
-// import connectMongoose from "../../../lib/connectMongo";
 import User from "../../../models/userModel";
 import Order from "../../../models/orderModel";
-import { authOptions } from "./[...nextauth]";
-import { unstable_getServerSession } from "next-auth/next";
 import { connectMongo } from "../../../lib/connectMongoose";
 import Stripe from "stripe";
 
