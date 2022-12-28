@@ -4,7 +4,7 @@ import { connectMongo } from "../../../lib/connectMongoose";
 import Stripe from "stripe";
 import { buffer } from "micro";
 
-// Turn off Next.js default bodyParser
+// Turn off Next.js default bodyParser for Strip stream raw data
 export const config = {
   api: {
     bodyParser: false,
@@ -21,7 +21,11 @@ const createBookingCheckout = async (session) => {
     await connectMongo();
     const user = await User.find({ email });
 
-    await Order.create({ user: user._id, stripeOrderId: session.id });
+    await Order.create({
+      user: user._id,
+      stripeOrderId: session.id,
+      orderItems: session.order_items,
+    });
   } catch (err) {
     console.log(err.message);
   }

@@ -16,7 +16,7 @@ const orderSchema = new mongoose.Schema(
       type: Date,
       default: Date.now(),
     },
-    items: [{}],
+    orderItems: [{}],
   },
   {
     toJSON: { virtuals: true },
