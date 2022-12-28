@@ -21,7 +21,6 @@ const createBookingCheckout = async (session) => {
     await connectMongo();
     const user = await User.find({ email });
 
-    console.log({ orderItems, user });
     await Order.create({ user: user._id, stripeOrderId: session.id });
   } catch (err) {
     console.log(err.message);
