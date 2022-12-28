@@ -10,6 +10,9 @@ const orderSchema = new mongoose.Schema(
     value: {
       type: Number,
     },
+    stripeOrderId: {
+      type: String,
+    },
     createdAt: {
       type: Date,
       default: Date.now(),

@@ -14,14 +14,15 @@ export const config = {
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
 const createBookingCheckout = async (session) => {
-  const orderItems = session.line_items;
+  // const orderItems = session.line_items;
   const email = session.customer_email;
 
   try {
     await connectMongo();
     const user = await User.find({ email });
-    await Order.create({ user: user.id, items: orderItems });
+
     console.log({ orderItems, user });
+    await Order.create({ user: user._id, stripeOrderId: session.id });
   } catch (err) {
     console.log(err.message);
   }
