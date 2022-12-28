@@ -2,6 +2,14 @@ import User from "../../../models/userModel";
 import Order from "../../../models/orderModel";
 import { connectMongo } from "../../../lib/connectMongoose";
 import Stripe from "stripe";
+import { buffer } from "micro";
+
+// Turn off Next.js default bodyParser
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
@@ -20,12 +28,17 @@ const createBookingCheckout = async (session) => {
 };
 
 const handler = async (req, res) => {
+  // Get signature from Stripe
   const signature = req.headers["stripe-signature"];
-  let event;
 
+  const buff = await buffer(req);
+
+  let event;
+  console.log("This is Webhook endpoint...");
+  console.log("This is signature:", signature);
   try {
     event = stripe.webhooks.constructEvent(
-      req.body,
+      buff,
       signature,
       process.env.NEXT_PUBLIC_STRIPE_WEB_HOOK_SECRET
     );
