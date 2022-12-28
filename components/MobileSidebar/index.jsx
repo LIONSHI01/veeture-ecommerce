@@ -58,6 +58,11 @@ const MobileSidebar = ({ showup, setShowup }) => {
             </div>
           ) : (
             <div className="accountBox">
+              <Link href="/wishlist">
+                <a className="link" onClick={closeSidebarHandler}>
+                  Wishlist
+                </a>
+              </Link>
               <Link href="/account">
                 <a className="link" onClick={closeSidebarHandler}>
                   Account

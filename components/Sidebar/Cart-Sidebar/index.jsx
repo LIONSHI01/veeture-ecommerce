@@ -8,15 +8,11 @@ import {
   selectCartCount,
   selectCartTotal,
 } from "../../../store/cart/cart.selector";
-import { ImArrowLeft2 } from "react-icons/im";
-import { BsBagPlus } from "react-icons/bs";
 
+import { BsBagPlus, ImArrowLeft2 } from "../../ReactIcons";
 import { setIsCartOpen } from "../../../store/cart/cart.action";
-import CartItem from "./Cart-Item";
-
-// import Overlay from "../../Overlay";
+import { Overlay, CartItem } from "../../index";
 import { Wrapper } from "./index.styles";
-import { Overlay } from "../../index";
 
 const CartBar = () => {
   const disptach = useDispatch();
@@ -44,8 +40,8 @@ const CartBar = () => {
           {cartItems?.length >= 1 ? (
             <>
               <div className="cartItemList">
-                {cartItems?.map((product) => (
-                  <CartItem key={product._id} product={product} />
+                {cartItems?.map((product, i) => (
+                  <CartItem key={i} product={product} />
                 ))}
               </div>
               <div className="cartItem__summary">

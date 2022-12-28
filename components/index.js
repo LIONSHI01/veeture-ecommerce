@@ -17,6 +17,7 @@ import FeatureSection from "./Feature";
 import Hero from "./Hero";
 import Header from "./Header";
 import PageHero from "./PageHero";
+import CartItem from "./Sidebar/Cart-Sidebar/Cart-Item";
 
 export {
   IconButton,
@@ -39,4 +40,5 @@ export {
   Header,
   PageHero,
   Layout,
+  CartItem,
 };

@@ -1,10 +1,13 @@
 import React from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 import axios from "axios";
+import { useSession } from "next-auth/react";
+
 import getStripe from "../../lib/getStripe";
 import PageHero from "../../components/PageHero";
-
+import { checkoutRequest } from "../../lib/checkoutRequest.utils";
 import {
   selectCartItems,
   selectCartTotal,
@@ -22,25 +25,27 @@ import {
 import CheckoutItem from "../../components/Product/CheckoutItem";
 
 import { Wrapper } from "../../pages_styles/cart.styles";
-import { toast } from "react-toastify";
 
 const CartPage = () => {
+  const { data: session } = useSession();
+  // console.log(session);
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
   const checkoutHandler = async () => {
     const stripe = await getStripe();
-
-    const res = await axios({
-      url: "/api/stripe",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      data: {
-        cartItems,
-      },
-    });
+    const res = await checkoutRequest(cartItems, session?.user?.email);
+    // const res = await axios({
+    //   url: "/api/stripe",
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   data: {
+    //     cartItems,
+    //     email,
+    //   },
+    // });
 
     if (res.status === 500) return;
 

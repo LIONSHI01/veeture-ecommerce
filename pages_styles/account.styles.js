@@ -56,6 +56,7 @@ export const AccountDetails = styled.div`
   h2 {
     font-family: var(--ff-display);
     font-size: var(--fs-xxl);
+    margin-bottom: var(--mg-m);
   }
 `;
 

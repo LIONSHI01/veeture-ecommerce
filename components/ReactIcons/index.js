@@ -1,7 +1,13 @@
 import { IoMdClose } from "react-icons/io";
 import { RiEarthFill } from "react-icons/ri";
-import { BsGithub, BsTwitter, BsHeart, BsHandbag } from "react-icons/bs";
-import { ImFacebook } from "react-icons/im";
+import {
+  BsGithub,
+  BsTwitter,
+  BsHeart,
+  BsHandbag,
+  BsBagPlus,
+} from "react-icons/bs";
+import { ImFacebook, ImArrowLeft2 } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {
   AiOutlineUser,
@@ -15,7 +21,8 @@ import { VscSignOut } from "react-icons/vsc";
 import { GrFacebookOption } from "react-icons/gr";
 import { FaPinterestP } from "react-icons/fa";
 import { SiMinutemailer } from "react-icons/si";
-
+// import { ImArrowLeft2 } from "react-icons/im";
+// import { BsBagPlus } from "react-icons/bs";
 export {
   IoMdClose,
   RiEarthFill,
@@ -36,4 +43,6 @@ export {
   GrFacebookOption,
   FaPinterestP,
   SiMinutemailer,
+  BsBagPlus,
+  ImArrowLeft2,
 };

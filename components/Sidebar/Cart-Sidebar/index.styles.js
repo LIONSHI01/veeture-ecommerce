@@ -8,9 +8,11 @@ export const Wrapper = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    display: grid;
+    /* display: grid;
     grid-template-rows: max-content 1fr max-content;
-    align-items: flex-start;
+    align-items: flex-start; */
+    display: flex;
+    flex-direction: column;
 
     background-color: var(--white);
     padding: 4rem 2rem;
@@ -52,9 +54,10 @@ export const Wrapper = styled.div`
   }
 
   .cartItemList {
+    overflow: auto;
     position: relative;
-
-    /* background-color: orangered; */
+    height: 95%;
+    margin-bottom: var(--mg-m);
   }
 
   .cartItem__summary {
@@ -85,7 +88,7 @@ export const Wrapper = styled.div`
     font-size: var(--fs);
     text-align: center;
     text-transform: uppercase;
-    margin: 5rem 0 3rem 0;
+    margin: 3rem 0;
 
     transition: all 0.3s;
   }
@@ -95,12 +98,11 @@ export const Wrapper = styled.div`
   }
 
   .cartItem__emptyBox {
-    align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
+    margin: auto;
     gap: 4rem;
   }
 

@@ -4,7 +4,8 @@ import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
-import isLikedCompare from "../../lib/compareIsLiked";
+
+import { isLikedCompare } from "../../lib/compareIsLiked";
 import {
   selectRecentViews,
   selectWishlist,
@@ -41,7 +42,7 @@ const ProductCard = ({ product }) => {
       return;
     }
     dispatch(toggleWishlist(wishlist, product));
-    toast.success("Wishlist changed successfully!");
+    toast.success("Wishlist updated successfully!");
     setIsLiked((prev) => !prev);
   };
 
