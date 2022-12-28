@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut, useSession } from "next-auth/react";
@@ -10,16 +10,20 @@ import {
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
 import { selectWishlistCount } from "../../store/user/user.selector";
-import { setIsCartOpen } from "../../store/cart/cart.action";
 import { setSearchResults } from "../../store/product/product.actions";
 import buildSearchResults from "../../lib/buildSearchResults.utils";
+
+import { useGetUserHook } from "../../lib/hooks/useGetUserHook";
+import { setWishlist, setUserProfile } from "../../store/user/user.action";
+import { setCartList, setIsCartOpen } from "../../store/cart/cart.action";
+
+import { getUserProfile } from "../../lib/authRequest";
 
 import {
   GiHamburgerMenu,
   BsHeart,
   BsHandbag,
   AiOutlineUser,
-  FiSearch,
   VscSignOut,
 } from "../ReactIcons";
 import { navbarItems } from "../../assets/constants";
@@ -29,21 +33,35 @@ import { NavbarContainer } from "./index.styles";
 const Navbar = () => {
   const dispatch = useDispatch();
   const { data: session } = useSession();
+  const { user, refetch } = useGetUserHook();
 
   // STATES MANAGEMENT
-  const [openSearch, setOpenSearch] = useState(false);
-  const [inputSearch, setInputSearch] = useState("");
+  // const [openSearch, setOpenSearch] = useState(false);
+  // const [inputSearch, setInputSearch] = useState("");
   const [openMobielSidebar, setOpenMobielSidebar] = useState(false);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
   // REDUX DATA
-  const cartCount = useSelector(selectCartCount);
+  const reduxCartCount = useSelector(selectCartCount);
+  const reduxWishlistCount = useSelector(selectWishlistCount);
   const isCartOpen = useSelector(selectIsCartOpen);
-  const wishlistCount = useSelector(selectWishlistCount);
+
+  // INITIATION
+
+  useEffect(() => {
+    if (session) {
+      const userWishlist = session?.profile?.wishlist;
+      const userCartList = session?.profile?.cartList;
+      console.log({ userWishlist, userCartList });
+      dispatch(setCartList(userCartList));
+      dispatch(setWishlist(userWishlist));
+      dispatch(setUserProfile(session));
+    }
+  }, [dispatch, session]);
 
   // HANDLERS
-  const toggleSearchHandler = () => setOpenSearch(!openSearch);
-  const onChangeInput = (e) => setInputSearch(e.target.value);
+  // const toggleSearchHandler = () => setOpenSearch(!openSearch);
+  // const onChangeInput = (e) => setInputSearch(e.target.value);
   //Make it async, so extract data promise and let Router push to '/' without refresh page
   const signOutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/" });
@@ -58,16 +76,16 @@ const Navbar = () => {
   };
 
   // Fetch Products with search keywords
-  const onSubmitSearch = async (e) => {
-    e.preventDefault();
-    setInputSearch("");
-    const allProductsQuery = `*[_type=="product"]`;
-    const allProducts = await client.fetch(allProductsQuery);
-    const searchResults = buildSearchResults(allProducts, inputSearch);
-    dispatch(setSearchResults(searchResults));
-    setOpenSearch(false);
-    Router.push("/search");
-  };
+  // const onSubmitSearch = async (e) => {
+  //   e.preventDefault();
+  //   setInputSearch("");
+  //   const allProductsQuery = `*[_type=="product"]`;
+  //   const allProducts = await client.fetch(allProductsQuery);
+  //   const searchResults = buildSearchResults(allProducts, inputSearch);
+  //   dispatch(setSearchResults(searchResults));
+  //   setOpenSearch(false);
+  //   Router.push("/search");
+  // };
 
   return (
     <>
@@ -127,7 +145,7 @@ const Navbar = () => {
                 <a>
                   <li className="item">
                     <BsHeart className="icon" />
-                    <span className="wishNum">{wishlistCount}</span>
+                    <span className="wishNum">{reduxWishlistCount || 0}</span>
                   </li>
                 </a>
               </Link>
@@ -140,7 +158,7 @@ const Navbar = () => {
             </ul>
             <div className="cart" onClick={cartOpenHandler}>
               <BsHandbag className="icon" />
-              <span className="cartNum">{cartCount || 0}</span>
+              <span className="cartNum">{reduxCartCount || 0}</span>
             </div>
           </div>
         </div>

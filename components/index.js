@@ -11,7 +11,7 @@ import DetailSection from "./Product/Details-Section";
 import RecentViewSection from "./Product/Recent-View";
 import FormInput from "./FormInput";
 import LinkButton, { BUTTON_TYPE_CLASSES } from "./LinkButton";
-
+import Layout from "./Layout";
 import Meta from "./Meta";
 import FeatureSection from "./Feature";
 import Hero from "./Hero";
@@ -38,4 +38,5 @@ export {
   Hero,
   Header,
   PageHero,
+  Layout,
 };

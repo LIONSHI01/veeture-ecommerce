@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { selectWishlist } from "../store/user/user.selector";
 
-import { PageHero, LinkButton, ProductCard } from "../components";
+import { PageHero, LinkButton, ProductCard, DisplayList } from "../components";
 import {
   ProductGroup,
   ProductMain,
@@ -37,9 +37,10 @@ const WishlistPage = () => {
             <div className="section-container">
               <div className="gallary">
                 {wishlist?.length > 0 ? (
-                  wishlist?.map((product) => (
-                    <ProductCard key={product._id} product={product} />
-                  ))
+                  // wishlist?.map((product) => (
+                  //   <ProductCard key={product._id} product={product} />))
+
+                  <DisplayList products={wishlist} />
                 ) : (
                   <div className="not-found">
                     <p>No Item yet. Lets explore!</p>

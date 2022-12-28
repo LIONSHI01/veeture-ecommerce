@@ -3,12 +3,13 @@ import NProgress from "nprogress";
 import Router from "next/router";
 import Head from "next/head";
 
-import { ToastContainer } from "react-toastify";
+// import { ToastContainer } from "react-toastify";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
 import CartBar from "../Sidebar/Cart-Sidebar";
 
 const Layout = ({ children }) => {
+  NProgress.configure({ showSpinner: false });
   Router.onRouteChangeStart = () => NProgress.start();
   Router.onRouteChangeComplete = () => NProgress.done();
   Router.onRouteChangeError = () => NProgress.done();
@@ -18,11 +19,11 @@ const Layout = ({ children }) => {
       <Navbar />
       <CartBar />
       {children}
-      <ToastContainer
+      {/* <ToastContainer
         position="bottom-right"
         progressClassName="toastProgress"
         bodyClassName="toastBody"
-      />
+      /> */}
       <Footer />
     </>
   );

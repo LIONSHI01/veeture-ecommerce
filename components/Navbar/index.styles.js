@@ -170,6 +170,7 @@ export const NavbarContainer = styled.nav`
 
   .cart {
     position: relative;
+    cursor: pointer;
   }
 
   .item {

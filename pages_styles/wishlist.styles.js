@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const ProductGroup = styled.div`
   min-height: calc(100vh - 10rem - 40rem);
+
   .heading {
     width: 100%;
     min-height: 50vh;
@@ -38,7 +39,7 @@ export const ProductMain = styled.div`
   .section-container {
     width: 100%;
     height: 100%;
-    margin: 0 auto;
+    margin: 0rem auto;
     display: grid;
     grid-template-columns: 1fr;
 
@@ -72,9 +73,8 @@ export const ProductMain = styled.div`
 
     .gallary {
       margin: 10rem 0;
-      height: 100%;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+      display: flex;
+      flex-wrap: wrap;
       gap: 3rem;
     }
 

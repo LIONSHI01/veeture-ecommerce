@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 
 import { updateAccount } from "../lib/authRequest";
-import { getUserProfile } from "../lib/authRequest";
-import { setUserProfile, setWishlist } from "../store/user/user.action";
-import { setCartList } from "../store/cart/cart.action";
+// import { getUserProfile } from "../lib/authRequest";
+// import { setUserProfile, setWishlist } from "../store/user/user.action";
+// import { setCartList } from "../store/cart/cart.action";
 
 import {
   Wrapper,
@@ -29,7 +29,7 @@ const INITIAL_FORM_STATE = {
 
 const AccountPage = ({ sessionData }) => {
   // CONFIGURATION
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const { user } = sessionData;
 
@@ -37,28 +37,29 @@ const AccountPage = ({ sessionData }) => {
   const [formFields, setFormFields] = useState(INITIAL_FORM_STATE);
   const { streetAddress, streetAddress2, city, state, postal } = formFields;
 
-  useEffect(() => {
-    const fetchUserProfile = async () => {
-      const userData = await getUserProfile();
-      if (userData) {
-        const userWishlist = userData.wishlist;
-        const userCartList = userData.cartList;
-        setFormFields(
-          userData.address[0] ? userData.address[0] : INITIAL_FORM_STATE
-        );
-        dispatch(setCartList(userCartList));
-        dispatch(setWishlist(userWishlist));
-        dispatch(setUserProfile(userData));
-      }
-    };
-    fetchUserProfile();
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const fetchUserProfile = async () => {
+  //     const userData = await getUserProfile();
+  //     if (userData) {
+  //       const userWishlist = userData.wishlist;
+  //       const userCartList = userData.cartList;
+  //       setFormFields(
+  //         userData.address[0] ? userData.address[0] : INITIAL_FORM_STATE
+  //       );
+  //       dispatch(setCartList(userCartList));
+  //       dispatch(setWishlist(userWishlist));
+  //       dispatch(setUserProfile(userData));
+  //     }
+  //   };
+  //   fetchUserProfile();
+  // }, [dispatch]);
 
   // HANDLERS
   const onChangeFormfields = (e) => {
     const { name, value } = e.target;
     setFormFields({ ...formFields, [name]: value });
   };
+
   const onSubmtHandler = async (e) => {
     e.preventDefault();
     const res = await updateAccount(formFields, "address");

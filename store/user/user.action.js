@@ -27,7 +27,6 @@ export const setRecentViews = (recentViewsArr, productToAdd) => {
 };
 
 // WISHLIST MANAGEMENT
-
 const toggleLikeItem = (likeList, itemToAdd) => {
   const existingItem = likeList.find((item) => item._id === itemToAdd._id);
   // if item exist, remove it

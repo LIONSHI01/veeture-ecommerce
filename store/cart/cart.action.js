@@ -79,6 +79,7 @@ export const minusItemFromCart = (cartItems, itemToMinus) => {
   updateAccount(newCartItems, "cartList");
   return createAction(CART_ACTION_TYPES.setCartItems, newCartItems);
 };
+
 export const removeItemFromCart = (cartItems, itemToRemove) => {
   const newCartItems = removeCartItem(cartItems, itemToRemove);
   updateAccount(newCartItems, "cartList");

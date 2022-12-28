@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
 import { toast } from "react-toastify";
-
+import isLikedCompare from "../../lib/compareIsLiked";
 import {
   selectRecentViews,
   selectWishlist,
@@ -23,7 +23,7 @@ const ProductCard = ({ product }) => {
 
   // STATES MANAGEMENT
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLiked, setIsLiked] = useState(product.isLiked);
+  const [isLiked, setIsLiked] = useState(false);
 
   // REDUX DATA
   const recentViews = useSelector(selectRecentViews);
@@ -42,8 +42,12 @@ const ProductCard = ({ product }) => {
     }
     dispatch(toggleWishlist(wishlist, product));
     toast.success("Wishlist changed successfully!");
-    setIsLiked(!isLiked);
+    setIsLiked((prev) => !prev);
   };
+
+  useEffect(() => {
+    setIsLiked(isLikedCompare(wishlist, product?._id));
+  }, [wishlist, product]);
 
   return (
     <Wrapper>

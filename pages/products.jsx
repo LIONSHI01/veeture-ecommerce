@@ -27,13 +27,13 @@ const ProductsPage = ({ products }) => {
 
   // STATE MANAGEMENT
   const filteredProducts = useSelector(selectFilteredProducts);
-  const likeList = useSelector(selectWishlist);
+  const wishlist = useSelector(selectWishlist);
   const [showFilterSidebar, setShowFilterSidebar] = useState(false);
 
   useEffect(() => {
-    const newAllProducts = combinLikeList(products, likeList);
+    const newAllProducts = combinLikeList(products, wishlist);
     dispatch(setALLProducts(newAllProducts));
-  }, [products, dispatch, likeList]);
+  }, [products, dispatch, wishlist]);
 
   return (
     <>
