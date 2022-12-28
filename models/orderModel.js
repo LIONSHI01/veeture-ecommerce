@@ -5,7 +5,6 @@ const orderSchema = new mongoose.Schema(
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "User",
-      required: true,
     },
     value: {
       type: Number,
@@ -25,5 +24,5 @@ const orderSchema = new mongoose.Schema(
   }
 );
 
-const Order = models.User || model("Order", orderSchema);
+const Order = models.Order || model("Order", orderSchema);
 export default Order;
