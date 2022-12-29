@@ -61,7 +61,7 @@ const CartBar = () => {
           )}
         </div>
       </Wrapper>
-      <Overlay showup={isCartOpen} setShowup={closeCartHandler} />
+      <Overlay showup={isCartOpen} setShowup={closeCartHandler} zIndex={9900} />
     </>
   );
 };

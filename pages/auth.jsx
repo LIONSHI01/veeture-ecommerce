@@ -153,14 +153,6 @@ const AuthPage = () => {
                 >
                   {isSignup ? "Sign Up" : "Sign in"}
                 </Button>
-                {/* <Button
-                onClick={handleSubmit}
-                width="100%"
-                height="5rem"
-                bgType="outline"
-              >
-                Sign in with Google
-              </Button> */}
               </div>
             </form>
             <button className="switch-btn" onClick={switchMode}>

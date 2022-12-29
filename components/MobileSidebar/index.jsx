@@ -29,7 +29,7 @@ const MobileSidebar = ({ showup, setShowup }) => {
 
   return (
     <>
-      <Overlay showup={showup} setShowup={setShowup} />
+      <Overlay showup={showup} setShowup={setShowup} zIndex={9900} />
       <MobileSidebarContainer showup={showup}>
         <div className="closeBtnContainer">
           <IconButton onClick={closeSidebarHandler}>

@@ -22,7 +22,10 @@ const SuccessPage = () => {
             </p>
             <div className="btns">
               <LinkButton url="/products">Continue Shopping</LinkButton>
-              <LinkButton url="/" buttonType={BUTTON_TYPE_CLASSES.outline}>
+              <LinkButton
+                url="/account"
+                buttonType={BUTTON_TYPE_CLASSES.outline}
+              >
                 View Order
               </LinkButton>
             </div>

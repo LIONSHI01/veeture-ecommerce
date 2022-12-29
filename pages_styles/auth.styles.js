@@ -49,9 +49,10 @@ export const FormContainer = styled.div`
     background-color: transparent;
     font-size: var(--fs-x);
     align-self: flex-end;
-    cursor: pointer;
     transition: all 0.3s;
     padding: 5px 0;
+    color: var(--black-light);
+    cursor: pointer;
 
     &::after {
       content: "";
@@ -60,7 +61,7 @@ export const FormContainer = styled.div`
       left: 0;
       height: 2px;
       width: 100%;
-      background-color: var(--black);
+      background-color: var(--black-light);
       transform: translateX(100%);
       transition: all 0.3s;
     }

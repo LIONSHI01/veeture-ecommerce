@@ -33,6 +33,7 @@ const AccountPage = ({ sessionData }) => {
   const [formFields, setFormFields] = useState(INITIAL_FORM_STATE);
   const { streetAddress, streetAddress2, city, state, postal } = formFields;
   const [orders, setOrders] = useState(null);
+  const [address, setAddress] = useState(null);
   // HANDLERS
   const onChangeFormfields = (e) => {
     const { name, value } = e.target;

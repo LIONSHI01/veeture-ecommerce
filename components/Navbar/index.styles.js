@@ -70,14 +70,13 @@ export const NavbarContainer = styled.nav`
     max-width: 144rem;
     width: 100%;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
 
   /* LOGO */
-
   .logo-container {
     & span {
       text-transform: uppercase;

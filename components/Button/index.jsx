@@ -12,9 +12,8 @@ const Wrapper = styled.button`
 
   border: 2px solid var(--black);
   border-radius: var(--br-m);
-
   font-size: ${({ fontSize }) => fontSize};
-  font-weight: 100;
+  font-weight: 500;
   font-size: var(--fs-x);
   text-transform: uppercase;
   color: var(--white);
