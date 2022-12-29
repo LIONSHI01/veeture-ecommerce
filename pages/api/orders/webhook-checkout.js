@@ -19,19 +19,12 @@ const createBookingCheckout = async (session) => {
 
   try {
     await connectMongo();
-    // const user = await User.find({ email });
-
-    // await Order.create({
-    //   user: "63ab9840847af02d19f2efbf",
-    //   stripeOrderId: session.id,
-    //   paymentValue: session.amount_total,
-    // });
 
     await Order.findOneAndUpdate(
       { stripeOrderId: session.id },
       {
         paid: true,
-        paymentValue: session.amount_total,
+        paymentValue: session.amount_total / 100,
       },
       { new: true }
     );
