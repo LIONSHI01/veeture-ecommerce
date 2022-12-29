@@ -6,7 +6,7 @@ import { unstable_getServerSession } from "next-auth/next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import { register, registerAndLogin } from "../lib/authRequest";
+import { registerAndLogin } from "../lib/apiRequest/authRequest";
 import AuthImage from "../assets/404.jpg";
 
 import { FormInput, Button, Meta } from "../components";

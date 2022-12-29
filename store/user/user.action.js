@@ -1,9 +1,8 @@
 import createAction from "../../lib/reducer.utils";
 import { USER_ACTION_TYPES } from "./user.types";
-import { updateAccount } from "../../lib/authRequest";
+import { updateAccount } from "../../lib/apiRequest/authRequest";
 
 // // LOGOUT MANAGEMENT
-// export const setLogout = () => createAction(USER_ACTION_TYPES.setLogout);
 
 // USER PROFILE
 export const setUserProfile = (profile) =>

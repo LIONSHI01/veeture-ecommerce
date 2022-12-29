@@ -4,7 +4,7 @@ import { unstable_getServerSession } from "next-auth/next";
 import { toast } from "react-toastify";
 import { useSession } from "next-auth/react";
 
-import { updateAccount } from "../lib/authRequest";
+import { updateAccount } from "../lib/apiRequest/authRequest";
 
 import {
   Wrapper,

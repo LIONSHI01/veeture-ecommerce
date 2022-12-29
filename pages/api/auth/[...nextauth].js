@@ -5,21 +5,12 @@ import { connectMongo } from "../../../lib/connectMongoose";
 import User from "../../../models/userModel";
 import Order from "../../../models/orderModel";
 import { verifyPassword } from "../../../lib/hashPassword";
-import { getUserProfile } from "../../../lib/authRequest";
-// import GoogleProvider from "next-auth/providers/google";
-// import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
-// import clientPromise from "../../../lib/connectDB";
-// import connectMongoose from "../../../lib/connectMongo";
 
 export const authOptions = {
   session: {
     strategy: "jwt",
   },
   providers: [
-    // GoogleProvider({
-    //   clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-    //   clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET,
-    // }),
     CredentialsProvider({
       name: "Credentials",
       credentials: {},

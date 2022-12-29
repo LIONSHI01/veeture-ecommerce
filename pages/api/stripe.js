@@ -1,23 +1,8 @@
 import Stripe from "stripe";
-import { connectMongo } from "../../lib/connectMongoose";
-import Order from "../../models/orderModel";
-import User from "../../models/userModel";
+
+import { createOrder } from "../../lib/apiRequest/orderRequest";
 
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
-
-const createOrder = async (userId, sessionId, items) => {
-  try {
-    await connectMongo();
-
-    await Order.create({
-      user: userId,
-      stripeOrderId: sessionId,
-      orderItems: items,
-    });
-  } catch (err) {
-    console.log(err.message);
-  }
-};
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -72,7 +57,9 @@ export default async function handler(req, res) {
 
     const session = await stripe.checkout.sessions.create(params);
 
+    // Create Order on DB, then validate payment from Stripe's POST request to veeture.lionshi.io endpoint
     await createOrder(userId, session.id, cartItems);
+
     res.status(200).json(session);
   } catch (err) {
     res.status(err.statusCode || 500).json(err.message);

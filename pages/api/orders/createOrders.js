@@ -1,6 +1,7 @@
 import Order from "../../../models/orderModel";
 import { connectMongo } from "../../../lib/connectMongoose";
 
+// For Testing
 const handler = async (req, res) => {
   if (req.method !== "POST") return;
 

@@ -1,6 +1,6 @@
 import createAction from "../../lib/reducer.utils";
 import { CART_ACTION_TYPES } from "./cart.types";
-import { updateAccount } from "../../lib/authRequest";
+import { updateAccount } from "../../lib/apiRequest/authRequest";
 
 // HELPER FUNCTIONS
 const addCartItem = (cartItems, itemToAdd) => {

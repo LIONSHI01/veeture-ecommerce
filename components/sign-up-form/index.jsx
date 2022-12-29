@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 import Button from "../Button";
 import FormInput from "../form-input";
 import { SignUpContainer } from "./index.styles";
-import { register } from "../../lib/authRequest";
+import { register } from "../../lib/apiRequest/authRequest";
 
 const defaultFormFields = {
   name: "",
