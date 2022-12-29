@@ -35,7 +35,11 @@ const CartPage = () => {
 
   const checkoutHandler = async () => {
     const stripe = await getStripe();
-    const res = await checkoutRequest(cartItems, session?.user?.email);
+    const res = await checkoutRequest(
+      session?.profile?.id,
+      cartItems,
+      session?.user?.email
+    );
 
     if (res.status === 500) return;
 

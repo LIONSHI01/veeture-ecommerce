@@ -1,15 +1,23 @@
 import Stripe from "stripe";
+import { connectMongo } from "../../lib/connectMongoose";
+import Order from "../../models/orderModel";
+import User from "../../models/userModel";
 
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
-// const getOrderItems = (cartItems) => {
-//   return cartItems.map(({ title, price }) => {
-//     return {
-//       title: title,
-//       price: price,
-//     };
-//   });
-// };
+const createOrder = async (userId, sessionId, items) => {
+  try {
+    await connectMongo();
+
+    await Order.create({
+      user: userId,
+      stripeOrderId: sessionId,
+      orderItems: items,
+    });
+  } catch (err) {
+    console.log(err.message);
+  }
+};
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -19,7 +27,9 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { cartItems, email } = req.body;
+    const { cartItems, email, userId } = req.body;
+    console.log({ email, userId });
+
     const params = {
       submit_type: "pay",
       mode: "payment",
@@ -61,7 +71,8 @@ export default async function handler(req, res) {
     };
 
     const session = await stripe.checkout.sessions.create(params);
-    // res.redirect(303, session.url);
+
+    await createOrder(userId, session.id, cartItems);
     res.status(200).json(session);
   } catch (err) {
     res.status(err.statusCode || 500).json(err.message);

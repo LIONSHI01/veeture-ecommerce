@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
-    totalValue: {
+    paymentValue: {
       type: Number,
     },
     stripeOrderId: {
@@ -15,6 +15,10 @@ const orderSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
+    },
+    paid: {
+      type: Boolean,
+      default: false,
     },
     orderItems: [{}],
   },
