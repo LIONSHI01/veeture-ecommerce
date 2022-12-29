@@ -24,6 +24,7 @@ import {
   CartWorkFlow,
   LinkButton,
   BUTTON_TYPE_CLASSES,
+  OrderItem,
 } from "../../components";
 import { Wrapper } from "../../pages_styles/cart.styles";
 

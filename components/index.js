@@ -20,6 +20,8 @@ import PageHero from "./PageHero";
 import CartItem from "./Sidebar/Cart-Sidebar/Cart-Item";
 import CheckoutItem from "./Product/CheckoutItem";
 import CartWorkFlow from "./CartWorkFlow";
+import OrderItem from "./OrderItem";
+import SingleProductItem from "./OrderItem/SingleProductItem";
 
 export {
   IconButton,
@@ -45,4 +47,6 @@ export {
   CartItem,
   CheckoutItem,
   CartWorkFlow,
+  OrderItem,
+  SingleProductItem,
 };

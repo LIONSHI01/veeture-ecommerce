@@ -1,13 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { authOptions } from "./api/auth/[...nextauth]";
 import { unstable_getServerSession } from "next-auth/next";
-// import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
+import { useSession } from "next-auth/react";
 
 import { updateAccount } from "../lib/authRequest";
-// import { getUserProfile } from "../lib/authRequest";
-// import { setUserProfile, setWishlist } from "../store/user/user.action";
-// import { setCartList } from "../store/cart/cart.action";
 
 import {
   Wrapper,
@@ -17,7 +14,7 @@ import {
   OrderDetails,
 } from "../pages_styles/account.styles";
 
-import { Button, FormInput, Meta } from "../components";
+import { Button, FormInput, Meta, OrderItem } from "../components";
 
 const INITIAL_FORM_STATE = {
   streetAddress: "",
@@ -29,31 +26,13 @@ const INITIAL_FORM_STATE = {
 
 const AccountPage = ({ sessionData }) => {
   // CONFIGURATION
-  // const dispatch = useDispatch();
-
+  const { data: session } = useSession();
   const { user } = sessionData;
 
   // STATE MANAGEMENT
   const [formFields, setFormFields] = useState(INITIAL_FORM_STATE);
   const { streetAddress, streetAddress2, city, state, postal } = formFields;
-
-  // useEffect(() => {
-  //   const fetchUserProfile = async () => {
-  //     const userData = await getUserProfile();
-  //     if (userData) {
-  //       const userWishlist = userData.wishlist;
-  //       const userCartList = userData.cartList;
-  //       setFormFields(
-  //         userData.address[0] ? userData.address[0] : INITIAL_FORM_STATE
-  //       );
-  //       dispatch(setCartList(userCartList));
-  //       dispatch(setWishlist(userWishlist));
-  //       dispatch(setUserProfile(userData));
-  //     }
-  //   };
-  //   fetchUserProfile();
-  // }, [dispatch]);
-
+  const [orders, setOrders] = useState(null);
   // HANDLERS
   const onChangeFormfields = (e) => {
     const { name, value } = e.target;
@@ -67,6 +46,10 @@ const AccountPage = ({ sessionData }) => {
       toast.success("Update ADDRESS successfully!");
     }
   };
+
+  useEffect(() => {
+    setOrders(session?.profile?.orders);
+  }, [session]);
 
   return (
     <>
@@ -83,10 +66,18 @@ const AccountPage = ({ sessionData }) => {
         <AccountDetails>
           <OrderDetails>
             <h2>My Orders</h2>
-            <div className="orders">{/* Order items */}</div>
-            <div className="empty-orders">
-              <p>You have no order at the moment.</p>
-            </div>
+
+            {orders ? (
+              <div className="orders">
+                {orders?.map((order) => (
+                  <OrderItem key={order.id} order={order} />
+                ))}
+              </div>
+            ) : (
+              <div className="empty-orders">
+                <p>You have no order at the moment.</p>
+              </div>
+            )}
           </OrderDetails>
           <div className="address">
             <AddressDetails>
