@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
+import Router from "next/router";
+import { useSession, signOut } from "next-auth/react";
+import { useDispatch } from "react-redux";
 
 import { IoMdClose } from "../ReactIcons";
 import { IconButton, Overlay } from "../index";
@@ -8,6 +10,7 @@ import { navbarItems } from "../../assets/constants";
 import { MobileSidebarContainer } from "./index.styles";
 
 const MobileSidebar = ({ showup, setShowup }) => {
+  const dispatch = useDispatch();
   const { status } = useSession();
 
   // HANLERS
@@ -15,8 +18,13 @@ const MobileSidebar = ({ showup, setShowup }) => {
     setShowup(false);
   };
 
-  const signOutHandler = () => {
+  const signOutHandler = async () => {
     setShowup(false);
+    const data = await signOut({ redirect: false, callbackUrl: "/" });
+
+    // CLEAR ALL STATES
+    dispatch({ type: "USER_LOGOUT" });
+    Router.push(data.url);
   };
 
   return (
@@ -29,10 +37,10 @@ const MobileSidebar = ({ showup, setShowup }) => {
           </IconButton>
         </div>
         {/* {session && (
-        <UserInfoBox>
-          <p className="username">{username}</p>
-        </UserInfoBox>
-      )} */}
+          <UserInfoBox>
+            <p className="username">{username}</p>
+          </UserInfoBox>
+        )} */}
         <ul className="links">
           {navbarItems.map(({ title, url }) => (
             <li className="item" key={title}>

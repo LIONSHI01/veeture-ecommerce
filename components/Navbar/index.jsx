@@ -39,7 +39,7 @@ const Navbar = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   // INITIATION
-  console.log(session);
+
   useEffect(() => {
     if (session) {
       const userWishlist = session?.profile?.wishlist;
@@ -86,7 +86,7 @@ const Navbar = () => {
       />
       <StickyFillDiv sticky={sticky} />
       <NavbarContainer sticky={sticky}>
-        <div className="nav-container sticky">
+        <div className="nav-container">
           {/* Open Mobile sidebar */}
           <button
             className="mobileSidebarBtn"

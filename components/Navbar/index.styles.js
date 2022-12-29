@@ -11,6 +11,10 @@ const stickyStyles = css`
 
 export const StickyFillDiv = styled.div`
   height: ${(props) => (props.sticky ? "10rem" : 0)};
+
+  @media ${device.mobileL} {
+    height: ${(props) => (props.sticky ? "7rem" : 0)};
+  }
 `;
 
 export const NavbarContainer = styled.nav`
@@ -27,7 +31,11 @@ export const NavbarContainer = styled.nav`
   ${(props) => props.sticky && stickyStyles}
 
   @media ${device.tablet} {
-    padding: 0 1rem;
+    padding: 0 1rem 0 0;
+  }
+
+  @media ${device.mobileL} {
+    height: 7rem;
   }
 
   ul {

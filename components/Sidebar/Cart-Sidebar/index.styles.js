@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
 
     background-color: var(--white);
     padding: 4rem 2rem;
-    z-index: 1000;
+    z-index: 9990;
     overflow-y: auto;
     transform: translateX(100%);
     transition: all 0.3s cubic-bezier(0.81, -0.12, 0.35, 1.05);
@@ -78,28 +78,6 @@ export const Wrapper = styled.div`
     color: var(--black-light-2);
     margin-right: 2rem;
   }
-
-  /* .cartbar__checkout-btn:link,
-  .cartbar__checkout-btn:visited {
-    justify-self: center;
-    padding: 1.2rem 4.8rem;
-
-    border-radius: var(--br-m);
-    background-color: var(--black);
-    text-decoration: none;
-
-    color: var(--white);
-    font-size: var(--fs);
-    text-align: center;
-    text-transform: uppercase;
-    margin: 3rem 0;
-
-    transition: all 0.3s;
-  }
-
-  .cartbar__checkout-btn:hover {
-    background-color: var(--black);
-  } */
 
   .cartItem__emptyBox {
     display: flex;
