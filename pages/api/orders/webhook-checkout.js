@@ -24,7 +24,7 @@ const createBookingCheckout = async (session) => {
       { stripeOrderId: session.id },
       {
         paid: true,
-        paymentValue: session.amount_total / 100,
+        paymentValue: +session.amount_total / 100,
       },
       { new: true }
     );
