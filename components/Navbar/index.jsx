@@ -9,12 +9,6 @@ import {
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
 import { selectWishlistCount } from "../../store/user/user.selector";
-
-// import { client } from "../../lib/sanity-client.utils";
-// import { setSearchResults } from "../../store/product/product.actions";
-// import buildSearchResults from "../../lib/buildSearchResults.utils";
-// import { getUserProfile } from "../../lib/authRequest";
-// import { useGetUserHook } from "../../lib/hooks/useGetUserHook";
 import { setWishlist, setUserProfile } from "../../store/user/user.action";
 import { setCartList, setIsCartOpen } from "../../store/cart/cart.action";
 
@@ -34,8 +28,7 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   // STATES MANAGEMENT
-  // const [openSearch, setOpenSearch] = useState(false);
-  // const [inputSearch, setInputSearch] = useState("");
+
   const [sticky, setSticky] = useState(false);
   const [openMobielSidebar, setOpenMobielSidebar] = useState(false);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
@@ -46,7 +39,7 @@ const Navbar = () => {
   const isCartOpen = useSelector(selectIsCartOpen);
 
   // INITIATION
-
+  console.log(session);
   useEffect(() => {
     if (session) {
       const userWishlist = session?.profile?.wishlist;
@@ -59,8 +52,7 @@ const Navbar = () => {
   }, [dispatch, session]);
 
   // HANDLERS
-  // const toggleSearchHandler = () => setOpenSearch(!openSearch);
-  // const onChangeInput = (e) => setInputSearch(e.target.value);
+
   //Make it async, so extract data promise and let Router push to '/' without refresh page
   const signOutHandler = async () => {
     const data = await signOut({ redirect: false, callbackUrl: "/" });
@@ -85,18 +77,6 @@ const Navbar = () => {
   useEffect(() => {
     window.addEventListener("scroll", setNavSticky, true);
   }, []);
-
-  // Fetch Products with search keywords
-  // const onSubmitSearch = async (e) => {
-  //   e.preventDefault();
-  //   setInputSearch("");
-  //   const allProductsQuery = `*[_type=="product"]`;
-  //   const allProducts = await client.fetch(allProductsQuery);
-  //   const searchResults = buildSearchResults(allProducts, inputSearch);
-  //   dispatch(setSearchResults(searchResults));
-  //   setOpenSearch(false);
-  //   Router.push("/search");
-  // };
 
   return (
     <>
@@ -130,20 +110,7 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
-          {/* <div className={openSearch ? "searchbar show" : "searchbar"}>
-            <form onSubmit={onSubmitSearch}>
-              <input
-                type="text"
-                value={inputSearch}
-                onChange={onChangeInput}
-                className={openSearch ? "search-box show" : "search-box"}
-              />
-            </form>
-            <FiSearch
-              className={openSearch ? "search-icon show" : "search-icon"}
-              onClick={toggleSearchHandler}
-            />
-          </div> */}
+
           <div className="navRight">
             <ul className="authBox">
               <Link href="/account">

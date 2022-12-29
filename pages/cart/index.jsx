@@ -18,7 +18,13 @@ import {
   AiOutlineRight,
 } from "../../components/ReactIcons";
 
-import { PageHero, CheckoutItem, CartWorkFlow } from "../../components";
+import {
+  PageHero,
+  CheckoutItem,
+  CartWorkFlow,
+  LinkButton,
+  BUTTON_TYPE_CLASSES,
+} from "../../components";
 import { Wrapper } from "../../pages_styles/cart.styles";
 
 const CartPage = () => {

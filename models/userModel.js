@@ -34,8 +34,18 @@ const userSchema = new mongoose.Schema(
     wishlist: [{}],
     cartList: [{}],
   },
-  { timestamps: true }
+  {
+    toJSON: { virtuals: true },
+    toObject: { virtuals: true },
+  }
 );
+
+// Populate user orders on Order Schema
+userSchema.virtual("orders", {
+  ref: "Order",
+  foreignField: "user",
+  localField: "_id",
+});
 
 const User = models.User || model("User", userSchema);
 export default User;

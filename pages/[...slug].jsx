@@ -66,7 +66,6 @@ const ProductDetailsPage = ({
             {recentViews.length > 0 && (
               <RecentViewSection recentViews={recentViews} />
             )}
-            {/* <DisplayList products={recentViews} /> */}
           </div>
         </div>
       </ProductDetails>

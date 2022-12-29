@@ -24,7 +24,7 @@ const createBookingCheckout = async (session) => {
     await Order.create({
       user: user._id,
       stripeOrderId: session.id,
-      totalValue: +session.amount_total / 100,
+      totalValue: session.amount_total,
     });
   } catch (err) {
     console.log(err.message);

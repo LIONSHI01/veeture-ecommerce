@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
@@ -11,7 +10,7 @@ import {
 
 import { BsBagPlus, ImArrowLeft2 } from "../../ReactIcons";
 import { setIsCartOpen } from "../../../store/cart/cart.action";
-import { Overlay, CartItem } from "../../index";
+import { Overlay, CartItem, LinkButton } from "../../index";
 import { Wrapper } from "./index.styles";
 
 const CartBar = () => {
@@ -47,11 +46,10 @@ const CartBar = () => {
               <div className="cartItem__summary">
                 <span className="cartbar__total">{`Total HK$ ${cartTotal}`}</span>
               </div>
-              <Link href="/cart">
-                <a className="cartbar__checkout-btn" onClick={closeCartHandler}>
-                  Check out &rarr;
-                </a>
-              </Link>
+
+              <LinkButton url="/cart" onClick={closeCartHandler}>
+                Check out &rarr;
+              </LinkButton>
             </>
           ) : (
             <div className="cartItem__emptyBox">

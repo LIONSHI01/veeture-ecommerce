@@ -3,6 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 import { connectMongo } from "../../../lib/connectMongoose";
 import User from "../../../models/userModel";
+import Order from "../../../models/orderModel";
 import { verifyPassword } from "../../../lib/hashPassword";
 import { getUserProfile } from "../../../lib/authRequest";
 // import GoogleProvider from "next-auth/providers/google";
@@ -51,7 +52,10 @@ export const authOptions = {
       // Fetch UserProfile from DB
       await connectMongo();
 
-      const userProfile = await User.findOne({ email: token?.email });
+      const userProfile = await User.findOne({ email: token?.email }).populate({
+        path: "orders",
+        model: Order,
+      });
 
       // Add User profile into session
       session.accessToken = token.accessToken;

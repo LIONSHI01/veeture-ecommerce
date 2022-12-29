@@ -8,9 +8,13 @@ const BaseButton = styled.a`
   transition: all 0.3s;
   font-size: var(--fs-x);
   cursor: pointer;
+  display: flex;
   justify-content: center;
+  align-items: center;
   background-color: var(--black);
   color: var(--white);
+  border-radius: var(--br-m);
+  text-transform: uppercase;
 
   background-image: linear-gradient(120deg, #252a34 0%, #252a34 50%, #fff 50%);
   background-size: 250%;

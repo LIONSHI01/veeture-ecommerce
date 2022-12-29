@@ -3,25 +3,31 @@ import React from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.button`
-  cursor: pointer;
-  font-size: var(--fs-x);
-  font-weight: 600;
-  color: var(--white);
   background-color: ${({ bgType }) =>
     bgType === "solid" ? "var(--black)" : "transparent"};
-  border: 2px solid var(--black);
   width: ${({ width }) => width};
   height: ${({ height }) => height};
-  text-transform: uppercase;
   color: ${({ bgType }) =>
     bgType === "solid" ? "var(--white)" : "var(--black)"};
+
+  border: 2px solid var(--black);
+  border-radius: var(--br-m);
+
   font-size: ${({ fontSize }) => fontSize};
   font-weight: 100;
+  font-size: var(--fs-x);
+  text-transform: uppercase;
+  color: var(--white);
+
   transition: all 0.3s;
+  cursor: pointer;
+
+  background-image: linear-gradient(120deg, #252a34 0%, #252a34 50%, #fff 50%);
+  background-size: 250%;
 
   &:hover {
-    background-color: var(--black-light);
-    color: var(--white);
+    background-position: 100%;
+    color: var(--black);
   }
 `;
 

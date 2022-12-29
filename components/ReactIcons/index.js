@@ -6,6 +6,7 @@ import {
   BsHeart,
   BsHandbag,
   BsBagPlus,
+  BsCheckCircleFill,
 } from "react-icons/bs";
 import { ImFacebook, ImArrowLeft2 } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -57,4 +58,5 @@ export {
   AiOutlineFileDone,
   AiOutlineMinus,
   MdDelete,
+  BsCheckCircleFill,
 };

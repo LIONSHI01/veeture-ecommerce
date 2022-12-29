@@ -25,7 +25,7 @@ export const Wrapper = styled.div`
     opacity: 0;
 
     @media ${device.mobileL} {
-      padding-bottom: 10rem;
+      padding-bottom: 13rem;
     }
   }
 
@@ -65,6 +65,7 @@ export const Wrapper = styled.div`
 
   .cartItem__summary {
     text-align: right;
+    margin-bottom: var(--mg-m);
   }
 
   .cartbar__itemQty {
@@ -78,7 +79,7 @@ export const Wrapper = styled.div`
     margin-right: 2rem;
   }
 
-  .cartbar__checkout-btn:link,
+  /* .cartbar__checkout-btn:link,
   .cartbar__checkout-btn:visited {
     justify-self: center;
     padding: 1.2rem 4.8rem;
@@ -98,7 +99,7 @@ export const Wrapper = styled.div`
 
   .cartbar__checkout-btn:hover {
     background-color: var(--black);
-  }
+  } */
 
   .cartItem__emptyBox {
     display: flex;

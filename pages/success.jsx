@@ -1,14 +1,13 @@
 import React from "react";
 
-import { BsCheckCircleFill } from "react-icons/bs";
-
+import { BsCheckCircleFill } from "../components/ReactIcons";
 import { Meta, LinkButton, BUTTON_TYPE_CLASSES } from "../components";
 import { Wrapper } from "../pages_styles/success.styles";
 
 const SuccessPage = () => {
   return (
     <>
-      <Meta title="Order success" />
+      <Meta title="Order Success" />
 
       <Wrapper>
         <div className="container">
@@ -18,10 +17,8 @@ const SuccessPage = () => {
             </div>
             <h1 className="heading">Order confirmed</h1>
             <p className="msg">
-              Your order is confirmed.You will receive an order confirmation
-              email
-              <br />
-              shortly with the expected delivery date for your items.
+              Your order is confirmed. You will receive an order confirmation
+              email shortly.
             </p>
             <div className="btns">
               <LinkButton url="/products">Continue Shopping</LinkButton>
