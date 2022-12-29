@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 
 import { urlFor } from "../../../../lib/sanity-client.utils";
-
 import {
   addItemToCart,
   minusItemFromCart,
@@ -13,14 +12,14 @@ import {
 
 import { selectCartItems } from "../../../../store/cart/cart.selector";
 
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
+import { AiOutlineMinus, AiOutlinePlus, MdDelete } from "../../../ReactIcons";
 import { Wrapper } from "./index.styles";
 
 const CartItem = ({ product }) => {
+  const dispatch = useDispatch();
   const { title, price, images, slug, quantity, selectedSize, category, type } =
     product;
-  const dispatch = useDispatch();
+
   const cartItems = useSelector(selectCartItems);
   const addToCartHandler = () => dispatch(addItemToCart(cartItems, product));
   const minusFromCartHandler = () =>
@@ -74,7 +73,7 @@ const CartItem = ({ product }) => {
                 />
               </span>
             </div>
-            <span className="cartItem__price">$HK {price}</span>
+            <span className="cartItem__price">${price}</span>
           </div>
         </div>
       </div>

@@ -42,10 +42,9 @@ const handler = async (req, res) => {
 
     if (req.body.dataType === "address") {
       const address = req.body.updateData;
-      console.log(address, req.body.dataType);
+
       await User.findByIdAndUpdate(user._id, { address }, { new: true });
     }
-    // console.log(req.body);
 
     return res.status(200).json({ message: "Updated successfully" });
   } catch (error) {

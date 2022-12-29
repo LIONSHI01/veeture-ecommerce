@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../styles/devices";
 
 export const Wrapper = styled.div`
   .cartbar {
@@ -8,9 +9,7 @@ export const Wrapper = styled.div`
     position: fixed;
     top: 0;
     right: 0;
-    /* display: grid;
-    grid-template-rows: max-content 1fr max-content;
-    align-items: flex-start; */
+
     display: flex;
     flex-direction: column;
 
@@ -24,6 +23,10 @@ export const Wrapper = styled.div`
     box-shadow: var(--bs-m);
     visibility: none;
     opacity: 0;
+
+    @media ${device.mobileL} {
+      padding-bottom: 10rem;
+    }
   }
 
   .cartbar.open {

@@ -1,16 +1,30 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { device } from "../../styles/devices";
+
+const stickyStyles = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: var(--bs-m);
+  z-index: 5000;
+`;
+
+export const StickyFillDiv = styled.div`
+  height: ${(props) => (props.sticky ? "10rem" : 0)};
+`;
 
 export const NavbarContainer = styled.nav`
   display: flex;
   align-items: center;
-
+  width: 100%;
   height: 10rem;
   background-color: var(--bg);
   color: var(--white);
   font-size: var(--fs);
   transition: all 0.3s;
   padding: 0 3rem;
+
+  ${(props) => props.sticky && stickyStyles}
 
   @media ${device.tablet} {
     padding: 0 1rem;

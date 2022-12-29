@@ -58,7 +58,7 @@ const CategoryList = ({ categories }) => {
           </Link>
         </div>
         <div className="list-container">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <CategoryItem key={category._id} category={category} />
           ))}
         </div>

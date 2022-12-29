@@ -24,7 +24,7 @@ const createBookingCheckout = async (session) => {
     await Order.create({
       user: user._id,
       stripeOrderId: session.id,
-      orderItems: session.order_items,
+      totalValue: +session.amount_total / 100,
     });
   } catch (err) {
     console.log(err.message);
@@ -38,8 +38,7 @@ const handler = async (req, res) => {
   const buff = await buffer(req);
 
   let event;
-  console.log("This is Webhook endpoint...");
-  console.log("This is signature:", signature);
+
   try {
     event = stripe.webhooks.constructEvent(
       buff,

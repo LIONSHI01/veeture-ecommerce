@@ -14,8 +14,7 @@ import {
 } from "../../../store/cart/cart.action";
 import { urlFor } from "../../../lib/sanity-client.utils";
 
-import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
-import { MdDelete } from "react-icons/md";
+import { AiOutlineMinus, AiOutlinePlus, MdDelete } from "../../ReactIcons";
 
 const CheckoutItem = ({ product }) => {
   const {
@@ -30,9 +29,8 @@ const CheckoutItem = ({ product }) => {
     category,
   } = product;
 
-  const cartItems = useSelector(selectCartItems);
-
   const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
   const addToCartHandler = () => dispatch(addItemToCart(cartItems, product));
   const minusFromCartHandler = () =>
     dispatch(minusItemFromCart(cartItems, product));
@@ -45,20 +43,20 @@ const CheckoutItem = ({ product }) => {
         <div className="cartItem__name_box">
           <div className="cartItem__img_box">
             <Image
-              src={urlFor(images && images[0])}
-              width={70}
-              height={70}
-              alt="PRODUCT NAME"
+              src={urlFor(images?.[0])}
+              alt={title}
+              objectFit="contain"
+              layout="fill"
+              objectPosition="center"
             />
           </div>
-          <Link href={`/${type}/${category}/${slug.current}`}>
+          <Link href={`/${type}/${category}/${slug?.current}`}>
             <a className="cartItem__name">{title}</a>
           </Link>
         </div>
         <span>{selectedSize ? `Size: ${selectedSize}` : ""}</span>
-        <span>{`HK$ ${price}`}</span>
+        <span className="cartItem__unit-price">{`$ ${price}`}</span>
         <div className="cartItem__qty_box">
-          <span>Amount :</span>
           <span className="cartItem__minus" onClick={minusFromCartHandler}>
             <AiOutlineMinus className="cartItem__amountIcon" />
           </span>
@@ -68,7 +66,7 @@ const CheckoutItem = ({ product }) => {
             <AiOutlinePlus className="cartItem__amountIcon" />
           </span>
         </div>
-        <span>{`HK$ ${subTotal}`}</span>
+        <span>{`$ ${subTotal}`}</span>
         <div className="cartItem__btn_remove" onClick={removeFromCartHandler}>
           <MdDelete className="cartItem__remove_icon" />
         </div>

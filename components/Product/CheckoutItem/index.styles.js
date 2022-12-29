@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import { device } from "../../../styles/devices";
 
 export const Wrapper = styled.div`
   grid-column: 1/-1;
   width: 100%;
+
   .cartItem {
     display: grid;
     grid-template-columns: 25fr 25fr 10fr 20fr repeat(2, 10fr);
@@ -14,8 +16,21 @@ export const Wrapper = styled.div`
     border-bottom: 2px solid var(--grey-light-1);
 
     &__img_box {
+      position: relative;
       overflow: hidden;
       border-radius: var(--br-x);
+      height: 7rem;
+      width: 7rem;
+
+      @media ${device.tablet_portrait} {
+        height: 6rem;
+        width: 6rem;
+      }
+
+      @media ${device.mobileL} {
+        height: 5rem;
+        width: 5rem;
+      }
     }
 
     &__name_box {
@@ -24,6 +39,10 @@ export const Wrapper = styled.div`
 
       gap: 2rem;
       align-items: center;
+
+      @media ${device.mobileL} {
+        font-size: var(--fs-s);
+      }
     }
 
     &__name {
@@ -32,7 +51,7 @@ export const Wrapper = styled.div`
         text-decoration: none;
         color: var(--black);
         font-weight: 500;
-        text-transform: uppercase;
+        text-transform: capitalize;
         transition: all 0.3s;
       }
       &:hover,
@@ -45,6 +64,12 @@ export const Wrapper = styled.div`
       display: flex;
       align-items: center;
       gap: 1rem;
+    }
+
+    &__unit-price {
+      @media ${device.mobileL} {
+        display: none;
+      }
     }
 
     &__minus,

@@ -1,16 +1,13 @@
 import styled from "styled-components";
-
+import { device } from "../styles/devices";
 export const Wrapper = styled.div`
   margin-bottom: 10rem;
-  /* Min-height = 100vh - footer height - navbar height */
   min-height: calc(100vh - 30rem - 10rem);
 
   .section-container {
     max-width: var(--container);
     margin: 0 auto;
-  }
-  .cart {
-    /* margin: 10rem 0; */
+    padding: 0 14px;
   }
 
   .cart__amount {
@@ -19,71 +16,23 @@ export const Wrapper = styled.div`
     gap: 1rem;
   }
 
-  /* FLOW */
-  .cart__flow-container {
-    display: flex;
-    justify-content: center;
-    gap: 3rem;
-    font-size: var(--fs-x);
-    font-weight: 500;
-    text-transform: uppercase;
-    background-color: var(--grey-light-1);
-    color: var(--black-light-2);
-    border-radius: var(--br-m);
-    margin: var(--mg-x) 0;
-  }
-  .cart__flow-step {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    gap: 1.5rem;
-    padding: 1rem 7rem 1rem 1rem;
-  }
-
-  .cart__flow-step:not(:last-child)::after {
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 90px;
-    width: 45px;
-    transform: translateY(-22%);
-    vertical-align: middle;
-
-    background-image: url(../assets/img/util-img/step_arrow.png);
-  }
-
-  .cart__flow-num {
-    width: 3rem;
-    height: 3rem;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background-color: var(--white);
-    border-radius: 100%;
-    padding: 1rem;
-  }
-  .cart__flow-icon {
-    width: 3rem;
-    height: 3rem;
-  }
-
+  /* TABLE HEADING */
   .cart__shopping {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  /* TABLE HEADING */
 
   .cart__title {
     display: flex;
     align-items: center;
+    align-self: flex-start;
     gap: 1rem;
-    margin-bottom: var(--mg-m);
+    margin-bottom: var(--mg-s);
+
+    @media ${device.mobileL} {
+      margin-bottom: -1rem;
+    }
   }
 
   .cart__title-icon-box {
@@ -137,7 +86,11 @@ export const Wrapper = styled.div`
     font-weight: 500;
     color: var(--black-light-2);
     background-color: var(--grey-light-1);
-    text-transform: uppercase;
+    text-transform: capitalize;
+
+    @media ${device.mobileL} {
+      display: none;
+    }
   }
 
   .cart__table-head > :first-child {
@@ -155,29 +108,36 @@ export const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 85fr 15fr;
     justify-items: flex-end;
-    text-transform: uppercase;
+    text-transform: capitalize;
+
+    @media ${device.mobileL} {
+      grid-template-columns: 80fr 20fr;
+    }
   }
 
   /* BUTTONS GROUP */
-
   .cart__btns-group {
     display: flex;
     gap: 3rem;
+
+    @media ${device.mobileL} {
+      flex-direction: column;
+    }
   }
 
   .cart__shopping-btn-box,
   .cart__shopping-btn-box:visited {
     position: relative;
-    width: 25rem;
     display: flex;
     justify-content: center;
+    width: 25rem;
     gap: 1rem;
     cursor: pointer;
 
     padding: 1rem 0;
     font-size: var(--fs-x);
     background-color: var(--bg);
-    /* border-radius: var(--br-m); */
+    border-radius: var(--br-m);
     text-transform: uppercase;
     text-decoration: none;
     color: var(--white);

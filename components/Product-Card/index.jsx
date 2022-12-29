@@ -38,11 +38,11 @@ const ProductCard = ({ product }) => {
 
   const toggleWishlistHandler = () => {
     if (status === "unauthenticated") {
-      toast.warning("Please login to access your wishlist!");
+      toast.warning("Please login to update your wishlist!");
       return;
     }
     dispatch(toggleWishlist(wishlist, product));
-    toast.success("Wishlist updated successfully!");
+    toast.success("Wishlist updated!");
     setIsLiked((prev) => !prev);
   };
 
@@ -54,9 +54,7 @@ const ProductCard = ({ product }) => {
     <Wrapper>
       <div className="image-container">
         <Image
-          src={imageUrls && imageUrls[currentIndex]}
-          // width={350}
-          // height={350}
+          src={imageUrls?.[currentIndex]}
           objectFit="cover"
           objectPosition="center"
           layout="fill"
@@ -66,11 +64,13 @@ const ProductCard = ({ product }) => {
           <AiOutlineHeart className={isLiked ? "icon like" : "icon"} />
         </div>
         <div className="dots">
-          {images?.map((image, imageIndex) => (
+          {images?.map((_, imageIndex) => (
             <div
               key={imageIndex}
               className={currentIndex === imageIndex ? "dot active" : "dot"}
-              onClick={() => goToSlide(imageIndex)}
+              onClick={() => {
+                goToSlide(imageIndex);
+              }}
             >
               &nbsp;
             </div>

@@ -4,20 +4,19 @@ import { useSelector, useDispatch } from "react-redux";
 import { signOut, useSession } from "next-auth/react";
 import Router from "next/router";
 
-import { client } from "../../lib/sanity-client.utils";
 import {
   selectCartCount,
   selectIsCartOpen,
 } from "../../store/cart/cart.selector";
 import { selectWishlistCount } from "../../store/user/user.selector";
-import { setSearchResults } from "../../store/product/product.actions";
-import buildSearchResults from "../../lib/buildSearchResults.utils";
 
-import { useGetUserHook } from "../../lib/hooks/useGetUserHook";
+// import { client } from "../../lib/sanity-client.utils";
+// import { setSearchResults } from "../../store/product/product.actions";
+// import buildSearchResults from "../../lib/buildSearchResults.utils";
+// import { getUserProfile } from "../../lib/authRequest";
+// import { useGetUserHook } from "../../lib/hooks/useGetUserHook";
 import { setWishlist, setUserProfile } from "../../store/user/user.action";
 import { setCartList, setIsCartOpen } from "../../store/cart/cart.action";
-
-import { getUserProfile } from "../../lib/authRequest";
 
 import {
   GiHamburgerMenu,
@@ -28,16 +27,16 @@ import {
 } from "../ReactIcons";
 import { navbarItems } from "../../assets/constants";
 import { MobileSidebar } from "../index";
-import { NavbarContainer } from "./index.styles";
+import { NavbarContainer, StickyFillDiv } from "./index.styles";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const { data: session } = useSession();
-  const { user, refetch } = useGetUserHook();
 
   // STATES MANAGEMENT
   // const [openSearch, setOpenSearch] = useState(false);
   // const [inputSearch, setInputSearch] = useState("");
+  const [sticky, setSticky] = useState(false);
   const [openMobielSidebar, setOpenMobielSidebar] = useState(false);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
@@ -52,7 +51,7 @@ const Navbar = () => {
     if (session) {
       const userWishlist = session?.profile?.wishlist;
       const userCartList = session?.profile?.cartList;
-      console.log({ userWishlist, userCartList });
+
       dispatch(setCartList(userCartList));
       dispatch(setWishlist(userWishlist));
       dispatch(setUserProfile(session));
@@ -75,6 +74,18 @@ const Navbar = () => {
     setOpenMobielSidebar((prev) => !prev);
   };
 
+  const setNavSticky = () => {
+    if (window.scrollY >= 1) {
+      setSticky(true);
+    } else {
+      setSticky(false);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", setNavSticky, true);
+  }, []);
+
   // Fetch Products with search keywords
   // const onSubmitSearch = async (e) => {
   //   e.preventDefault();
@@ -93,7 +104,8 @@ const Navbar = () => {
         showup={openMobielSidebar}
         setShowup={setOpenMobielSidebar}
       />
-      <NavbarContainer>
+      <StickyFillDiv sticky={sticky} />
+      <NavbarContainer sticky={sticky}>
         <div className="nav-container sticky">
           {/* Open Mobile sidebar */}
           <button

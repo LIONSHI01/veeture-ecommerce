@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../../styles/devices";
+// import { device } from "../../styles/devices";
 
 export const ListContainer = styled.div`
   width: 100%;
@@ -11,12 +11,6 @@ export const ListContainer = styled.div`
 
   column-gap: 3rem;
   row-gap: 5rem;
-
-  /* @media ${device.mobileL} {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  } */
 
   .not-found {
     display: flex;

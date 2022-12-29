@@ -6,7 +6,7 @@ const orderSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: "User",
     },
-    value: {
+    totalValue: {
       type: Number,
     },
     stripeOrderId: {

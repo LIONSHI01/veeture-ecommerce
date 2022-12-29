@@ -2,9 +2,14 @@ import Stripe from "stripe";
 
 const stripe = new Stripe(`${process.env.NEXT_PUBLIC_STRIPE_SECRET_KEY}`);
 
-// const getOrderItems = (cartItems)=>{
-//   return
-// }
+// const getOrderItems = (cartItems) => {
+//   return cartItems.map(({ title, price }) => {
+//     return {
+//       title: title,
+//       price: price,
+//     };
+//   });
+// };
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -23,7 +28,6 @@ export default async function handler(req, res) {
       billing_address_collection: "auto",
       shipping_options: [{ shipping_rate: "shr_1LjhczLNht9AvxKMQcJau3st" }],
       customer_email: email,
-      order_items: cartItems,
       line_items: cartItems.map((item) => {
         const productName = item.selectedSize
           ? `${item.title}-${item.selectedSize}`

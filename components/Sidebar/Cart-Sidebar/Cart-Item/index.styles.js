@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../../../styles/devices";
 
 export const Wrapper = styled.div`
   .cartItem {
@@ -20,6 +21,11 @@ export const Wrapper = styled.div`
     overflow: hidden;
     width: 15rem;
     height: 15rem;
+
+    @media ${device.mobileL} {
+      width: 10rem;
+      height: 10rem;
+    }
   }
   .cartItem__content {
     display: flex;

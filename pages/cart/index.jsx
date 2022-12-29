@@ -2,50 +2,34 @@ import React from "react";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import axios from "axios";
 import { useSession } from "next-auth/react";
 
 import getStripe from "../../lib/getStripe";
-import PageHero from "../../components/PageHero";
 import { checkoutRequest } from "../../lib/checkoutRequest.utils";
 import {
   selectCartItems,
   selectCartTotal,
 } from "../../store/cart/cart.selector";
 
-import { FaShippingFast } from "react-icons/fa";
-import { SiCashapp } from "react-icons/si";
-import { MdSystemSecurityUpdateGood } from "react-icons/md";
 import {
+  FaShippingFast,
+  SiCashapp,
   AiOutlineLeft,
   AiOutlineRight,
-  AiOutlineFileDone,
-} from "react-icons/ai";
+} from "../../components/ReactIcons";
 
-import CheckoutItem from "../../components/Product/CheckoutItem";
-
+import { PageHero, CheckoutItem, CartWorkFlow } from "../../components";
 import { Wrapper } from "../../pages_styles/cart.styles";
 
 const CartPage = () => {
   const { data: session } = useSession();
-  // console.log(session);
+
   const cartItems = useSelector(selectCartItems);
   const cartTotal = useSelector(selectCartTotal);
 
   const checkoutHandler = async () => {
     const stripe = await getStripe();
     const res = await checkoutRequest(cartItems, session?.user?.email);
-    // const res = await axios({
-    //   url: "/api/stripe",
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   data: {
-    //     cartItems,
-    //     email,
-    //   },
-    // });
 
     if (res.status === 500) return;
 
@@ -57,38 +41,23 @@ const CartPage = () => {
     <Wrapper>
       <PageHero heading="My Cart" />
       <div className="section-container">
-        <div className="cart__flow-container">
-          <div className="cart__flow-step">
-            <span className="cart__flow-num">1</span>
-            <FaShippingFast className="cart__flow-icon" />
-            <span>Choose Shipping Method</span>
-          </div>
-          <div className="cart__flow-step">
-            <span className="cart__flow-num">2</span>
-            <AiOutlineFileDone className="cart__flow-icon" />
-            <span>Fill In Info</span>
-          </div>
-          <div className="cart__flow-step">
-            <span className="cart__flow-num">3</span>
-            <MdSystemSecurityUpdateGood className="cart__flow-icon" />
-            <span>Finish Check Out</span>
-          </div>
-        </div>
+        <CartWorkFlow />
+
         {cartItems.length >= 1 ? (
           <div className="cart__shopping">
-            <div className="cart__table">
-              <div className="cart__title">
-                <div className="cart__title-icon-box">
-                  <FaShippingFast className="cart__title-icon" />
-                </div>
-                <h4 className="cart__title-text">Cart Items</h4>
+            <div className="cart__title">
+              <div className="cart__title-icon-box">
+                <FaShippingFast className="cart__title-icon" />
               </div>
+              <h4 className="cart__title-text">Cart Items</h4>
+            </div>
+            <div className="cart__table">
               <div className="cart__table-head">
                 <span>Product Name</span>
-                <span>Specifications</span>
+                <span>Details</span>
                 <span>Unit Price</span>
                 <span>Quantity</span>
-                <span>Sub-total</span>
+                <span>Sub-Total</span>
                 <span>Remove</span>
               </div>
               <div className="cart__table-body">
@@ -102,7 +71,7 @@ const CartPage = () => {
               {cartItems?.length >= 1 ? (
                 <div className="cart__sum-box">
                   <span>Total</span>
-                  <span>{`HK$ ${cartTotal}`}</span>
+                  <span>{`$ ${cartTotal}`}</span>
                 </div>
               ) : (
                 <div className="cart__empty-text">

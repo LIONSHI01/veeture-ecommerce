@@ -18,6 +18,8 @@ import Hero from "./Hero";
 import Header from "./Header";
 import PageHero from "./PageHero";
 import CartItem from "./Sidebar/Cart-Sidebar/Cart-Item";
+import CheckoutItem from "./Product/CheckoutItem";
+import CartWorkFlow from "./CartWorkFlow";
 
 export {
   IconButton,
@@ -41,4 +43,6 @@ export {
   PageHero,
   Layout,
   CartItem,
+  CheckoutItem,
+  CartWorkFlow,
 };

@@ -15,14 +15,18 @@ import {
   AiOutlineHeart,
   AiFillInstagram,
   AiOutlineTwitter,
+  AiOutlineLeft,
+  AiOutlineRight,
+  AiOutlineFileDone,
+  AiOutlineMinus,
 } from "react-icons/ai";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { VscSignOut } from "react-icons/vsc";
 import { GrFacebookOption } from "react-icons/gr";
-import { FaPinterestP } from "react-icons/fa";
-import { SiMinutemailer } from "react-icons/si";
-// import { ImArrowLeft2 } from "react-icons/im";
-// import { BsBagPlus } from "react-icons/bs";
+import { FaPinterestP, FaShippingFast } from "react-icons/fa";
+import { SiMinutemailer, SiCashapp } from "react-icons/si";
+import { MdSystemSecurityUpdateGood, MdDelete } from "react-icons/md";
+
 export {
   IoMdClose,
   RiEarthFill,
@@ -45,4 +49,12 @@ export {
   SiMinutemailer,
   BsBagPlus,
   ImArrowLeft2,
+  FaShippingFast,
+  SiCashapp,
+  MdSystemSecurityUpdateGood,
+  AiOutlineLeft,
+  AiOutlineRight,
+  AiOutlineFileDone,
+  AiOutlineMinus,
+  MdDelete,
 };
