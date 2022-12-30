@@ -10,6 +10,11 @@ const Wrapper = styled.button`
   color: ${({ bgType }) =>
     bgType === "solid" ? "var(--white)" : "var(--black)"};
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 1.2rem 2.6rem;
   border: 2px solid var(--black);
   border-radius: var(--br-m);
   font-size: ${({ fontSize }) => fontSize};

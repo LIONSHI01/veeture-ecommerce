@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "../../styles/devices";
 
 export const StyledFooter = styled.footer`
-  min-height: 30rem;
+  /* min-height: 30rem; */
   background-color: var(--bg);
   color: var(--white);
 

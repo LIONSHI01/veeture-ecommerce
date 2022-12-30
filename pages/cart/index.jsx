@@ -24,7 +24,7 @@ import {
   CartWorkFlow,
   LinkButton,
   BUTTON_TYPE_CLASSES,
-  OrderItem,
+  Button,
 } from "../../components";
 import { Wrapper } from "../../pages_styles/cart.styles";
 
@@ -90,20 +90,37 @@ const CartPage = () => {
                 </div>
               )}
             </div>
+            <p className="testing-reminder">
+              *** Please fill in card no. 4242-4242-4242-4242 for testing
+              payment fuction in checkout page***
+            </p>
             <div className="cart__btns-group">
-              <Link href="/">
+              {/* <Link href="/">
                 <a className="cart__shopping-btn-box">
                   <AiOutlineLeft className="cart__shopping-btn-left" />
                   <span>Shopping</span>
                 </a>
-              </Link>
-              <div onClick={checkoutHandler}>
+              </Link> */}
+              <LinkButton
+                url="/products"
+                buttonType={BUTTON_TYPE_CLASSES.outline}
+              >
+                <AiOutlineLeft />
+                <span>Shopping</span>
+              </LinkButton>
+              <Button onClick={checkoutHandler}>
+                <span>Check Out</span>
+
+                <AiOutlineRight />
+              </Button>
+
+              {/* <div onClick={checkoutHandler}>
                 <a className="cart__shopping-btn-box">
                   <span>Check Out</span>
                   <SiCashapp />
                   <AiOutlineRight className="cart__shopping-btn-right" />
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         ) : (

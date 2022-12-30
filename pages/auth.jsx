@@ -7,9 +7,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { registerAndLogin } from "../lib/apiRequest/authRequest";
-import AuthImage from "../assets/404.jpg";
-
 import { FormInput, Button, Meta } from "../components";
+import AuthImage from "../assets/404.jpg";
 
 import {
   PageContainer,

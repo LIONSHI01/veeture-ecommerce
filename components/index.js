@@ -22,6 +22,10 @@ import CheckoutItem from "./Product/CheckoutItem";
 import CartWorkFlow from "./CartWorkFlow";
 import OrderItem from "./OrderItem";
 import SingleProductItem from "./OrderItem/SingleProductItem";
+import AuthorDisplayBlock from "./AuthorDisplayBlock";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
+import CartBar from "./Sidebar/Cart-Sidebar";
 
 export {
   IconButton,
@@ -49,4 +53,8 @@ export {
   CartWorkFlow,
   OrderItem,
   SingleProductItem,
+  AuthorDisplayBlock,
+  Navbar,
+  Footer,
+  CartBar,
 };

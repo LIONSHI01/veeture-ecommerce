@@ -185,4 +185,13 @@ export const Wrapper = styled.div`
     font-weight: 600;
     font-style: italic;
   }
+
+  .testing-reminder {
+    font-size: var(--fs);
+    color: var(--red);
+    margin-bottom: var(--mg-m);
+    text-transform: capitalize;
+    font-weight: 500;
+    text-align: center;
+  }
 `;

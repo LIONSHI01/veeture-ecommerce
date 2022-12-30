@@ -11,6 +11,7 @@ const BaseButton = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 2.5rem;
   background-color: var(--black);
   color: var(--white);
   border-radius: var(--br-m);

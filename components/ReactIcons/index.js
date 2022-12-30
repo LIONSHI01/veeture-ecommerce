@@ -20,6 +20,8 @@ import {
   AiOutlineRight,
   AiOutlineFileDone,
   AiOutlineMinus,
+  AiFillBehanceCircle,
+  AiFillHome,
 } from "react-icons/ai";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { VscSignOut } from "react-icons/vsc";
@@ -59,4 +61,6 @@ export {
   AiOutlineMinus,
   MdDelete,
   BsCheckCircleFill,
+  AiFillBehanceCircle,
+  AiFillHome,
 };
