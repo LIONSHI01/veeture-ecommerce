@@ -1,4 +1,4 @@
-## Full Stack Marketplace App 👨‍💻
+## Full Stack e-Commerce App 👨‍💻
 
 [![](https://img.shields.io/badge/Gmail-lionshi2012%40gmail.com-red)](mailto:lionshi2012@gmail.com)
 
@@ -18,5 +18,5 @@
 - CMS provider: Sanity
 - NPM managed workflows
 - Database: MongoDB
-- Payment: Stripe
+- Payment: Stripe server for card validation checking
 - Icon: React-icons
