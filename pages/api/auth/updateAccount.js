@@ -6,10 +6,7 @@ import User from "../../../models/userModel";
 import { connectMongo } from "../../../lib/connectMongoose";
 
 const handler = async (req, res) => {
-  // console.log(req);
   const session = await unstable_getServerSession(req, res, authOptions);
-
-  // console.log(wishlist);
 
   try {
     if (!session) {

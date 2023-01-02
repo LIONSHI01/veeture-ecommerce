@@ -13,7 +13,6 @@ export default async function handler(req, res) {
 
   try {
     const { cartItems, email, userId } = req.body;
-    console.log({ email, userId });
 
     const params = {
       submit_type: "pay",

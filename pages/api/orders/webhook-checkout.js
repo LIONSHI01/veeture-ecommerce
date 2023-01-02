@@ -19,7 +19,7 @@ const handler = async (req, res) => {
   const buff = await buffer(req);
 
   let event;
-  console.log("received Stripe data");
+
   try {
     event = stripe.webhooks.constructEvent(
       buff,
@@ -27,7 +27,6 @@ const handler = async (req, res) => {
       process.env.NEXT_PUBLIC_STRIPE_WEB_HOOK_SECRET
     );
   } catch (err) {
-    console.log(err.message);
     return res
       .status(err.statusCode || 400)
       .send(`Webhook error: ${err.message}`);
@@ -35,9 +34,6 @@ const handler = async (req, res) => {
 
   if (event.type === "checkout.session.completed")
     updateBookingCheckout(event.data.object);
-
-  console.log("Created Order on My side");
-  console.log("Send 200 to Stripe");
 
   res.status(200).json({ received: true, sessionID: event.data.object.id });
 };

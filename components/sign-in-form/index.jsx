@@ -34,10 +34,6 @@ const SignInForm = () => {
       password,
       redirect: "/",
     });
-    // if (res.ok) {
-    //   Router.push("/");
-    // }
-    // console.log(res);
   };
 
   return (

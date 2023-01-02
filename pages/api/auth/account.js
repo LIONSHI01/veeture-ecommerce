@@ -15,7 +15,6 @@ const handler = async (req, res) => {
     await connectMongo();
 
     const user = await User.findOne({ email: session.user.email });
-    // console.log(user);
 
     if (!user) {
       return res
