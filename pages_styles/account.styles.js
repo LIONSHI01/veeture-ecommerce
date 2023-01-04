@@ -57,6 +57,7 @@ export const AccountDetails = styled.div`
   @media ${device.mobileL} {
     display: flex;
     flex-direction: column;
+    margin: 5rem auto;
   }
 
   h2 {

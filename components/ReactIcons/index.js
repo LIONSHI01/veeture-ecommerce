@@ -10,6 +10,7 @@ import {
   BsBagFill,
   BsGenderMale,
   BsGenderFemale,
+  BsFillCartCheckFill,
 } from "react-icons/bs";
 import { ImFacebook, ImArrowLeft2 } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -17,6 +18,7 @@ import {
   AiOutlineUser,
   AiOutlinePlus,
   AiOutlineHeart,
+  AiTwotoneHeart,
   AiFillInstagram,
   AiOutlineTwitter,
   AiOutlineLeft,
@@ -74,4 +76,6 @@ export {
   BsGenderFemale,
   GoSignOut,
   FaUser,
+  BsFillCartCheckFill,
+  AiTwotoneHeart,
 };

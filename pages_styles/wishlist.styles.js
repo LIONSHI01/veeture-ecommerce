@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../styles/devices";
 
 export const ProductGroup = styled.div`
   min-height: calc(100vh - 10rem - 40rem);
@@ -8,7 +9,6 @@ export const ProductGroup = styled.div`
     min-height: 50vh;
     background-color: var(--grey-light-3);
     display: grid;
-    /* margin-bottom: var(--mg-xl); */
     align-items: center;
 
     h1 {
@@ -76,6 +76,10 @@ export const ProductMain = styled.div`
       display: flex;
       flex-wrap: wrap;
       gap: 3rem;
+
+      @media ${device.mobileL} {
+        margin: 5rem 0;
+      }
     }
 
     .not-found {

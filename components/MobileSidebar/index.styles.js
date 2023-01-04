@@ -62,8 +62,8 @@ export const UserInfoBox = styled.div`
     align-items: center;
   }
   .userIcon {
-    height: 10rem;
-    width: 10rem;
+    height: 12rem;
+    width: 12rem;
     border-radius: 100px;
     background: linear-gradient(45deg, #12c2e9 0%, #c471ed 41%, #f64f59 100%);
     display: flex;
@@ -82,7 +82,7 @@ export const UserInfoBox = styled.div`
 `;
 
 export const LinksContainer = styled.div`
-  background-color: var(--black-dark);
+  background-color: var(--bg);
   color: var(--white);
   padding: 4rem 0;
   width: 100%;

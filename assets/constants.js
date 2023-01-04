@@ -9,6 +9,7 @@ import {
   BsGenderMale,
   BsGenderFemale,
   HiHome,
+  BsFillCartCheckFill,
 } from "../components/ReactIcons";
 
 export const navbarItems = [
@@ -78,5 +79,10 @@ export const SIDE_BAR_ITEMS = [
     title: "women",
     url: "/women",
     icon: <BsGenderFemale />,
+  },
+  {
+    title: "cart",
+    url: "/cart",
+    icon: <BsFillCartCheckFill />,
   },
 ];

@@ -30,8 +30,6 @@ const Hero = () => {
           layout="fill"
           objectFit="cover"
           objectPosition="top"
-          // width={6000}
-          // height={4000}
           alt="trendy picture"
         />
       </div>

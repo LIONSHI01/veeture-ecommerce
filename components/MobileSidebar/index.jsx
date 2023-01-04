@@ -1,18 +1,11 @@
 import React from "react";
-import Link from "next/link";
 import Image from "next/image";
 import Router from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { useDispatch } from "react-redux";
 
-import {
-  IoMdClose,
-  BsHeart,
-  AiOutlineUser,
-  GoSignOut,
-  FaUser,
-} from "../ReactIcons";
-import { IconButton, Overlay } from "../index";
+import { AiTwotoneHeart, GoSignOut, FaUser } from "../ReactIcons";
+import { Overlay } from "../index";
 import { SIDE_BAR_ITEMS } from "../../assets/constants";
 import {
   MobileSidebarContainer,
@@ -48,11 +41,11 @@ const MobileSidebar = ({ showup, setShowup }) => {
     <>
       <Overlay showup={showup} setShowup={setShowup} zIndex={9900} />
       <MobileSidebarContainer showup={showup}>
-        <div className="closeBtnContainer">
+        {/* <div className="closeBtnContainer">
           <IconButton onClick={closeSidebarHandler}>
             <IoMdClose size={30} />
           </IconButton>
-        </div>
+        </div> */}
         <UserInfoBox>
           <div className="backgroundContainer">
             <Image
@@ -89,11 +82,11 @@ const MobileSidebar = ({ showup, setShowup }) => {
             ) : (
               <div className="accountBox">
                 <div className="item" onClick={() => onClickLink("/wishlist")}>
-                  <BsHeart />
+                  <AiTwotoneHeart />
                   <p className="link">Wishlist</p>
                 </div>
                 <div className="item" onClick={() => onClickLink("/account")}>
-                  <AiOutlineUser />
+                  <FaUser />
                   <p className="link">Account</p>
                 </div>
                 <div className="item" onClick={signOutHandler}>

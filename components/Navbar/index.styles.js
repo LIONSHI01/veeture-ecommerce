@@ -35,7 +35,7 @@ export const NavbarContainer = styled.nav`
   }
 
   @media ${device.mobileL} {
-    height: 7rem;
+    height: 6rem;
   }
 
   ul {
@@ -83,6 +83,10 @@ export const NavbarContainer = styled.nav`
       font-size: 5.4rem;
       letter-spacing: -1px;
       font-family: var(--ff-logo-font);
+
+      @media ${device.mobileL} {
+        font-size: 4.5rem;
+      }
     }
   }
 
