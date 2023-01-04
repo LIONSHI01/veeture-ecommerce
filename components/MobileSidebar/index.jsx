@@ -1,17 +1,29 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import Router from "next/router";
 import { useSession, signOut } from "next-auth/react";
 import { useDispatch } from "react-redux";
 
-import { IoMdClose } from "../ReactIcons";
+import {
+  IoMdClose,
+  BsHeart,
+  AiOutlineUser,
+  GoSignOut,
+  FaUser,
+} from "../ReactIcons";
 import { IconButton, Overlay } from "../index";
-import { navbarItems } from "../../assets/constants";
-import { MobileSidebarContainer } from "./index.styles";
+import { SIDE_BAR_ITEMS } from "../../assets/constants";
+import {
+  MobileSidebarContainer,
+  UserInfoBox,
+  LinksContainer,
+} from "./index.styles";
+import bgImage from "../../assets/sidebar-bg.jpg";
 
 const MobileSidebar = ({ showup, setShowup }) => {
   const dispatch = useDispatch();
-  const { status } = useSession();
+  const { status, data } = useSession();
 
   // HANLERS
   const closeSidebarHandler = () => {
@@ -27,6 +39,11 @@ const MobileSidebar = ({ showup, setShowup }) => {
     Router.push(data.url);
   };
 
+  const onClickLink = (url) => {
+    Router.push(url);
+    setShowup(false);
+  };
+
   return (
     <>
       <Overlay showup={showup} setShowup={setShowup} zIndex={9900} />
@@ -36,52 +53,57 @@ const MobileSidebar = ({ showup, setShowup }) => {
             <IoMdClose size={30} />
           </IconButton>
         </div>
-        {/* {session && (
-          <UserInfoBox>
-            <p className="username">{username}</p>
-          </UserInfoBox>
-        )} */}
-        <ul className="links">
-          {navbarItems.map(({ title, url }) => (
-            <li className="item" key={title}>
-              <Link href={url}>
-                <a className="link" onClick={closeSidebarHandler}>
-                  {title}
-                </a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <div className="navbar__authentication">
-          {status === "unauthenticated" || status === "loading" ? (
-            <div className="auth-box">
-              <Link href="/auth">
-                <a className="link" onClick={closeSidebarHandler}>
-                  Sign In
-                </a>
-              </Link>
-              {/* <Link href="/auth">
-                <a className="link">Register</a>
-              </Link> */}
-            </div>
-          ) : (
-            <div className="accountBox">
-              <Link href="/wishlist">
-                <a className="link" onClick={closeSidebarHandler}>
-                  Wishlist
-                </a>
-              </Link>
-              <Link href="/account">
-                <a className="link" onClick={closeSidebarHandler}>
-                  Account
-                </a>
-              </Link>
-              <a className="signout-btn" onClick={signOutHandler}>
-                Sign Out
-              </a>
+        <UserInfoBox>
+          <div className="backgroundContainer">
+            <Image
+              layout="fill"
+              objectFit="cover"
+              objectPosition="center"
+              src={bgImage}
+              alt="bgimage"
+              className="background"
+            />
+          </div>
+          {data && (
+            <div className="userIconBox">
+              <div className="userIcon" />
+              <p className="userName">{data?.user?.name?.slice(0, 20)}</p>
             </div>
           )}
-        </div>
+        </UserInfoBox>
+
+        <LinksContainer>
+          {SIDE_BAR_ITEMS.map(({ title, url, icon }) => (
+            <div key={title} className="item" onClick={() => onClickLink(url)}>
+              {icon}
+              <p className="link">{title}</p>
+            </div>
+          ))}
+
+          <div className="navbar__authentication">
+            {status === "unauthenticated" || status === "loading" ? (
+              <div className="item" onClick={() => onClickLink("/auth")}>
+                <FaUser />
+                <p className="link">Sign In</p>
+              </div>
+            ) : (
+              <div className="accountBox">
+                <div className="item" onClick={() => onClickLink("/wishlist")}>
+                  <BsHeart />
+                  <p className="link">Wishlist</p>
+                </div>
+                <div className="item" onClick={() => onClickLink("/account")}>
+                  <AiOutlineUser />
+                  <p className="link">Account</p>
+                </div>
+                <div className="item" onClick={signOutHandler}>
+                  <GoSignOut />
+                  <p className="link">Sign Out</p>
+                </div>
+              </div>
+            )}
+          </div>
+        </LinksContainer>
       </MobileSidebarContainer>
     </>
   );

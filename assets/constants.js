@@ -5,6 +5,10 @@ import {
   BsTwitter,
   AiFillBehanceCircle,
   AiFillHome,
+  BsBagFill,
+  BsGenderMale,
+  BsGenderFemale,
+  HiHome,
 } from "../components/ReactIcons";
 
 export const navbarItems = [
@@ -51,5 +55,28 @@ export const AUTHOR_INFO = [
     title: "behance",
     link: "https://www.behance.net/lionc",
     icon: <AiFillBehanceCircle />,
+  },
+];
+
+export const SIDE_BAR_ITEMS = [
+  {
+    title: "home",
+    url: "/",
+    icon: <HiHome />,
+  },
+  {
+    title: "all",
+    url: "/products",
+    icon: <BsBagFill />,
+  },
+  {
+    title: "men",
+    url: "/men",
+    icon: <BsGenderMale />,
+  },
+  {
+    title: "women",
+    url: "/women",
+    icon: <BsGenderFemale />,
   },
 ];

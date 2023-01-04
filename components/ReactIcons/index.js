@@ -7,6 +7,9 @@ import {
   BsHandbag,
   BsBagPlus,
   BsCheckCircleFill,
+  BsBagFill,
+  BsGenderMale,
+  BsGenderFemale,
 } from "react-icons/bs";
 import { ImFacebook, ImArrowLeft2 } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
@@ -25,8 +28,10 @@ import {
 } from "react-icons/ai";
 import { FiSearch, FiFilter } from "react-icons/fi";
 import { VscSignOut } from "react-icons/vsc";
+import { HiHome } from "react-icons/hi";
+import { GoSignOut } from "react-icons/go";
 import { GrFacebookOption } from "react-icons/gr";
-import { FaPinterestP, FaShippingFast } from "react-icons/fa";
+import { FaPinterestP, FaShippingFast, FaUser } from "react-icons/fa";
 import { SiMinutemailer, SiCashapp } from "react-icons/si";
 import { MdSystemSecurityUpdateGood, MdDelete } from "react-icons/md";
 
@@ -63,4 +68,10 @@ export {
   BsCheckCircleFill,
   AiFillBehanceCircle,
   AiFillHome,
+  HiHome,
+  BsBagFill,
+  BsGenderMale,
+  BsGenderFemale,
+  GoSignOut,
+  FaUser,
 };

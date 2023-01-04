@@ -1,4 +1,5 @@
 import styled, { css } from "styled-components";
+// import bgImage from "../../assets/sidebar-bg.jpg";
 
 const showupStyles = css`
   transform: translateX(0);
@@ -9,8 +10,7 @@ export const MobileSidebarContainer = styled.div`
   position: fixed;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
   top: 0;
   left: 0;
   height: 100%;
@@ -18,7 +18,7 @@ export const MobileSidebarContainer = styled.div`
   background-color: var(--white);
   z-index: 9999;
   box-shadow: var(--box-shadow-m);
-  padding: 3rem;
+
   transition: all 0.3s cubic-bezier(0.83, -0.05, 0.5, 1.03);
 
   /* Hide Sidebar */
@@ -32,59 +32,85 @@ export const MobileSidebarContainer = styled.div`
     top: 2.5rem;
     right: 2.5rem;
   }
-
-  .links {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    list-style: none;
-  }
-
-  .link {
-    &:visited,
-    &:link {
-      font-size: var(--fs-xxl);
-      text-decoration: none;
-      text-transform: uppercase;
-      color: var(--black);
-    }
-
-    &:hover,
-    &:active {
-      color: var(--red);
-    }
-  }
-
-  .auth-box,
-  .accountBox {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-  }
-
-  .signout-btn {
-    padding-bottom: 1rem;
-    text-transform: uppercase;
-    border-bottom: 2px solid var(--red);
-    font-size: var(--fs-xxl);
-    cursor: pointer;
-
-    :hover {
-      color: var(--black-light-2);
-    }
-  }
 `;
 
 export const UserInfoBox = styled.div`
-  position: absolute;
-  top: 3.5rem;
-  left: 3.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-  .username {
-    font-size: var(--fs-xxl);
+  .backgroundContainer {
+    position: relative;
+    height: 30rem;
+    width: 100%;
+  }
+
+  .background {
+    filter: brightness(0.7);
+  }
+
+  .userIconBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .userIcon {
+    height: 10rem;
+    width: 10rem;
+    border-radius: 100px;
+    background: linear-gradient(45deg, #12c2e9 0%, #c471ed 41%, #f64f59 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: var(--mg-s);
+    box-shadow: var(--bs-m);
+  }
+
+  .userName {
+    font-size: var(--fs-xl);
     text-transform: capitalize;
+    color: var(--white);
+    font-weight: 500;
+  }
+`;
+
+export const LinksContainer = styled.div`
+  background-color: var(--black-dark);
+  color: var(--white);
+  padding: 4rem 0;
+  width: 100%;
+  height: 100%;
+
+  & > *:first-child {
+    margin-bottom: var(--mg-s);
+    border-bottom: 1px solid var(--black-light);
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 3rem;
+    cursor: pointer;
+
+    :hover {
+      background-color: var(--black-light);
+    }
+
+    svg {
+      font-size: var(--fs-xxl);
+    }
+  }
+
+  .link {
+    font-size: var(--fs-xl);
+    text-transform: uppercase;
   }
 `;
