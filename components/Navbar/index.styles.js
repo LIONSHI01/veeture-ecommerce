@@ -2,12 +2,8 @@ import styled, { css } from "styled-components";
 import { device } from "../../styles/devices";
 
 const stickyStyles = css`
-  position: fixed;
-  top: 0;
-  left: 0;
   box-shadow: var(--bs-m);
   z-index: 5000;
-
   background-color: var(--bg);
 `;
 

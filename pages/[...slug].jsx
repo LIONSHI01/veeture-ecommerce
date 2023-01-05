@@ -84,6 +84,7 @@ const ProductDetailsPage = ({
     return (
       <>
         <Meta title={`${type} ${category}`} />
+        <Navbar />
         <CategoryDetails>
           <div className="container">
             <HeaderBar

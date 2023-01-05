@@ -36,7 +36,6 @@ const WishlistPage = () => {
       <>
         <Meta title="Wishlist" />
         <Navbar />
-
         <ProductGroup>
           <PageHero heading="My Wishlist" />
           <div className="group-container">

@@ -19,8 +19,8 @@ const CategoryPage = ({ categories, recommendProducts, type }) => {
   return (
     <>
       <Meta title={type} />
+      <Navbar />
       <Wrapper>
-        <Navbar />
         <div className="heading-container">
           <HeaderBar heading={type} type={type} />
         </div>
