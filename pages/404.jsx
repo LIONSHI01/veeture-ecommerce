@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { ErrorImage } from "../assets/imagesExport";
-import { LinkButton, Meta } from "../components";
+import { LinkButton, Meta,Navbar } from "../components";
 
 import {
   PageWrapper,
@@ -15,6 +15,7 @@ const ErrorPage = () => {
   return (
     <>
       <Meta title="404" />
+      <Navbar />
       <PageWrapper>
         <LinkSection>
           <div className="title">

@@ -13,7 +13,6 @@ import {
 
 import {
   FaShippingFast,
-  SiCashapp,
   AiOutlineLeft,
   AiOutlineRight,
 } from "../../components/ReactIcons";
@@ -25,6 +24,8 @@ import {
   LinkButton,
   BUTTON_TYPE_CLASSES,
   Button,
+  Meta,
+  Navbar,
 } from "../../components";
 import { Wrapper } from "../../pages_styles/cart.styles";
 
@@ -49,95 +50,85 @@ const CartPage = () => {
   };
 
   return (
-    <Wrapper>
-      <PageHero heading="My Cart" />
-      <div className="section-container">
-        <CartWorkFlow />
+    <>
+      <Meta title="My Cart" />
+      <Navbar />
+      <Wrapper>
+        <PageHero heading="My Cart" />
+        <div className="section-container">
+          <CartWorkFlow />
 
-        {cartItems.length >= 1 ? (
-          <div className="cart__shopping">
-            <div className="cart__title">
-              <div className="cart__title-icon-box">
-                <FaShippingFast className="cart__title-icon" />
-              </div>
-              <h4 className="cart__title-text">Cart Items</h4>
-            </div>
-            <div className="cart__table">
-              <div className="cart__table-head">
-                <span>Product Name</span>
-                <span>Details</span>
-                <span>Unit Price</span>
-                <span>Quantity</span>
-                <span>Sub-Total</span>
-                <span>Remove</span>
-              </div>
-              <div className="cart__table-body">
-                {cartItems?.map((product) => (
-                  <CheckoutItem
-                    key={`${product._id}-${product.selectedSize}`}
-                    product={product}
-                  />
-                ))}
-              </div>
-              {cartItems?.length >= 1 ? (
-                <div className="cart__sum-box">
-                  <span>Total</span>
-                  <span>{`$ ${cartTotal}`}</span>
+          {cartItems.length >= 1 ? (
+            <div className="cart__shopping">
+              <div className="cart__title">
+                <div className="cart__title-icon-box">
+                  <FaShippingFast className="cart__title-icon" />
                 </div>
-              ) : (
-                <div className="cart__empty-text">
-                  {"No Item Yet ! Let's Explore!"}
+                <h4 className="cart__title-text">Cart Items</h4>
+              </div>
+              <div className="cart__table">
+                <div className="cart__table-head">
+                  <span>Product Name</span>
+                  <span>Details</span>
+                  <span>Unit Price</span>
+                  <span>Quantity</span>
+                  <span>Sub-Total</span>
+                  <span>Remove</span>
                 </div>
-              )}
+                <div className="cart__table-body">
+                  {cartItems?.map((product) => (
+                    <CheckoutItem
+                      key={`${product._id}-${product.selectedSize}`}
+                      product={product}
+                    />
+                  ))}
+                </div>
+                {cartItems?.length >= 1 ? (
+                  <div className="cart__sum-box">
+                    <span>Total</span>
+                    <span>{`$ ${cartTotal}`}</span>
+                  </div>
+                ) : (
+                  <div className="cart__empty-text">
+                    {"No Item Yet ! Let's Explore!"}
+                  </div>
+                )}
+              </div>
+              <p className="testing-reminder">
+                *** Please fill in card no. 4242-4242-4242-4242 for testing
+                payment fuction in checkout page***
+              </p>
+              <div className="cart__btns-group">
+                <LinkButton
+                  url="/products"
+                  buttonType={BUTTON_TYPE_CLASSES.outline}
+                >
+                  <AiOutlineLeft />
+                  <span>Shopping</span>
+                </LinkButton>
+                <Button onClick={checkoutHandler}>
+                  <span>Check Out</span>
+
+                  <AiOutlineRight />
+                </Button>
+              </div>
             </div>
-            <p className="testing-reminder">
-              *** Please fill in card no. 4242-4242-4242-4242 for testing
-              payment fuction in checkout page***
-            </p>
-            <div className="cart__btns-group">
-              {/* <Link href="/">
+          ) : (
+            <div className="cart__empty-msg">
+              <div className="cart__empty-text">
+                {"No Item Yet ! Let's Explore !"}
+              </div>
+              <Link href="/products">
                 <a className="cart__shopping-btn-box">
                   <AiOutlineLeft className="cart__shopping-btn-left" />
                   <span>Shopping</span>
                 </a>
-              </Link> */}
-              <LinkButton
-                url="/products"
-                buttonType={BUTTON_TYPE_CLASSES.outline}
-              >
-                <AiOutlineLeft />
-                <span>Shopping</span>
-              </LinkButton>
-              <Button onClick={checkoutHandler}>
-                <span>Check Out</span>
-
-                <AiOutlineRight />
-              </Button>
-
-              {/* <div onClick={checkoutHandler}>
-                <a className="cart__shopping-btn-box">
-                  <span>Check Out</span>
-                  <SiCashapp />
-                  <AiOutlineRight className="cart__shopping-btn-right" />
-                </a>
-              </div> */}
+              </Link>
             </div>
-          </div>
-        ) : (
-          <div className="cart__empty-msg">
-            <div className="cart__empty-text">
-              {"No Item Yet ! Let's Explore !"}
-            </div>
-            <Link href="/products">
-              <a className="cart__shopping-btn-box">
-                <AiOutlineLeft className="cart__shopping-btn-left" />
-                <span>Shopping</span>
-              </a>
-            </Link>
-          </div>
-        )}
-      </div>
-    </Wrapper>
+          )}
+        </div>
+      </Wrapper>
+    </>
   );
 };
 

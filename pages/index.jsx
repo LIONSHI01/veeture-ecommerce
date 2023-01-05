@@ -1,13 +1,12 @@
 import React from "react";
 import { useSession } from "next-auth/react";
-import { Header, Meta, FeatureSection } from "../components";
+import { Header, Meta, FeatureSection, Navbar } from "../components";
 
 const Home = () => {
-  const session = useSession();
-
   return (
     <>
       <Meta title="Home" />
+      <Navbar isHomePage={true} />
       <Header />
       <main>
         <FeatureSection />

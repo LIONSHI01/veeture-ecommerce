@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import { selectSearchResults } from "../store/product/product.selector";
-import { LinkButton, PageHero, ProductCard, Meta } from "../components";
+import { LinkButton, PageHero, ProductCard, Meta, Navbar } from "../components";
 import { ProductGroup, ProductMain } from "../pages_styles/search.styles";
 
 const SearchResultsPage = () => {
@@ -11,7 +11,7 @@ const SearchResultsPage = () => {
   return (
     <>
       <Meta title="Search Results" />
-
+      <Navbar />
       <ProductGroup>
         <div className="hero-section">
           <PageHero heading="Search Results" />

@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 
 const Meta = ({ title, keywords, description }) => {
+  const titleToDisplay =
+    title?.[0]?.toUpperCase() + title?.replace("-", " ")?.substring(1);
   return (
     <Head>
       <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -9,7 +11,7 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.png" />
-      <title>{`${title} | Veeture`}</title>
+      <title>{`${titleToDisplay} | Veeture`}</title>
     </Head>
   );
 };

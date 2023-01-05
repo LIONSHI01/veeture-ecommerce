@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useSelector, useDispatch } from "react-redux";
 import { signOut, useSession } from "next-auth/react";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 import {
   selectCartCount,
@@ -23,14 +23,16 @@ import { navbarItems } from "../../assets/constants";
 import { MobileSidebar } from "../index";
 import { NavbarContainer, StickyFillDiv } from "./index.styles";
 
-const Navbar = () => {
+const Navbar = ({ isHomePage = false }) => {
   const dispatch = useDispatch();
   const { data: session } = useSession();
+  const router = useRouter();
 
   // STATES MANAGEMENT
 
   const [sticky, setSticky] = useState(false);
   const [openMobielSidebar, setOpenMobielSidebar] = useState(false);
+  // const [isHomePage, setIsHomePage] = useState(false);
   const cartOpenHandler = () => dispatch(setIsCartOpen(!isCartOpen));
 
   // REDUX DATA
@@ -78,14 +80,22 @@ const Navbar = () => {
     window.addEventListener("scroll", setNavSticky, true);
   }, []);
 
+  // useEffect(() => {
+  //   setIsHomePage(window.location.pathname === "/" ? true : false);
+  // }, []);
+
+  // console.log("is home?", Boolean(!Object.keys(router.query).length));
+  // console.log("is home?", Object.keys(router.query).length);
+  // console.log("router.query?", router.query);
+
   return (
     <>
       <MobileSidebar
         showup={openMobielSidebar}
         setShowup={setOpenMobielSidebar}
       />
-      <StickyFillDiv sticky={sticky} />
-      <NavbarContainer sticky={sticky}>
+      <StickyFillDiv isHomePage={isHomePage} />
+      <NavbarContainer isHomePage={isHomePage} sticky={sticky}>
         <div className="nav-container">
           {/* Open Mobile sidebar */}
           <button

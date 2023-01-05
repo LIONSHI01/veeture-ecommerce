@@ -10,6 +10,8 @@ import {
   HeaderBar,
   RecentViewSection,
   DisplayList,
+  Navbar,
+  Meta,
 } from "../components";
 import {
   ProductDetails,
@@ -36,55 +38,63 @@ const ProductDetailsPage = ({
     const imageUrls = images?.map((image) => urlFor(image));
 
     return (
-      <ProductDetails>
-        <div className="master-container">
-          <HeaderBar
-            heading="Product Details"
-            type={type}
-            category={category}
-            productSlug={productSlug}
-          />
-          <div className="product-details-container">
-            <section className="image-section">
-              {imageUrls.map((url, i) => (
-                <div className="image-container" key={i}>
-                  <Image
-                    src={url}
-                    objectFit="cover"
-                    layout="fill"
-                    objectPosition="center"
-                    alt="product"
-                  />
-                </div>
-              ))}
-            </section>
-            <div className="details-container">
-              <DetailSection product={product} />
+      <>
+        <Meta title={productSlug} />
+        <Navbar />
+
+        <ProductDetails>
+          <div className="master-container">
+            <HeaderBar
+              heading="Product Details"
+              type={type}
+              category={category}
+              productSlug={productSlug}
+            />
+            <div className="product-details-container">
+              <section className="image-section">
+                {imageUrls.map((url, i) => (
+                  <div className="image-container" key={i}>
+                    <Image
+                      src={url}
+                      objectFit="cover"
+                      layout="fill"
+                      objectPosition="center"
+                      alt="product"
+                    />
+                  </div>
+                ))}
+              </section>
+              <div className="details-container">
+                <DetailSection product={product} />
+              </div>
+            </div>
+            <div className="recent-views-container">
+              {recentViews.length > 0 && (
+                <RecentViewSection recentViews={recentViews} />
+              )}
             </div>
           </div>
-          <div className="recent-views-container">
-            {recentViews.length > 0 && (
-              <RecentViewSection recentViews={recentViews} />
-            )}
-          </div>
-        </div>
-      </ProductDetails>
+        </ProductDetails>
+      </>
     );
   }
 
   // Return Category Page
   if (categoryProductArr) {
     return (
-      <CategoryDetails>
-        <div className="container">
-          <HeaderBar
-            heading="Product Details"
-            type={type}
-            category={category}
-          />
-          <DisplayList products={categoryProductArr} />
-        </div>
-      </CategoryDetails>
+      <>
+        <Meta title={`${type} ${category}`} />
+        <CategoryDetails>
+          <div className="container">
+            <HeaderBar
+              heading="Product Details"
+              type={type}
+              category={category}
+            />
+            <DisplayList products={categoryProductArr} />
+          </div>
+        </CategoryDetails>
+      </>
     );
   }
 };

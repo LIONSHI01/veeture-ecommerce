@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { selectWishlist } from "../store/user/user.selector";
 
-import { PageHero, LinkButton, ProductCard, DisplayList } from "../components";
+import { PageHero, LinkButton, DisplayList, Navbar, Meta } from "../components";
 import {
   ProductGroup,
   ProductMain,
@@ -17,41 +17,46 @@ const WishlistPage = () => {
 
   if (status === "unauthenticated") {
     return (
-      <Unauthentication>
-        <div className="section-container">
-          <div className="unauthenticate-box">
-            <p>Please sign in to access your wishlist</p>
-            <LinkButton url="/auth">Sign in</LinkButton>
+      <>
+        <Navbar />
+        <Unauthentication>
+          <div className="section-container">
+            <div className="unauthenticate-box">
+              <p>Please sign in to access your wishlist</p>
+              <LinkButton url="/auth">Sign in</LinkButton>
+            </div>
           </div>
-        </div>
-      </Unauthentication>
+        </Unauthentication>
+      </>
     );
   }
 
   if (status === "authenticated") {
     return (
-      <ProductGroup>
-        <PageHero heading="My Wishlist" />
-        <div className="group-container">
-          <ProductMain>
-            <div className="section-container">
-              <div className="gallary">
-                {wishlist?.length > 0 ? (
-                  // wishlist?.map((product) => (
-                  //   <ProductCard key={product._id} product={product} />))
+      <>
+        <Meta title="Wishlist" />
+        <Navbar />
 
-                  <DisplayList products={wishlist} />
-                ) : (
-                  <div className="not-found">
-                    <p>No Item yet. Lets explore!</p>
-                    <LinkButton url="/products">View All Products</LinkButton>
-                  </div>
-                )}
+        <ProductGroup>
+          <PageHero heading="My Wishlist" />
+          <div className="group-container">
+            <ProductMain>
+              <div className="section-container">
+                <div className="gallary">
+                  {wishlist?.length > 0 ? (
+                    <DisplayList products={wishlist} />
+                  ) : (
+                    <div className="not-found">
+                      <p>No Item yet. Lets explore!</p>
+                      <LinkButton url="/products">View All Products</LinkButton>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
-          </ProductMain>
-        </div>
-      </ProductGroup>
+            </ProductMain>
+          </div>
+        </ProductGroup>
+      </>
     );
   }
 };

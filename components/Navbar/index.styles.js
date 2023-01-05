@@ -7,22 +7,30 @@ const stickyStyles = css`
   left: 0;
   box-shadow: var(--bs-m);
   z-index: 5000;
+
+  background-color: var(--bg);
 `;
 
 export const StickyFillDiv = styled.div`
-  height: ${(props) => (props.sticky ? "10rem" : 0)};
+  height: ${(props) => (props.isHomePage ? "0" : "8rem")};
 
   @media ${device.mobileL} {
-    height: ${(props) => (props.sticky ? "7rem" : 0)};
+    height: ${(props) => (props.isHomePage ? "0" : "7rem")};
   }
 `;
 
 export const NavbarContainer = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   width: 100%;
-  height: 10rem;
-  background-color: var(--bg);
+  height: 8rem;
+
+  background-color: ${(props) =>
+    props.isHomePage ? "transparent" : "var(--bg)"};
+
   color: var(--white);
   font-size: var(--fs);
   transition: all 0.3s;
@@ -35,7 +43,7 @@ export const NavbarContainer = styled.nav`
   }
 
   @media ${device.mobileL} {
-    height: 6rem;
+    height: 7rem;
   }
 
   ul {
@@ -232,14 +240,4 @@ export const NavbarContainer = styled.nav`
       color: var(--black);
     }
   }
-
-  /* .nav-container.sticky {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 10rem;
-    background-color: var(--bg);
-    display: flex;
-    align-items: center;
-  } */
 `;

@@ -14,7 +14,7 @@ import {
   OrderDetails,
 } from "../pages_styles/account.styles";
 
-import { Button, FormInput, Meta, OrderItem } from "../components";
+import { Button, FormInput, Meta, OrderItem, Navbar } from "../components";
 
 const INITIAL_FORM_STATE = {
   streetAddress: "",
@@ -55,6 +55,7 @@ const AccountPage = ({ sessionData }) => {
   return (
     <>
       <Meta title="Account" />
+      <Navbar />
       <Wrapper>
         <PageHeader>
           <div className="heading">

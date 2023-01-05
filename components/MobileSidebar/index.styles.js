@@ -1,5 +1,4 @@
 import styled, { css } from "styled-components";
-// import bgImage from "../../assets/sidebar-bg.jpg";
 
 const showupStyles = css`
   transform: translateX(0);
@@ -75,7 +74,7 @@ export const UserInfoBox = styled.div`
 
   .userName {
     font-size: var(--fs-xl);
-    text-transform: capitalize;
+    text-transform: uppercase;
     color: var(--white);
     font-weight: 500;
   }

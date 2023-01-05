@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Hero } from "../index";
 
 const StyledHeader = styled.header`
-  height: 100vh;
+  /* height: 100vh; */
   width: 100%;
 `;
 

@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 
 import { client } from "../lib/sanity-client.utils";
-import HeaderBar from "../components/HeaderBar";
+
+import { Navbar, Meta, HeaderBar } from "../components";
 import CategoryList from "../components/Category-List";
 import RecommendList from "../components/Recommend-List";
 
@@ -16,13 +17,17 @@ const Wrapper = styled.div`
 
 const CategoryPage = ({ categories, recommendProducts, type }) => {
   return (
-    <Wrapper>
-      <div className="heading-container">
-        <HeaderBar heading={type} type={type} />
-      </div>
-      <CategoryList categories={categories} />
-      <RecommendList products={recommendProducts} />
-    </Wrapper>
+    <>
+      <Meta title={type} />
+      <Wrapper>
+        <Navbar />
+        <div className="heading-container">
+          <HeaderBar heading={type} type={type} />
+        </div>
+        <CategoryList categories={categories} />
+        <RecommendList products={recommendProducts} />
+      </Wrapper>
+    </>
   );
 };
 

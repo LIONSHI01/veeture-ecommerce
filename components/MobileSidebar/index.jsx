@@ -19,9 +19,9 @@ const MobileSidebar = ({ showup, setShowup }) => {
   const { status, data } = useSession();
 
   // HANLERS
-  const closeSidebarHandler = () => {
-    setShowup(false);
-  };
+  // const closeSidebarHandler = () => {
+  //   setShowup(false);
+  // };
 
   const signOutHandler = async () => {
     setShowup(false);

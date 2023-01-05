@@ -7,7 +7,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import { registerAndLogin } from "../lib/apiRequest/authRequest";
-import { FormInput, Button, Meta } from "../components";
+import { FormInput, Button, Meta, Navbar } from "../components";
 import AuthImage from "../assets/404.jpg";
 
 import {
@@ -84,6 +84,7 @@ const AuthPage = () => {
   return (
     <>
       <Meta title="Authentication" />
+      <Navbar />
       <PageContainer>
         <ImageSection>
           <Image

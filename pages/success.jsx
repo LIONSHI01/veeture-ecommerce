@@ -1,14 +1,14 @@
 import React from "react";
 
 import { BsCheckCircleFill } from "../components/ReactIcons";
-import { Meta, LinkButton, BUTTON_TYPE_CLASSES } from "../components";
+import { Meta, LinkButton, BUTTON_TYPE_CLASSES, Navbar } from "../components";
 import { Wrapper } from "../pages_styles/success.styles";
 
 const SuccessPage = () => {
   return (
     <>
       <Meta title="Order Success" />
-
+      <Navbar />
       <Wrapper>
         <div className="container">
           <div className="success">
