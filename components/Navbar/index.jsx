@@ -80,14 +80,6 @@ const Navbar = ({ isHomePage = false }) => {
     window.addEventListener("scroll", setNavSticky, true);
   }, []);
 
-  // useEffect(() => {
-  //   setIsHomePage(window.location.pathname === "/" ? true : false);
-  // }, []);
-
-  // console.log("is home?", Boolean(!Object.keys(router.query).length));
-  // console.log("is home?", Object.keys(router.query).length);
-  // console.log("router.query?", router.query);
-
   return (
     <>
       <MobileSidebar

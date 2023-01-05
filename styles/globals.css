@@ -194,13 +194,7 @@ p {
   margin-inline-end: 0px;
 }
 
-/* 
-.Toastify__toast--warning {
 
-}
-.Toastify__toast--error {
-
-} */
 .toastBody {
   font-family: "Crimson Text", serif;
   color: #10171D; 
@@ -211,3 +205,10 @@ p {
 }
 
 
+@media only screen and (max-width: 26.56em) {
+  .Toastify__toast-container {
+    max-width: 95%;
+    height: 11rem;
+    left: 1rem !important;
+  }
+}

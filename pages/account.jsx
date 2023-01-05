@@ -31,9 +31,10 @@ const AccountPage = ({ sessionData }) => {
 
   // STATE MANAGEMENT
   const [formFields, setFormFields] = useState(INITIAL_FORM_STATE);
-  const { streetAddress, streetAddress2, city, state, postal } = formFields;
+  // const { streetAddress, streetAddress2, city, state, postal } =
+  //   formFields || {};
   const [orders, setOrders] = useState(null);
-  const [address, setAddress] = useState(null);
+
   // HANDLERS
   const onChangeFormfields = (e) => {
     const { name, value } = e.target;
@@ -50,6 +51,7 @@ const AccountPage = ({ sessionData }) => {
 
   useEffect(() => {
     setOrders(session?.profile?.orders);
+    setFormFields(session?.profile?.address[0]);
   }, [session]);
 
   return (
@@ -88,33 +90,33 @@ const AccountPage = ({ sessionData }) => {
                 <FormInput
                   label="Street Address"
                   name="streetAddress"
-                  value={streetAddress}
+                  value={formFields?.streetAddress || ""}
                   onChange={onChangeFormfields}
                 />
                 <FormInput
                   label="Street Address Line 2"
                   name="streetAddress2"
-                  value={streetAddress2}
+                  value={formFields?.streetAddress2 || ""}
                   onChange={onChangeFormfields}
                 />
                 <div className="stateAndPostal">
                   <FormInput
                     label="State"
                     name="state"
-                    value={state}
+                    value={formFields?.state || ""}
                     onChange={onChangeFormfields}
                   />
                   <FormInput
                     label="City"
                     name="city"
-                    value={city}
+                    value={formFields?.city || ""}
                     onChange={onChangeFormfields}
                   />
                 </div>
                 <FormInput
                   label="Postal"
                   name="postal"
-                  value={postal}
+                  value={formFields?.postal || ""}
                   onChange={onChangeFormfields}
                 />
                 <Button bgType="solid" width="25rem" height="5rem">
