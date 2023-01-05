@@ -32,6 +32,10 @@ export const NavbarContainer = styled.nav`
   transition: all 0.3s;
   padding: 0 3rem;
 
+  :hover {
+    background-color: var(--bg);
+  }
+
   ${(props) => props.sticky && stickyStyles}
 
   @media ${device.tablet} {
